@@ -1,0 +1,41 @@
+#! /bin/bash
+
+# this is the main dotfiles command.
+# usage: dotfiles [install|clean|backup]
+#     [install]: installs the dotfiles, copying all items in files/ to ~/
+#       [clean]: empties the files/ directory in case you want to start fresh
+#      [backup]: backs up all files in files.txt from ~/ to files/. automatically creates a git commit.
+
+if (( $# >= 1 )); then
+	# deal with $1
+	if [ $1 == "install" ]; then
+		# copies everything in files/ to ~/
+		cp -rf files/* ~
+		cp -rf files/.* ~
+		cp -rf files/*.* ~
+	elif [ $1 == "backup" ]; then
+		# backup files
+		while read f; do
+			[ ! "${f:0:1}" == "#" ] && [ ! "$f" == "" ] && cp -vrf ~/$f files/
+		done <files.txt
+		git add files/* files/.* files/*.*
+		git commit -am "Backup at `date "+%Y-%m-%d %H:%M"`"
+	elif [ $1 == "clean" ]; then
+		# clean up
+		rm -rf files
+		mkdir files
+		git commit -am "Cleaned at `date "+%Y-%m-%d %H:%M"`"
+	else
+		# display usage info
+		echo "usage: dotfiles [install|backup|clean]"
+		echo "   [install]: copies all files and directories in files/ to ~"
+		echo "     [clean]: removes everything in files/"
+		echo "    [backup]: copies all files listed in files.txt from ~ to files/"
+	fi
+else
+	# display usage info
+	echo "usage: dotfiles [install|backup|clean]"
+	echo "   [install]: copies all files and directories in files/ to ~"
+	echo "     [clean]: removes everything in files/"
+	echo "    [backup]: copies all files listed in files.txt from ~ to files/"
+fi

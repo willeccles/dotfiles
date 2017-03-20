@@ -1,0 +1,16 @@
+# all files are presumed to be at ~/, so if they are not this will not work
+# this may be fixed in the future if necessary
+# any empty lines will be ignored, whitespace-only lines will (for the time being) break it
+
+# single files
+.bash_profile
+.bashrc
+.vimrc
+.gitconfig
+
+# directories
+.vim
+.config/git
+.config/powerline
+.fonts
+.vscode
