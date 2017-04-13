@@ -65,8 +65,8 @@ highlight Comment cterm=italic
 colorscheme seattle
 
 "change colors on tabs, selected and unselected
-highlight! link TabLine CP_1b
-highlight! link TabLineSel CP_2b
+highlight! link TabLine CP_19
+highlight! link TabLineSel CP_39
 
 "these are custom hilight groups i used for the statusline, modified from
 "seattle's colors. any hilight groups used that aren't in this list are from
@@ -99,7 +99,8 @@ setlocal foldmethod=manual
 
 map <F7> <Esc>:tabp<Return>
 map <F8> <Esc>:tabn<Return>
-map <F9> <Esc>:tabf 
+"use tabe instead of tabf, e works the same as :e
+map <F9> <Esc>:tabe 
 
 map <F5> <Esc>:w<Return>
 map <F6> <Esc>:q<Return>

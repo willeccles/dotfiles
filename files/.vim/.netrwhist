@@ -1,7 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/Users/willeccles/eclipse workspace/draggablealiens/alien/palette'
 let g:netrw_dirhist_2='/Users/willeccles/eclipse workspace/draggablealiens'
 let g:netrw_dirhist_3='/Users/willeccles/eclipse workspace/draggablealiens/alien'
 let g:netrw_dirhist_4='/Users/willeccles/eclipse workspace/draggablealiens/alien/palette'
 let g:netrw_dirhist_5='/Users/willeccles/eclipse workspace/aliens'
+let g:netrw_dirhist_6='/Users/willeccles/github/minepanel/MinePanel/src/minePanel'
+let g:netrw_dirhist_7='/Users/willeccles/eclipse workspace/lab8'
