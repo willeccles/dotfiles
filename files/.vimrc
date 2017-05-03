@@ -102,17 +102,22 @@ map <F8> <Esc>:tabn<Return>
 "use tabe instead of tabf, e works the same as :e
 map <F9> <Esc>:tabe 
 
-map <F5> <Esc>:w<Return>
-map <F6> <Esc>:q<Return>
+"unused keybinds that i could use at any time
+"map <F5> <Esc>:w<Return>
+"map <F6> <Esc>:q<Return>
+
+map <F10> <Esc>:%s/\([)>a-zA-Z0-9]\){/\1 {/ge<Return>:%s/{\zs\s\+\ze$//ge<Return>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<Return>ggVG=:w<Return>
 
 "compile
-map <F1> <Esc>:make<Return>:copen<Return>
+map <F1> <Esc>:make<Return>
+"open error list
+map <F2> <Esc>:copen<Return>
 "previous error
-map <F2> <Esc>:cprevious<Return>
+map <F3> <Esc>:cprevious<Return>
 "next error
-map <F3> <Esc>:cnext<Return>
+map <F4> <Esc>:cnext<Return>
 "close error output
-map <F4> <Esc>:cclose<Return>
+map <F5> <Esc>:cclose<Return>
 
 "java compilation stuff
 autocmd Filetype java set makeprg=cd\ '%:h'\ &&\ javac\ '%:t'
