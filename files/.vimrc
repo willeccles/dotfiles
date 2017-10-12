@@ -126,6 +126,8 @@ autocmd Filetype java set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 autocmd Filetype c set makeprg=gcc\ -o\ '%<'.out\ '%'
 "c++ compilation stuff
 autocmd Filetype cpp,c++ set makeprg=g++\ -o\ '%<'.out\ '%'\ -std=c++14
+"tex pdf compilation
+autocmd Filetype tex set makeprg=pdflatex\ '%'
 
 "change how the default split works (to make it more natural than vim's
 "default)
