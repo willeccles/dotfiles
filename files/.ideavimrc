@@ -1,0 +1,9 @@
+set showmode
+
+"These two are on hold for now, since they aren't implemented into ideavim.
+"Workaround is to bind the previous and next tab options in the editor to
+"F7/F8
+"map <F7> <Esc>:tabp<Return>
+"map <F8> <Esc>:tabn<Return>
+"use tabe instead of tabf, e works the same as :e
+map <F9> <Esc>:tabe 

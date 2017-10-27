@@ -6,6 +6,7 @@
 .bash_profile
 .bashrc
 .vimrc
+.ideavimrc
 .gitconfig
 
 # directories

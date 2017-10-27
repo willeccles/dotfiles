@@ -1,6 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/willeccles/eclipse workspace/networkingtest'
-let g:netrw_dirhist_2='/Users/willeccles/eclipse workspace/networkingtest/server'
-let g:netrw_dirhist_3='/Users/willeccles/eclipse workspace/networkingtest'
-let g:netrw_dirhist_4='/Users/willeccles/eclipse workspace/wavegame/src/mainGame'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/willeccles/eclipse workspace/wavegame/src/server'
+let g:netrw_dirhist_2='/Users/willeccles'
