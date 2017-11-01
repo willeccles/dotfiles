@@ -102,6 +102,9 @@ map <F8> <Esc>:tabn<Return>
 "use tabe instead of tabf, e works the same as :e
 map <F9> <Esc>:tabe 
 
+map <F11> <Esc>:bp<Return>
+map <F12> <Esc>:bn<Return>
+
 "unused keybinds that i could use at any time
 "map <F5> <Esc>:w<Return>
 "map <F6> <Esc>:q<Return>

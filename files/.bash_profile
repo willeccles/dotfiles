@@ -13,19 +13,19 @@ __prompt_command() {
 	
 	# colors
 	local RCol="\[\e[0m\]" # reset format
-	local BPurple="\[\e[38;5;98;1m\]"
-	local Teal="\[\e[38;5;74m\]"
-	local Khaki="\[\e[38;5;228m\]"
-	local BRed="\[\e[38;5;160;1m\]"
-	local BGreen="\[\e[38;5;148;1m\]"
-	local Pink="\[\e[38;5;213m\]"
-	local Orange="\[\e[38;5;214m\]"
+	local BPurple="\[\e[38;5;176;1m\]"
+	local LBlue="\[\e[38;5;110m\]"
+	local Khaki="\[\e[38;5;180m\]"
+	local BRed="\[\e[38;5;203;1m\]"
+	local BGreen="\[\e[38;5;114;1m\]"
+	local Pink="\[\e[38;5;211m\]"
+	local Orange="\[\e[38;5;209m\]"
 
 	# number of jobs (both running and stopped) in the background
 	local jobnum=$(jobs -p | wc -l | tr -d ' ')
 
 	PS1+="${BPurple}\W ${RCol}"
-	PS1+="${Teal}\`parse_git_branch\`${RCol}"
+	PS1+="${LBlue}\`parse_git_branch\`${RCol}"
 
 	if [ $EXIT -ne 0 ]; then
 		# 146 is STOPPED, like control-z, etc.
@@ -34,7 +34,7 @@ __prompt_command() {
 		else
 			# when its 146 i want it to show me what job i stopped
 			# just the command name though, no args
-			local lastjob="$(ps -p $(jobs -p | sed -e '$!d') -o comm=)+"
+			local lastjob="$(ps -p $(jobs -p | sed -e '$!d') -o comm=)"
 			PS1="${Orange}${lastjob}${RCol} $PS1"
 		fi
 	fi
@@ -47,7 +47,7 @@ __prompt_command() {
 }
 
 # continuation prompt (e.g. when a line ends in \)
-PS2="\[\e[38;5;98;1m\]...\[\e[38;5;148;1m\] \[\e[0m\]"
+PS2="\[\e[38;5;176;1m\]...\[\e[38;5;114;1m\] \[\e[0m\]"
 
 # old stuff just for reference, etc.
 #PS1='\[\e[0;31m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;34m\]\w\[\e[0m\]\$ '
