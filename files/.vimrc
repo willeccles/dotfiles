@@ -1,9 +1,12 @@
-"enable powerline
+"enabl powerline
 "set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
-"set noshowmode "disables showing the current mode, useful in conjunction with powerline
 
 set laststatus=2
 set noshowmode
+
+if !has("gui_running")
+	set t_Co=256
+endif
 
 " modes
 let g:currentmode={
@@ -61,28 +64,56 @@ syntax enable "syntax hilighting
 "this works in MacVim, hence I set Operator Mono to be my font in MacVim
 highlight Comment cterm=italic
 
-"for seattle
-colorscheme seattle
+fu! g:Ayudark()
+	let g:ayucolor="dark"
+	hi clear
+	syntax reset
+	colorscheme ayu
+endfunction
+
+fu! g:Ayulight()
+	let g:ayucolor="light"
+	hi clear
+	syntax reset
+	colorscheme ayu
+endfunction
+
+fu! g:Ayumirage()
+	let g:ayucolor="mirage"
+	hi clear
+	syntax reset
+	colorscheme ayu
+endfunction
+
+"some commands that let me swap color schemes
+command! Ayudark call g:Ayudark()
+command! Ayulight call g:Ayulight()
+command! Ayumirage call g:Ayumirage()
+
+:Ayumirage
+"colorscheme seattle
 
 "change colors on tabs, selected and unselected
 highlight! link TabLine CP_19
 highlight! link TabLineSel CP_39
 
-"these are custom hilight groups i used for the statusline, modified from
-"seattle's colors. any hilight groups used that aren't in this list are from
-"seattle.vim
-highlight CP_FNAMEDIV guibg=#4D4D4D gui=bold
-highlight CP_MODE guibg=#FFFFFF guifg=#292929 gui=bold
-highlight CP_MODEDIV guibg=#F69A42 guifg=#FFFFFF gui=bold
-highlight CP_FNAME guibg=#F69A42 guifg=#FFFFFF gui=italic
-highlight CP_MID guibg=#4D4D4D
+if g:colors_name == "seattle"
+	"these are custom hilight groups i used for the statusline, modified from
+	"seattle's colors. any hilight groups used that aren't in this list are from
+	"seattle.vim
+	highlight CP_FNAMEDIV guibg=#4D4D4D gui=bold
+	highlight CP_MODE guibg=#FFFFFF guifg=#292929 gui=bold
+	highlight CP_MODEDIV guibg=#F69A42 guifg=#FFFFFF gui=bold
+	highlight CP_FNAME guibg=#F69A42 guifg=#FFFFFF gui=italic
+	highlight CP_MID guibg=#4D4D4D
 
-if !has("gui_running")
-highlight CP_FNAMEDIV ctermbg=239 ctermfg=209 cterm=bold
-highlight CP_MODE ctermbg=231 ctermfg=235 cterm=bold
-highlight CP_MODEDIV ctermbg=209 ctermfg=231 cterm=bold
-highlight CP_FNAME ctermbg=209 ctermfg=231
-highlight CP_MID ctermbg=239
+	if !has("gui_running")
+		highlight CP_FNAMEDIV ctermbg=239 ctermfg=209 cterm=bold
+		highlight CP_MODE ctermbg=231 ctermfg=235 cterm=bold
+		highlight CP_MODEDIV ctermbg=209 ctermfg=231 cterm=bold
+		highlight CP_FNAME ctermbg=209 ctermfg=231
+		highlight CP_MID ctermbg=239
+	endif
 endif
 
 set guifont=Operator\ Mono\ Book:h12 "for MacVim
@@ -105,11 +136,7 @@ map <F9> <Esc>:tabe
 map <F11> <Esc>:bp<Return>
 map <F12> <Esc>:bn<Return>
 
-"unused keybinds that i could use at any time
-"map <F5> <Esc>:w<Return>
-"map <F6> <Esc>:q<Return>
-
-map <F10> <Esc>:%s/\([)>a-zA-Z0-9]\){/\1 {/ge<Return>:%s/{\zs\s\+\ze$//ge<Return>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<Return>ggVG=:w<Return>
+map <F10> <Esc>:%s/\([)>a-zA-Z0-9]\){/\1 {/ge<Return>:%s/{\zs\s\+\ze$//ge<Return>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<Return>:%s/\r//ge<Return>ggVG=:w<Return>
 
 "compile
 map <F1> <Esc>:make<Return>
