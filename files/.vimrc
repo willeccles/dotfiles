@@ -4,10 +4,6 @@
 set laststatus=2
 set noshowmode
 
-if !has("gui_running")
-	set t_Co=256
-endif
-
 " modes
 let g:currentmode={
 	\ 'n'  : 'N',
@@ -18,7 +14,7 @@ let g:currentmode={
 	\ 's'  : 'S',
 	\ 'S'  : 'S·L',
 	\ '' : 'S·B',
-	\ 'i'  : 'I',
+	\ 'i'  : '⎀',
 	\ 'R'  : 'R',
 	\ 'Rv' : 'V·R',
 	\ 'c'  : 'Cmd',
@@ -45,76 +41,107 @@ fu! Ftype()
 	return substitute(&filetype, "[[]]", "", "")
 endfunction
 
-"statusline
-:set statusline=%#CP_MODE#\ %{toupper(g:currentmode[mode()])}\  "shows mode
-":set statusline+=\ %#CP_MODEDIV#⇢\  "divider after mode
-:set statusline+=%< "where to truncate the line, in other words always show mode
-:set statusline+=%#CP_FNAME#\ %f "filename
-:set statusline+=%{Modstatus()} "modified status of buffer
-:set statusline+=%{ReadOnly()} "redonly status
-":set statusline+=\ %#CP_FNAMEDIV#⇢\  "filename divider
-:set statusline+=\ %#CP_MID# "set color for middle of SL
-:set statusline+=\ %{Ftype()} "filetype
-:set statusline+=%= "every statusline addition after this line will be right justified
-:set statusline+=%p%%\  "percentage through the file in lines
-:set statusline+=%#CP_37#\ L%l:C%c\  "line number and character on that line
+fu! g:SetupStatusLine()
+	" {{{ status line/tabs colors
+	if g:colors_name == "seattle"
+		"these are custom hilight groups i used for the statusline, modified from
+		"seattle's colors. any hilight groups used that aren't in this list are from
+		"seattle.vim
+		highlight CP_MODE guibg=#FFFFFF guifg=#292929 gui=bold
+		highlight CP_FNAME guibg=#F69A42 guifg=#FFFFFF gui=italic
+		highlight CP_MID guibg=#4D4D4D
+		highlight CP_LNUM guibg=#5fb3b3 guifg=#ffffff
+
+		"seattle is going to be the only theme used in a non-gui environment,
+		"so it's the only one that gets this treatment
+		if !has("gui_running")
+			highlight CP_MODE ctermbg=231 ctermfg=235 cterm=bold
+			highlight CP_FNAME ctermbg=209 ctermfg=231
+			highlight CP_MID ctermbg=239
+			highlight CP_LNUM ctermbg=73 ctermfg=231
+		endif
+	elseif g:colors_name == "ayu"
+		"set the colors used for the status line in ayu theme
+		if g:ayucolor == "mirage"
+			echo "mirage"
+			highlight CP_MODE guibg=#d9d7ce guifg=#000000
+			highlight CP_FNAME guibg=#3e4b59 guifg=#FFFFFF
+			highlight CP_MID guibg=#303540 guifg=NONE
+			highlight CP_LNUM guibg=#3e4b59 guifg=#FFFFFF
+		elseif g:ayucolor == "dark"
+			highlight CP_MODE guibg=#e6e1cf guifg=#000000
+			highlight CP_FNAME guibg=#3e4b59 guifg=#FFFFFF
+			highlight CP_MID guibg=#191f26 guifg=NONE
+			highlight CP_LNUM guibg=#3e4b59 guifg=#FFFFFF
+		elseif g:ayucolor == "light"
+			highlight CP_MODE guibg=#6e7580 guifg=#FFFFFF
+			highlight CP_FNAME guibg=#878f99 guifg=#000000
+			highlight CP_MID guibg=#f5f5f5 guifg=NONE
+			highlight CP_LNUM guibg=#878f99 guifg=#000000
+		endif
+	endif
+
+	"change colors on tabs, selected and unselected
+	highlight! link TabLine CP_19
+	highlight! link TabLineSel CP_39
+	" }}} end status line/tab bar
+
+	"statusline
+	:set statusline=%#CP_MODE#\ %{toupper(g:currentmode[mode()])}\  "shows mode
+	":set statusline+=\ %#CP_MODEDIV#⇢\  "divider after mode
+	:set statusline+=%< "where to truncate the line, in other words always show mode
+	:set statusline+=%#CP_FNAME#\ %f "filename
+	:set statusline+=%{Modstatus()} "modified status of buffer
+	:set statusline+=%{ReadOnly()} "redonly status
+	":set statusline+=\ %#CP_FNAMEDIV#⇢\  "filename divider
+	:set statusline+=\ %#CP_MID# "set color for middle of SL
+	:set statusline+=\ %{Ftype()} "filetype
+	:set statusline+=%= "every statusline addition after this line will be right justified
+	:set statusline+=%p%%\  "percentage through the file in lines
+	:set statusline+=%#CP_LNUM#\ L%l:C%c\  "line number and character on that line
+	redraw!
+endfu
 
 syntax enable "syntax hilighting
 
-"this works in MacVim, hence I set Operator Mono to be my font in MacVim
-highlight Comment cterm=italic
-
-fu! g:Ayudark()
-	let g:ayucolor="dark"
+" {{{ theme stuff
+"set the theme to one of my themes
+fu! g:SetTheme(themename)
 	hi clear
 	syntax reset
-	colorscheme ayu
-endfunction
+	highlight Comment cterm=italic
+	if !has("gui_running")
+		colorscheme seattle
+	else
+		execute "colorscheme ".a:themename
+	endif
+	call g:SetupStatusLine()
+endfu
 
-fu! g:Ayulight()
-	let g:ayucolor="light"
-	hi clear
-	syntax reset
-	colorscheme ayu
-endfunction
+"set the ayu theme (with dark, light, or mirage option) 
+fu! g:Ayu(theme)
+	if a:theme == "dark" || a:theme == "mirage" || a:theme == "light"
+		let g:ayucolor=a:theme
+	else
+		let g:ayucolor="mirage" " default to mirage if the given theme isn't a real thing
+	endif
+	call g:SetTheme("ayu")
+endfu
 
-fu! g:Ayumirage()
-	let g:ayucolor="mirage"
-	hi clear
-	syntax reset
-	colorscheme ayu
-endfunction
+" seattle
+fu! g:Seattle()
+	call g:SetTheme("seattle")
+endfu
 
 "some commands that let me swap color schemes
-command! Ayudark call g:Ayudark()
-command! Ayulight call g:Ayulight()
-command! Ayumirage call g:Ayumirage()
+command! Ayudark call g:Ayu("dark")
+command! Ayulight call g:Ayu("light")
+command! Ayumirage call g:Ayu("mirage")
+command! Seattle call g:Seattle()
+" }}} end theme stuff
 
-:Ayumirage
-"colorscheme seattle
-
-"change colors on tabs, selected and unselected
-highlight! link TabLine CP_19
-highlight! link TabLineSel CP_39
-
-if g:colors_name == "seattle"
-	"these are custom hilight groups i used for the statusline, modified from
-	"seattle's colors. any hilight groups used that aren't in this list are from
-	"seattle.vim
-	highlight CP_FNAMEDIV guibg=#4D4D4D gui=bold
-	highlight CP_MODE guibg=#FFFFFF guifg=#292929 gui=bold
-	highlight CP_MODEDIV guibg=#F69A42 guifg=#FFFFFF gui=bold
-	highlight CP_FNAME guibg=#F69A42 guifg=#FFFFFF gui=italic
-	highlight CP_MID guibg=#4D4D4D
-
-	if !has("gui_running")
-		highlight CP_FNAMEDIV ctermbg=239 ctermfg=209 cterm=bold
-		highlight CP_MODE ctermbg=231 ctermfg=235 cterm=bold
-		highlight CP_MODEDIV ctermbg=209 ctermfg=231 cterm=bold
-		highlight CP_FNAME ctermbg=209 ctermfg=231
-		highlight CP_MID ctermbg=239
-	endif
-endif
+" use one of the commands from the section above to set the colorscheme
+:Seattle
 
 set guifont=Operator\ Mono\ Book:h12 "for MacVim
 
@@ -125,8 +152,10 @@ set tabstop=4 "show existing tabs with 4 spaces width
 set shiftwidth=4 "indent 4 spaces when using > to indent
 "set expandtab "this would put in 4 spaces when pressing tab
 
-"folding should be manual
-setlocal foldmethod=manual
+"folding should be marker (works like manual, but also folds on triple curly
+"braces automatically)
+"reminder: open a fold with za, close a fold with zc, make a fold (in Visual) with zf
+setlocal foldmethod=marker
 
 map <F7> <Esc>:tabp<Return>
 map <F8> <Esc>:tabn<Return>
