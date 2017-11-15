@@ -6,25 +6,25 @@ set noshowmode
 
 " modes
 let g:currentmode={
-	\ 'n'  : 'N',
-	\ 'no' : 'N·OP',
-	\ 'v'  : 'V',
-	\ 'V'  : 'V·L',
-	\ '' : 'V·B',
-	\ 's'  : 'S',
-	\ 'S'  : 'S·L',
-	\ '' : 'S·B',
-	\ 'i'  : '⎀',
-	\ 'R'  : 'R',
-	\ 'Rv' : 'V·R',
-	\ 'c'  : 'Cmd',
-	\ 'cv' : 'V·Ex',
-	\ 'ce' : 'Ex',
-	\ 'r'  : 'P',
-	\ 'rm' : 'M',
-	\ 'r?' : 'Conf',
-	\ '!'  : 'Sh',
-	\}
+			\ 'n'  : 'N',
+			\ 'no' : 'N·OP',
+			\ 'v'  : 'V',
+			\ 'V'  : 'V·L',
+			\ '' : 'V·B',
+			\ 's'  : 'S',
+			\ 'S'  : 'S·L',
+			\ '' : 'S·B',
+			\ 'i'  : '⎀',
+			\ 'R'  : 'R',
+			\ 'Rv' : 'V·R',
+			\ 'c'  : 'Cmd',
+			\ 'cv' : 'V·Ex',
+			\ 'ce' : 'Ex',
+			\ 'r'  : 'P',
+			\ 'rm' : 'M',
+			\ 'r?' : 'Conf',
+			\ '!'  : 'Sh',
+			\}
 
 "for adding a plus to the statusline when a file has been modified
 fu! Modstatus()
@@ -41,107 +41,67 @@ fu! Ftype()
 	return substitute(&filetype, "[[]]", "", "")
 endfunction
 
-fu! g:SetupStatusLine()
-	" {{{ status line/tabs colors
-	if g:colors_name == "seattle"
-		"these are custom hilight groups i used for the statusline, modified from
-		"seattle's colors. any hilight groups used that aren't in this list are from
-		"seattle.vim
-		highlight CP_MODE guibg=#FFFFFF guifg=#292929 gui=bold
-		highlight CP_FNAME guibg=#F69A42 guifg=#FFFFFF gui=italic
-		highlight CP_MID guibg=#4D4D4D
-		highlight CP_LNUM guibg=#5fb3b3 guifg=#ffffff
-
-		"seattle is going to be the only theme used in a non-gui environment,
-		"so it's the only one that gets this treatment
-		if !has("gui_running")
-			highlight CP_MODE ctermbg=231 ctermfg=235 cterm=bold
-			highlight CP_FNAME ctermbg=209 ctermfg=231
-			highlight CP_MID ctermbg=239
-			highlight CP_LNUM ctermbg=73 ctermfg=231
-		endif
-	elseif g:colors_name == "ayu"
-		"set the colors used for the status line in ayu theme
-		if g:ayucolor == "mirage"
-			echo "mirage"
-			highlight CP_MODE guibg=#d9d7ce guifg=#000000
-			highlight CP_FNAME guibg=#3e4b59 guifg=#FFFFFF
-			highlight CP_MID guibg=#303540 guifg=NONE
-			highlight CP_LNUM guibg=#3e4b59 guifg=#FFFFFF
-		elseif g:ayucolor == "dark"
-			highlight CP_MODE guibg=#e6e1cf guifg=#000000
-			highlight CP_FNAME guibg=#3e4b59 guifg=#FFFFFF
-			highlight CP_MID guibg=#191f26 guifg=NONE
-			highlight CP_LNUM guibg=#3e4b59 guifg=#FFFFFF
-		elseif g:ayucolor == "light"
-			highlight CP_MODE guibg=#6e7580 guifg=#FFFFFF
-			highlight CP_FNAME guibg=#878f99 guifg=#000000
-			highlight CP_MID guibg=#f5f5f5 guifg=NONE
-			highlight CP_LNUM guibg=#878f99 guifg=#000000
-		endif
-	endif
-
-	"change colors on tabs, selected and unselected
-	highlight! link TabLine CP_19
-	highlight! link TabLineSel CP_39
-	" }}} end status line/tab bar
-
-	"statusline
-	:set statusline=%#CP_MODE#\ %{toupper(g:currentmode[mode()])}\  "shows mode
-	":set statusline+=\ %#CP_MODEDIV#⇢\  "divider after mode
-	:set statusline+=%< "where to truncate the line, in other words always show mode
-	:set statusline+=%#CP_FNAME#\ %f "filename
-	:set statusline+=%{Modstatus()} "modified status of buffer
-	:set statusline+=%{ReadOnly()} "redonly status
-	":set statusline+=\ %#CP_FNAMEDIV#⇢\  "filename divider
-	:set statusline+=\ %#CP_MID# "set color for middle of SL
-	:set statusline+=\ %{Ftype()} "filetype
-	:set statusline+=%= "every statusline addition after this line will be right justified
-	:set statusline+=%p%%\  "percentage through the file in lines
-	:set statusline+=%#CP_LNUM#\ L%l:C%c\  "line number and character on that line
-	redraw!
-endfu
-
 syntax enable "syntax hilighting
 
-" {{{ theme stuff
-"set the theme to one of my themes
-fu! g:SetTheme(themename)
-	hi clear
-	syntax reset
-	highlight Comment cterm=italic
+colorscheme seattle
+
+" {{{ status line/tabs colors
+if g:colors_name == "seattle"
+	"these are custom hilight groups i used for the statusline, modified from
+	"seattle's colors. any hilight groups used that aren't in this list are from
+	"seattle.vim
+	highlight CP_MODE guibg=#FFFFFF guifg=#292929 gui=bold
+	highlight CP_FNAME guibg=#F69A42 guifg=#FFFFFF gui=italic
+	highlight CP_MID guibg=#4D4D4D
+	highlight CP_LNUM guibg=#5fb3b3 guifg=#ffffff
+
+	"seattle is going to be the only theme used in a non-gui environment,
+	"so it's the only one that gets this treatment
 	if !has("gui_running")
-		colorscheme seattle
-	else
-		execute "colorscheme ".a:themename
+		highlight CP_MODE ctermbg=231 ctermfg=235 cterm=bold
+		highlight CP_FNAME ctermbg=209 ctermfg=231
+		highlight CP_MID ctermbg=239
+		highlight CP_LNUM ctermbg=73 ctermfg=231
 	endif
-	call g:SetupStatusLine()
-endfu
-
-"set the ayu theme (with dark, light, or mirage option) 
-fu! g:Ayu(theme)
-	if a:theme == "dark" || a:theme == "mirage" || a:theme == "light"
-		let g:ayucolor=a:theme
-	else
-		let g:ayucolor="mirage" " default to mirage if the given theme isn't a real thing
+elseif g:colors_name == "ayu"
+	"set the colors used for the status line in ayu theme
+	if g:ayucolor == "mirage"
+		highlight CP_MODE guibg=#d9d7ce guifg=#000000
+		highlight CP_FNAME guibg=#3e4b59 guifg=#FFFFFF
+		highlight CP_MID guibg=#303540 guifg=NONE
+		highlight CP_LNUM guibg=#3e4b59 guifg=#FFFFFF
+	elseif g:ayucolor == "dark"
+		highlight CP_MODE guibg=#e6e1cf guifg=#000000
+		highlight CP_FNAME guibg=#3e4b59 guifg=#FFFFFF
+		highlight CP_MID guibg=#191f26 guifg=NONE
+		highlight CP_LNUM guibg=#3e4b59 guifg=#FFFFFF
+	elseif g:ayucolor == "light"
+		highlight CP_MODE guibg=#6e7580 guifg=#FFFFFF
+		highlight CP_FNAME guibg=#878f99 guifg=#000000
+		highlight CP_MID guibg=#f5f5f5 guifg=NONE
+		highlight CP_LNUM guibg=#878f99 guifg=#000000
 	endif
-	call g:SetTheme("ayu")
-endfu
+endif
 
-" seattle
-fu! g:Seattle()
-	call g:SetTheme("seattle")
-endfu
+"change colors on tabs, selected and unselected
+highlight! link TabLine CP_19
+highlight! link TabLineSel CP_39
+" }}} end status line/tab bar
 
-"some commands that let me swap color schemes
-command! Ayudark call g:Ayu("dark")
-command! Ayulight call g:Ayu("light")
-command! Ayumirage call g:Ayu("mirage")
-command! Seattle call g:Seattle()
-" }}} end theme stuff
-
-" use one of the commands from the section above to set the colorscheme
-:Seattle
+"statusline
+:set statusline=%#CP_MODE#\ %{toupper(g:currentmode[mode()])}\  "shows mode
+":set statusline+=\ %#CP_MODEDIV#⇢\  "divider after mode
+:set statusline+=%< "where to truncate the line, in other words always show mode
+:set statusline+=%#CP_FNAME#\ %f "filename
+:set statusline+=%{Modstatus()} "modified status of buffer
+:set statusline+=%{ReadOnly()} "redonly status
+":set statusline+=\ %#CP_FNAMEDIV#⇢\  "filename divider
+:set statusline+=\ %#CP_MID# "set color for middle of SL
+:set statusline+=\ %{Ftype()} "filetype
+:set statusline+=%= "every statusline addition after this line will be right justified
+:set statusline+=%p%%\  "percentage through the file in lines
+:set statusline+=%#CP_LNUM#\ L%l:C%c\  "line number and character on that line
+redraw!
 
 set guifont=Operator\ Mono\ Book:h12 "for MacVim
 
@@ -165,7 +125,7 @@ map <F9> <Esc>:tabe
 map <F11> <Esc>:bp<Return>
 map <F12> <Esc>:bn<Return>
 
-map <F10> <Esc>:%s/\([)>a-zA-Z0-9]\){/\1 {/ge<Return>:%s/{\zs\s\+\ze$//ge<Return>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<Return>:%s/\r//ge<Return>ggVG=:w<Return>
+map <F10> <Esc>:%s/\([)>a-zA-Z0-9]\) {/\1 {/ge<Return>:%s/{\zs\s\+\ze$//ge<Return>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<Return>:%s/\r//ge<Return>ggVG=:w<Return>
 
 "compile
 map <F1> <Esc>:make<Return>
@@ -196,3 +156,8 @@ set splitbelow
 nnoremap <W> <C-W>
 "enable mouse: :set mouse=a
 set backspace=indent,eol,start
+
+set runtimepath^=~/.vim/plugin/gitgutter.vim
+
+"enable gitgutter
+set updatetime=250
