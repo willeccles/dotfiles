@@ -44,7 +44,7 @@ endfunction
 syntax enable "syntax hilighting
 
 " set theme for GUI
-colorscheme forgotten-dark
+colorscheme simplifysimplify-light
 
 " set theme for term
 if !has("gui_running")
@@ -94,6 +94,16 @@ elseif g:colors_name == "forgotten-light"
 	highlight CP_FNAME guibg=#468dd4 guifg=#f0f8ff gui=italic
 	highlight CP_MID guibg=#dde6f0
 	highlight CP_LNUM guibg=#a26fbf guifg=#f0f8ff
+elseif g:colors_name == "simplifysimplify-dark"
+	highlight CP_MODE guibg=#e0e0e0 guifg=#2b2b2b gui=bold
+	highlight CP_FNAME guibg=#458a8a guifg=#e0e0e0 gui=italic
+	highlight CP_MID guibg=#404040
+	highlight CP_LNUM guibg=#8b6a9e guifg=#e0e0e0
+elseif g:colors_name == "simplifysimplify-light"
+	highlight CP_MODE guibg=#6b6b6b guifg=#ffffff gui=bold
+	highlight CP_FNAME guibg=#1b9e9e guifg=#ffffff gui=italic
+	highlight CP_MID guibg=#e0e0e0
+	highlight CP_LNUM guibg=#a26fbf guifg=#ffffff
 elseif g:colors_name == "ayu"
 	"set the colors used for the status line in ayu theme
 	if g:ayucolor == "mirage"
