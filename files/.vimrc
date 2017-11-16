@@ -51,6 +51,8 @@ if !has("gui_running")
 	colorscheme seattle
 endif
 
+set cursorline
+
 " {{{ status line/tabs colors
 if g:colors_name == "seattle"
 	"these are custom hilight groups i used for the statusline, modified from
@@ -60,6 +62,8 @@ if g:colors_name == "seattle"
 	highlight CP_FNAME guibg=#F69A42 guifg=#FFFFFF gui=italic
 	highlight CP_MID guibg=#4D4D4D
 	highlight CP_LNUM guibg=#5fb3b3 guifg=#ffffff
+	"seattle's cursorline coloring is horrible
+	highlight CursorLineNr guibg=#292929 guifg=#AAAAAA gui=bold
 
 	"seattle is going to be the only theme used in a non-gui environment,
 	"so it's the only one that gets this treatment
@@ -68,6 +72,7 @@ if g:colors_name == "seattle"
 		highlight CP_FNAME ctermbg=209 ctermfg=231
 		highlight CP_MID ctermbg=239
 		highlight CP_LNUM ctermbg=73 ctermfg=231
+		highlight CursorLineNr ctermbg=NONE ctermfg=248 cterm=bold
 	endif
 elseif g:colors_name == "carbonized-dark"
 	highlight CP_MODE guibg=#f0f0e1 guifg=#2b2b2b gui=bold
