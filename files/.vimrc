@@ -123,10 +123,6 @@ elseif g:colors_name == "ayu"
 		highlight CP_LNUM guibg=#878f99 guifg=#000000
 	endif
 endif
-
-"change colors on tabs, selected and unselected
-highlight! link TabLine CP_19
-highlight! link TabLineSel CP_39
 " }}} end status line/tab bar
 
 "statusline
