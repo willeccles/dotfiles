@@ -179,8 +179,7 @@ autocmd Filetype tex set makeprg=pdflatex\ '%'
 set splitright
 set splitbelow
 
-nnoremap <W> <C-W>
-"enable mouse: :set mouse=a
+set mouse=a
 set backspace=indent,eol,start
 
 set runtimepath^=~/.vim/plugin/gitgutter.vim
