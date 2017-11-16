@@ -43,7 +43,13 @@ endfunction
 
 syntax enable "syntax hilighting
 
-colorscheme seattle
+" set theme for GUI
+colorscheme forgotten-dark
+
+" set theme for term
+if !has("gui_running")
+	colorscheme seattle
+endif
 
 " {{{ status line/tabs colors
 if g:colors_name == "seattle"
@@ -63,21 +69,41 @@ if g:colors_name == "seattle"
 		highlight CP_MID ctermbg=239
 		highlight CP_LNUM ctermbg=73 ctermfg=231
 	endif
+elseif g:colors_name == "carbonized-dark"
+	highlight CP_MODE guibg=#f0f0e1 guifg=#2b2b2b gui=bold
+	highlight CP_FNAME guibg=#458a8a guifg=#f0f0e1 gui=italic
+	highlight CP_MID guibg=#3b3b37
+	highlight CP_LNUM guibg=#8b6a9e guifg=#fffff0
+elseif g:colors_name == "carbonized-light"
+	highlight CP_MODE guibg=#3b3b37 guifg=#fffff0 gui=bold
+	highlight CP_FNAME guibg=#1b9e9e guifg=#fffff0 gui=italic
+	highlight CP_MID guibg=#f0f0e1
+	highlight CP_LNUM guibg=#a26fbf guifg=#fffff0
+elseif g:colors_name == "forgotten-dark"
+	highlight CP_MODE guibg=#f0f8ff guifg=#1d242b gui=bold
+	highlight CP_FNAME guibg=#458a8a guifg=#dde6f0 gui=italic
+	highlight CP_MID guibg=#2c333b
+	highlight CP_LNUM guibg=#8b6a9e guifg=#dde6f0
+elseif g:colors_name == "forgotten-light"
+	highlight CP_MODE guibg=#2c333b guifg=#f0f8ff gui=bold
+	highlight CP_FNAME guibg=#468dd4 guifg=#f0f8ff gui=italic
+	highlight CP_MID guibg=#dde6f0
+	highlight CP_LNUM guibg=#a26fbf guifg=#f0f8ff
 elseif g:colors_name == "ayu"
 	"set the colors used for the status line in ayu theme
 	if g:ayucolor == "mirage"
-		highlight CP_MODE guibg=#d9d7ce guifg=#000000
-		highlight CP_FNAME guibg=#3e4b59 guifg=#FFFFFF
+		highlight CP_MODE guibg=#d9d7ce guifg=#000000 gui=bold
+		highlight CP_FNAME guibg=#3e4b59 guifg=#FFFFFF gui=italic
 		highlight CP_MID guibg=#303540 guifg=NONE
 		highlight CP_LNUM guibg=#3e4b59 guifg=#FFFFFF
 	elseif g:ayucolor == "dark"
-		highlight CP_MODE guibg=#e6e1cf guifg=#000000
-		highlight CP_FNAME guibg=#3e4b59 guifg=#FFFFFF
+		highlight CP_MODE guibg=#e6e1cf guifg=#000000 gui=bold
+		highlight CP_FNAME guibg=#3e4b59 guifg=#FFFFFF gui=italic
 		highlight CP_MID guibg=#191f26 guifg=NONE
 		highlight CP_LNUM guibg=#3e4b59 guifg=#FFFFFF
 	elseif g:ayucolor == "light"
-		highlight CP_MODE guibg=#6e7580 guifg=#FFFFFF
-		highlight CP_FNAME guibg=#878f99 guifg=#000000
+		highlight CP_MODE guibg=#6e7580 guifg=#FFFFFF gui=bold
+		highlight CP_FNAME guibg=#878f99 guifg=#000000 gui=italic
 		highlight CP_MID guibg=#f5f5f5 guifg=NONE
 		highlight CP_LNUM guibg=#878f99 guifg=#000000
 	endif
