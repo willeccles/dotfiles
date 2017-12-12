@@ -18,7 +18,9 @@ __prompt_command() {
 	local Khaki="\[\e[38;5;228m\]"
 	local BRed="\[\e[38;5;160;1m\]"
 	local BGreen="\[\e[38;5;148;1m\]"
-	
+	local Pink="\[\e[38;5;213m\]"
+	local Orange="\[\e[38;5;214m\]"
+
 	# number of jobs (both running and stopped) in the background
 	local jobnum=$(jobs -p | wc -l | tr -d ' ')
 
@@ -26,11 +28,19 @@ __prompt_command() {
 	PS1+="${Teal}\`parse_git_branch\`${RCol}"
 
 	if [ $EXIT -ne 0 ]; then
-		PS1="${BRed}${EXIT}${RCol} $PS1"
+		# 146 is STOPPED, like control-z, etc.
+		if [ $EXIT -ne 146 ]; then
+			PS1="${BRed}${EXIT}${RCol} $PS1"
+		else
+			# when its 146 i want it to show me what job i stopped
+			# just the command name though, no args
+			local lastjob="$(ps -p $(jobs -p | sed -e '$!d') -o comm=)"
+			PS1="${Orange}${lastjob}${RCol} $PS1"
+		fi
 	fi
 	
 	if [ $jobnum -ne 0 ]; then
-		PS1+="${Khaki}${jobnum}${RCol}"
+		PS1+="${Orange}${jobnum}${RCol}"
 	fi
 
 	PS1+="${BGreen}${RCol} "
@@ -47,6 +57,8 @@ PS2="\[\e[38;5;98;1m\]...\[\e[38;5;148;1m\] \[\e[0m\]"
 
 alias please='sudo $(history -p !-1)'
 alias win32gpp='/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin/i586-mingw32-g++'
+alias italics=`tput sitm`
+alias noitalics=`tput ritm`
 
 # Setting PATH for Python 3.5
 # The original version is saved in .bash_profile.pysave
@@ -60,7 +72,7 @@ function parse_git_branch() {
 	if [ ! "${BRANCH}" == "" ]
 	then
 		STAT=`parse_git_dirty`
-		echo " ${BRANCH}${STAT} "
+		echo " ${BRANCH}${STAT} "
 	else
 		echo ""
 	fi
@@ -100,3 +112,6 @@ function parse_git_dirty {
 		echo ""
 	fi
 }
+
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

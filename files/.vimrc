@@ -186,6 +186,8 @@ autocmd Filetype cpp,c++ set makeprg=g++\ -o\ '%<'.out\ '%'\ -std=c++14
 "tex pdf compilation
 autocmd Filetype tex set makeprg=pdflatex\ '%'
 
+au VimLeave * !echo -ne "\033[0m" && !clear
+
 "change how the default split works (to make it more natural than vim's
 "default)
 set splitright
