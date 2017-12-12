@@ -10,9 +10,9 @@ if (( $# >= 1 )); then
 	# deal with $1
 	if [ $1 == "install" ]; then
 		# copies everything in files/ to ~/
-		cp -rf files/* ~
-		cp -rf files/.* ~
-		cp -rf files/*.* ~
+		cp -Rf files/* ~
+		cp -Rf files/.* ~
+		cp -Rf files/*.* ~
 	elif [ $1 == "backup" ]; then
 		# backup files
 		while read f; do
