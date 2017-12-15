@@ -115,6 +115,3 @@ function parse_git_dirty {
 		echo ""
 	fi
 }
-
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
