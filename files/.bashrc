@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:/usr/local/sbin:~/showhidden:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:~:$PATH
 export CLICOLOR=1
 export EDITOR=vim
 
@@ -24,6 +24,9 @@ __prompt_command() {
 	# number of jobs (both running and stopped) in the background
 	local jobnum=$(jobs -p | wc -l | tr -d ' ')
 
+	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+		PS1+="${Pink}\u${BPurple}@"
+	fi
 	PS1+="${BPurple}\W ${RCol}"
 	PS1+="${Teal}\`parse_git_branch\`${RCol}"
 
