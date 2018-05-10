@@ -13,5 +13,6 @@
 .vim
 .config/git
 .config/powerline
+.config/kitty
 .fonts
 .vscode
