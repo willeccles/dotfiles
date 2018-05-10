@@ -7,6 +7,8 @@ export PATH
 
 export CLICOLOR=1
 export EDITOR=vim
+
+export TERM=xterm-256color
 # }}}
 
 # colors {{{
