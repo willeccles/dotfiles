@@ -4,6 +4,7 @@
 set laststatus=2
 set noshowmode
 set t_Co=256
+runtime macros/matchit.vim "this allows % to match HTML/XML tags, as well as the default opening and closing ([{<
 
 " modes
 let g:currentmode={
@@ -45,7 +46,7 @@ endfunction
 syntax enable "syntax hilighting
 
 " set theme for GUI
-colorscheme simplifysimplify-light
+colorscheme simplifysimplify-dark
 
 " set theme for term
 if !has("gui_running")

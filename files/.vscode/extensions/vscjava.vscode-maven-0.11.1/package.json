@@ -1,0 +1,381 @@
+{
+	"name": "vscode-maven",
+	"displayName": "Maven for Java",
+	"description": "Manage maven projects, execute goals, generate project from archetype, improve user experience for Java developers.",
+	"version": "0.11.1",
+	"icon": "resources/logo.png",
+	"publisher": "vscjava",
+	"preview": true,
+	"aiKey": "600aa1c8-259f-43c8-ac4d-ba6cc6c00cf1",
+	"engines": {
+		"vscode": "^1.18.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Other"
+	],
+	"keywords": [
+		"Maven",
+		"Java"
+	],
+	"homepage": "https://github.com/Microsoft/vscode-maven/blob/0.11.1/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Microsoft/vscode-maven.git"
+	},
+	"activationEvents": [
+		"workspaceContains:**/pom.xml",
+		"onCommand:maven.project.refreshAll",
+		"onCommand:maven.goal.clean",
+		"onCommand:maven.goal.validate",
+		"onCommand:maven.goal.compile",
+		"onCommand:maven.goal.test",
+		"onCommand:maven.goal.package",
+		"onCommand:maven.goal.verify",
+		"onCommand:maven.goal.install",
+		"onCommand:maven.goal.site",
+		"onCommand:maven.goal.deploy",
+		"onCommand:maven.goal.custom",
+		"onCommand:maven.goal.execute",
+		"onCommand:maven.project.effectivePom",
+		"onCommand:maven.project.openPom",
+		"onCommand:maven.archetype.generate",
+		"onCommand:maven.archetype.update",
+		"onCommand:maven.history"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "maven.project.refreshAll",
+				"title": "Refresh",
+				"category": "Maven",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "maven.goal.clean",
+				"title": "clean",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.goal.validate",
+				"title": "validate",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.goal.compile",
+				"title": "compile",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.goal.test",
+				"title": "test",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.goal.package",
+				"title": "package",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.goal.verify",
+				"title": "verify",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.goal.install",
+				"title": "install",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.goal.site",
+				"title": "site",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.goal.deploy",
+				"title": "deploy",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.goal.custom",
+				"title": "Custom goals ... ",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.project.effectivePom",
+				"title": "Effective POM",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.project.openPom",
+				"title": "Open POM file",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.archetype.generate",
+				"title": "Generate from Maven Archetype",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.archetype.update",
+				"title": "Update Maven Archetype Catalog",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.history",
+				"title": "History ...",
+				"category": "Maven"
+			},
+			{
+				"command": "maven.goal.execute",
+				"title": "Execute commands",
+				"category": "Maven"
+			}
+		],
+		"views": {
+			"explorer": [
+				{
+					"id": "mavenProjects",
+					"name": "Maven Projects",
+					"when": "mavenExtensionActivated"
+				}
+			]
+		},
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "maven.goal.clean",
+					"when": "never"
+				},
+				{
+					"command": "maven.goal.validate",
+					"when": "never"
+				},
+				{
+					"command": "maven.goal.compile",
+					"when": "never"
+				},
+				{
+					"command": "maven.goal.test",
+					"when": "never"
+				},
+				{
+					"command": "maven.goal.package",
+					"when": "never"
+				},
+				{
+					"command": "maven.goal.verify",
+					"when": "never"
+				},
+				{
+					"command": "maven.goal.install",
+					"when": "never"
+				},
+				{
+					"command": "maven.goal.site",
+					"when": "never"
+				},
+				{
+					"command": "maven.goal.deploy",
+					"when": "never"
+				},
+				{
+					"command": "maven.goal.custom",
+					"when": "never"
+				},
+				{
+					"command": "maven.project.effectivePom",
+					"when": "never"
+				},
+				{
+					"command": "maven.project.refreshAll",
+					"when": "never"
+				},
+				{
+					"command": "maven.project.openPom",
+					"when": "never"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "maven.archetype.generate",
+					"group": "maven@3"
+				},
+				{
+					"command": "maven.project.effectivePom",
+					"when": "resourceFilename == pom.xml",
+					"group": "maven@1"
+				}
+			],
+			"view/title": [
+				{
+					"command": "maven.project.refreshAll",
+					"when": "view == mavenProjects",
+					"group": "navigation@2"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "maven.goal.custom",
+					"when": "view == mavenProjects && viewItem == ProjectItem",
+					"group": "1-lifecycle@5"
+				},
+				{
+					"command": "maven.history",
+					"when": "view == mavenProjects && viewItem == ProjectItem",
+					"group": "1-lifecycle@0"
+				},
+				{
+					"command": "maven.goal.clean",
+					"when": "view == mavenProjects && viewItem == ProjectItem",
+					"group": "1-lifecycle@10"
+				},
+				{
+					"command": "maven.goal.package",
+					"when": "view == mavenProjects && viewItem == ProjectItem",
+					"group": "1-lifecycle@20"
+				},
+				{
+					"command": "maven.goal.install",
+					"when": "view == mavenProjects && viewItem == ProjectItem",
+					"group": "1-lifecycle@30"
+				},
+				{
+					"command": "maven.goal.compile",
+					"when": "view == mavenProjects && viewItem == ProjectItem",
+					"group": "1-lifecycle@40"
+				},
+				{
+					"command": "maven.goal.validate",
+					"when": "view == mavenProjects && viewItem == ProjectItem",
+					"group": "1-lifecycle@50"
+				},
+				{
+					"command": "maven.goal.verify",
+					"when": "view == mavenProjects && viewItem == ProjectItem",
+					"group": "1-lifecycle@60"
+				},
+				{
+					"command": "maven.goal.test",
+					"when": "view == mavenProjects && viewItem == ProjectItem",
+					"group": "1-lifecycle@70"
+				},
+				{
+					"command": "maven.goal.site",
+					"when": "view == mavenProjects && viewItem == ProjectItem",
+					"group": "1-lifecycle@80"
+				},
+				{
+					"command": "maven.goal.deploy",
+					"when": "view == mavenProjects && viewItem == ProjectItem",
+					"group": "1-lifecycle@90"
+				},
+				{
+					"command": "maven.project.effectivePom",
+					"when": "view == mavenProjects && viewItem == ProjectItem",
+					"group": "0-pom@1"
+				}
+			]
+		},
+		"configuration": [
+			{
+				"title": "Maven for Java",
+				"properties": {
+					"maven.excludedFolders": {
+						"type": "array",
+						"default": [
+							"**/.*",
+							"**/node_modules",
+							"**/target",
+							"**/bin"
+						],
+						"description": "Specifies filepath pattern of folders to exclude while searching for maven projects.",
+						"scope": "resource"
+					},
+					"maven.executable.preferMavenWrapper": {
+						"type": "boolean",
+						"default": "true",
+						"description": "Specifies whether you perfer to use Maven wrapper. If true, it tries using 'mvnw' in root folder by default if the file exists. Otherwise it tries 'mvn' in PATH instead.",
+						"scope": "resource"
+					},
+					"maven.executable.path": {
+						"type": "string",
+						"default": "",
+						"description": "Specifies absolute path of your mvn executable. When this value is empty, it tries using 'mvn' or 'mvnw' according to value of 'maven.executeble.preferMavenWapper'. Note that a relative path is not suggested, but if you do specify one, the absolute path will be resolved from your workspace root folder (if exists). ",
+						"scope": "resource"
+					},
+					"maven.executable.options": {
+						"type": "string",
+						"default": "",
+						"description": "Specifies default options for all mvn commands.",
+						"scope": "resource"
+					},
+					"maven.terminal.useJavaHome": {
+						"type": "boolean",
+						"default": false,
+						"description": "If this value is true, and if the setting java.home has a value, then the environment variable JAVA_HOME will be set to the value of java.home when a new terminal window is created.",
+						"scope": "window"
+					},
+					"maven.terminal.customEnv": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"title": "environment setting",
+							"properties": {
+								"environmentVariable": {
+									"type": "string",
+									"description": "Name of the environment variable to set"
+								},
+								"value": {
+									"type": "string",
+									"description": "Value to set for the environment variable"
+								}
+							}
+						},
+						"default": [],
+						"description": "Specifies an array of environment variable names and values. These environment variable values will be added to the terminal session before Maven is first executed.",
+						"scope": "window"
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"tslint": "tslint -t verbose src/*.ts",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^4.0.5",
+		"@types/md5": "^2.1.32",
+		"@types/minimatch": "^3.0.1",
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^7.0.43",
+		"@types/opn": "^5.1.0",
+		"@types/xml2js": "^0.4.2",
+		"tslint": "^5.8.0",
+		"tslint-microsoft-contrib": "^5.0.1",
+		"typescript": "^2.9.2",
+		"vscode": "^1.1.21"
+	},
+	"dependencies": {
+		"fs-extra": "^4.0.3",
+		"md5": "^2.2.1",
+		"minimatch": "^3.0.4",
+		"opn": "^5.3.0",
+		"vscode-extension-telemetry-wrapper": "^0.3.3",
+		"xml2js": "^0.4.19"
+	},
+	"__metadata": {
+		"id": "b0f06c6b-24fb-4d7b-bd79-bc5e2fa17312",
+		"publisherId": "bae08b87-578e-41ec-ab1c-0b036e7add88",
+		"publisherDisplayName": "Microsoft"
+	}
+}
