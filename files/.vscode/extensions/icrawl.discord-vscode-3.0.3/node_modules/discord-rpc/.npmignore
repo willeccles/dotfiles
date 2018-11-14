@@ -1,0 +1,9 @@
+node_modules
+example
+test
+package-lock.json
+shrinkwrap.yml
+docs.json
+docgen.json
+jsdoc.json
+webpack.config.js

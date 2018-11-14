@@ -140,7 +140,6 @@ endif
 :set statusline+=%= "every statusline addition after this line will be right justified
 :set statusline+=%p%%\  "percentage through the file in lines
 :set statusline+=%#CP_LNUM#\ L%l:C%c\  "line number and character on that line
-redraw!
 
 set guifont=Operator\ Mono\ Book:h12 "for MacVim
 
@@ -193,42 +192,12 @@ autocmd Filetype tex set makeprg=pdflatex\ '%'
 set splitright
 set splitbelow
 
-set mouse=a
+if !has("gui_running")
+	set mouse=a
+endif
 set backspace=indent,eol,start
 
 set runtimepath^=~/.vim/plugin/gitgutter.vim
 
 "enable gitgutter
 set updatetime=250
-
-"setup NERDTree {{{
-"open NERDTree automagically when vim opens on a dir
-"also fixes it closing when first selecting a file
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-"if no files were specified, open a NERDTree
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-"control-n to open NERDTree
-map <C-n> :NERDTreeToggle<CR>
-
-"if NERDTree is the last window open, close vim anyway
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-"indicator icons for git
-"ignored is not used by default, since this is a heavy operation
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "M",
-    \ "Staged"    : "+",
-    \ "Untracked" : "?",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "=",
-    \ "Deleted"   : "x",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
-"}}}

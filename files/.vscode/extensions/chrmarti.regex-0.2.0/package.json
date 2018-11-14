@@ -1,0 +1,76 @@
+{
+	"name": "regex",
+	"displayName": "Regex Previewer",
+	"description": "Regex matches previewer for JavaScript, TypeScript, PHP and Haxe in Visual Studio Code.",
+	"version": "0.2.0",
+	"publisher": "chrmarti",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/chrmarti/vscode-regex.git"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/chrmarti/vscode-regex/issues"
+	},
+	"icon": "images/icon.png",
+	"engines": {
+		"vscode": "^1.18.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:javascript",
+		"onLanguage:typescript",
+		"onLanguage:php",
+		"onLanguage:haxe",
+		"onCommand:extension.toggleRegexPreview"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Regex Previewer Configuration",
+			"properties": {
+				"regex-previewer.enableCodeLens": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Enables code lens for Regex Previewer"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "extension.toggleRegexPreview",
+				"title": "Toggle Regex Preview In Side-By-Side Editors"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.toggleRegexPreview",
+				"key": "ctrl+alt+m",
+				"mac": "cmd+alt+m"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"compile": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.41",
+		"@types/node": "^6.0.71",
+		"mocha": "^2.5.3",
+		"typescript": "^2.3.2"
+	},
+	"dependencies": {
+		"vscode": "^1.1.0"
+	},
+	"__metadata": {
+		"id": "7ed7bccd-f358-4c6f-88c0-1296185abaa1",
+		"publisherId": "6c6b26a3-e134-4d03-ad02-7e48f7c9f342",
+		"publisherDisplayName": "Christof Marti"
+	}
+}

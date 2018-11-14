@@ -3,12 +3,13 @@
 # PATH/other exports {{{
 export PATH=/usr/local/bin:/usr/local/sbin:~:$PATH
 export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+export PATH="/Applications/kitty.app/Contents/MacOS:${PATH}"
 export PATH
 
 export CLICOLOR=1
 export EDITOR=vim
 
-export TERM=xterm-256color
+#export TERM=xterm
 # }}}
 
 # colors {{{
