@@ -50,7 +50,8 @@ colorscheme simplifysimplify-dark
 
 " set theme for term
 if !has("gui_running")
-	colorscheme seattle
+	" TODO: set up vim to use terminal colors nicely
+	"colorscheme seattle
 endif
 
 set cursorline
