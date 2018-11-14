@@ -4,6 +4,9 @@
 set laststatus=2
 set noshowmode
 set t_Co=256
+if has("gui_running")
+	set t_Co=16 " i want the terminal to use terminal colors
+endif
 runtime macros/matchit.vim "this allows % to match HTML/XML tags, as well as the default opening and closing ([{<
 
 " modes

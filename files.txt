@@ -8,6 +8,7 @@
 .vimrc
 .ideavimrc
 .gitconfig
+.bash_sessions_disable
 
 # directories
 .vim
