@@ -4,9 +4,6 @@
 set laststatus=2
 set noshowmode
 set t_Co=256
-if has("gui_running")
-	set t_Co=16 " i want the terminal to use terminal colors
-endif
 runtime macros/matchit.vim "this allows % to match HTML/XML tags, as well as the default opening and closing ([{<
 
 " modes
@@ -48,13 +45,14 @@ endfunction
 
 syntax enable "syntax hilighting
 
-" set theme for GUI
-colorscheme simplifysimplify-dark
+let g:dracula_colorterm = 0
+colorscheme dracula
 
-" set theme for term
+" change the cursors if we are in the terminal
 if !has("gui_running")
-	" TODO: set up vim to use terminal colors nicely
-	"colorscheme seattle
+	let &t_SI.="\e[5 q"
+	let &t_SR.="\e[4 q"
+	let &t_EI.="\e[1 q"
 endif
 
 set cursorline
@@ -127,6 +125,18 @@ elseif g:colors_name == "ayu"
 		highlight CP_FNAME guibg=#878f99 guifg=#000000 gui=italic
 		highlight CP_MID guibg=#f5f5f5 guifg=NONE
 		highlight CP_LNUM guibg=#878f99 guifg=#000000
+	endif
+elseif g:colors_name == "dracula"
+	highlight CP_MODE guibg=#F8F8F2 guifg=#282A36 gui=bold
+	highlight CP_FNAME guibg=#6272a4 guifg=#f8f8f2 gui=italic
+	highlight CP_MID guibg=#343746 guifg=NONE
+	highlight CP_LNUM guibg=#bd93f9 guifg=#f8f8f2
+
+	if !has("gui_running")
+		highlight CP_MODE ctermbg=255 ctermfg=236 cterm=bold
+		highlight CP_FNAME ctermbg=61 ctermfg=255 cterm=italic
+		"no mid color for this one
+		highlight CP_LNUM ctermbg=141 ctermfg=255
 	endif
 endif
 " }}} end status line/tab bar

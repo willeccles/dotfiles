@@ -8,5 +8,7 @@ set showmode
 "use tabe instead of tabf, e works the same as :e
 map <F9> <Esc>:tabe 
 
+set backspace=indent,eol,start
+
 "gotta have the all powerful file fixer ;)
 map <F10> <Esc>:%s/\([)>a-zA-Z0-9]\){/\1 {/ge<Return>:%s/{\zs\s\+\ze$//ge<Return>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<Return>ggVG=:w<Return>
