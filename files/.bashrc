@@ -55,13 +55,13 @@ __prompt_command() {
 
 	if [ $EXIT -ne 0 ]; then
 		# 146 is STOPPED, like control-z, etc.
-		if [ $EXIT -e 146 ]; then
+		if [ $EXIT -eq 146 ]; then
 			# when its 146 i want it to show me what job i stopped
 			# just the command name though, no args
 			local lastjob="$(ps -p $(jobs -p | sed -e '$!d') -o comm=)"
 			PS1="${c_Job}${lastjob}${c_Rst} $PS1"
-		elif [ $EXIT -e 130 ]
-			PS1="${c_Exit}^C${C_Rst} $PS1"
+		elif [ $EXIT -eq 130 ]; then
+			PS1="${c_Job}^C${C_Rst} $PS1"
 		else
 			PS1="${c_Exit}${EXIT}${c_Rst} $PS1"
 		fi
