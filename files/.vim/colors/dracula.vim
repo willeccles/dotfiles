@@ -176,7 +176,7 @@ call s:h('DraculaFg', s:fg)
 call s:h('DraculaFgUnderline', s:fg, s:none, [s:attrs.underline])
 call s:h('DraculaFgBold', s:fg, s:none, [s:attrs.bold])
 
-call s:h('DraculaComment', s:comment)
+call s:h('DraculaComment', s:comment, s:none, [s:attrs.italic])
 call s:h('DraculaCommentBold', s:comment, s:none, [s:attrs.bold])
 
 call s:h('DraculaSelection', s:none, s:selection)

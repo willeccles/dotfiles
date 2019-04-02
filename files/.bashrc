@@ -11,6 +11,10 @@ export CLICOLOR=1
 export EDITOR=vim
 
 export HOMEBREW_NO_AUTO_UPDATE=1
+
+#if [ "${TERM}" = "xterm-kitty" ]; then
+#	source <(kitty + complete setup bash)
+#fi
 # }}}
 
 # colors {{{

@@ -6,6 +6,8 @@ set noshowmode
 set t_Co=256
 runtime macros/matchit.vim "this allows % to match HTML/XML tags, as well as the default opening and closing ([{<
 
+set visualbell t_vb=
+
 " modes
 let g:currentmode={
 			\ 'n'  : 'N',
@@ -47,6 +49,11 @@ syntax enable "syntax hilighting
 
 let g:dracula_colorterm = 0
 colorscheme dracula
+
+if !has("gui_running")
+	set t_ZH=[3m
+	set t_ZR=[23m
+endif
 
 " change the cursors if we are in the terminal
 if !has("gui_running")
