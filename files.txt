@@ -15,4 +15,5 @@
 .config/git
 .config/powerline
 .config/kitty
+.config/neofetch
 .fonts
