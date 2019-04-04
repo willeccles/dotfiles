@@ -47,8 +47,13 @@ endfunction
 
 syntax enable "syntax hilighting
 
-let g:dracula_colorterm = 0
-colorscheme dracula
+if has("gui_running")
+	let g:dracula_colorterm = 0
+	colorscheme dracula
+else
+	" this matches the terminal colors
+	colorscheme wal
+endif
 
 if !has("gui_running")
 	set t_ZH=[3m
@@ -76,8 +81,6 @@ if g:colors_name == "seattle"
 	"seattle's cursorline coloring is horrible
 	highlight CursorLineNr guibg=#292929 guifg=#AAAAAA gui=bold
 
-	"seattle is going to be the only theme used in a non-gui environment,
-	"so it's the only one that gets this treatment
 	if !has("gui_running")
 		highlight CP_MODE ctermbg=231 ctermfg=235 cterm=bold
 		highlight CP_FNAME ctermbg=209 ctermfg=231
@@ -145,6 +148,11 @@ elseif g:colors_name == "dracula"
 		"no mid color for this one
 		highlight CP_LNUM ctermbg=141 ctermfg=255
 	endif
+elseif g:colors_name == "wal"
+	highlight CP_MODE cterm=bold
+	highlight CP_FNAME cterm=bold,italic
+	highlight CP_MID cterm=bold
+	highlight CP_LNUM cterm=bold
 endif
 " }}} end status line/tab bar
 

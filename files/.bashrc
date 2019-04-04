@@ -12,16 +12,15 @@ export EDITOR=vim
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-#if [ "${TERM}" = "xterm-kitty" ]; then
-#	source <(kitty + complete setup bash)
-#fi
+if [ "${TERM}" = "xterm-kitty" ]; then
+	source .kitty-completions
+fi
 # }}}
 
 # colors {{{
 # these are now all set by the terminal's colors, 0-15
 # this is in an attempt to unify my colors everywhere
 
-# each should be a 256 color code
 # add a ;1 at the end of a color code for bold
 pwdcolor="5;1"
 gitcolor="6"

@@ -9,6 +9,9 @@
 .ideavimrc
 .gitconfig
 .bash_sessions_disable
+.chunkwmrc
+.skhdrc
+.kitty-completions
 
 # directories
 .vim
@@ -16,4 +19,5 @@
 .config/powerline
 .config/kitty
 .config/neofetch
+.config/wal
 .fonts
