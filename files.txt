@@ -14,7 +14,6 @@
 .kitty-completions
 .zshrc
 .path
-.oh-my-zsh/custom/themes/willeccles.zsh-theme
 
 # directories
 .vim
