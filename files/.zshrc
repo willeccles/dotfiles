@@ -3,7 +3,11 @@ source .path
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/willeccles/.oh-my-zsh"
 
-plugins=(osx git)
+ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_USE_ASYNC=yes # can be set to anything
+
+plugins=(osx git colored-man-pages zsh-autosuggestions zsh-syntax-highlighting)
 
 ZSH_THEME=willeccles
 

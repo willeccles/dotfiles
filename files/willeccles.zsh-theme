@@ -88,3 +88,5 @@ function git_prompt_info {
 #ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 PROMPT='$(prompt_exit)%{$fg_bold[magenta]%}%1~%{$reset_color%} $(git_prompt_info)$(prompt_jobcount)%{$fg_bold[green]%}%{$reset_color%} '
+
+RPROMPT='something'
