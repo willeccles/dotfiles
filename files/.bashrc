@@ -1,21 +1,6 @@
 # reminder: in vim, visual mode zc = close fold, za = open fold
 
-# PATH/other exports {{{
-export PATH=/usr/local/bin:/usr/local/sbin:~:$PATH
-export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-export PATH="/Applications/kitty.app/Contents/MacOS:${PATH}"
-export PATH="/usr/local/Cellar/cmake/3.13.0/bin:${PATH}"
-export PATH
-
-export CLICOLOR=1
-export EDITOR=vim
-
-export HOMEBREW_NO_AUTO_UPDATE=1
-
-if [ "${TERM}" = "xterm-kitty" ]; then
-	source .kitty-completions
-fi
-# }}}
+source .path
 
 # colors {{{
 # these are now all set by the terminal's colors, 0-15

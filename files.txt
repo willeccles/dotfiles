@@ -12,6 +12,9 @@
 .chunkwmrc
 .skhdrc
 .kitty-completions
+.zshrc
+.path
+$ZSH/themes/willeccles.zsh-theme
 
 # directories
 .vim

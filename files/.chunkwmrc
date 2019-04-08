@@ -41,8 +41,8 @@ chunkc core::hotload 0
 # NOTE: the following are config variables for the chunkwm-tiling plugin.
 #
 
-chunkc set custom_bar_enabled            1
-chunkc set custom_bar_all_monitors       1
+chunkc set custom_bar_enabled            0
+chunkc set custom_bar_all_monitors       0
 chunkc set custom_bar_offset_top         22
 chunkc set custom_bar_offset_bottom      0
 chunkc set custom_bar_offset_left        0
@@ -110,10 +110,10 @@ chunkc set window_use_cgs_move           0
 #       1 = true, outline border
 #
 
-chunkc set focused_border_color          0xff0f6288
-chunkc set focused_border_width          5
+chunkc set focused_border_color          0xa39ea300
+chunkc set focused_border_width          0
 chunkc set focused_border_radius         0
-chunkc set focused_border_outline        0
+chunkc set focused_border_outline        1
 chunkc set focused_border_skip_floating  0
 chunkc set focused_border_skip_monocle   0
 

@@ -6,7 +6,7 @@ set noshowmode
 set t_Co=256
 runtime macros/matchit.vim "this allows % to match HTML/XML tags, as well as the default opening and closing ([{<
 
-set visualbell t_vb=
+autocmd GUIEnter * set vb t_vb=
 
 " modes
 let g:currentmode={
