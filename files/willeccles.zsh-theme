@@ -1,4 +1,4 @@
-function pwd_exit {
+function prompt_exit {
 	local EXIT="$?"
 	
 	if [ $EXIT -ne 0 ]; then
@@ -18,7 +18,7 @@ function pwd_exit {
 	fi
 }
 
-function pwd_jobcount {
+function prompt_jobcount {
 	local jobnum=$(jobs -p | wc -l | tr -d ' ')
 	
 	if [ $jobnum -ne 0 ]; then
@@ -26,15 +26,65 @@ function pwd_jobcount {
 	fi
 }
 
-# override this, since i'm not happy with the default options
-function git_prompt_info {
-
+# git things {{{
+# get current status of git repo
+function parse_git_dirty() {
+	gstatus=`git status 2>&1 | tee`
+	dirty=`echo -n "${gstatus}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
+	untracked=`echo -n "${gstatus}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
+	ahead=`echo -n "${gstatus}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
+	newfile=`echo -n "${gstatus}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
+	renamed=`echo -n "${gstatus}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
+	deleted=`echo -n "${gstatus}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
+	bits=''
+	if [ "${renamed}" = "0" ]; then
+		bits=">${bits}"
+	fi
+	if [ "${ahead}" = "0" ]; then
+		bits="*${bits}"
+	fi
+	if [ "${newfile}" = "0" ]; then
+		bits="+${bits}"
+	fi
+	if [ "${untracked}" = "0" ]; then
+		bits="?${bits}"
+	fi
+	if [ "${deleted}" = "0" ]; then
+		bits="x${bits}"
+	fi
+	if [ "${dirty}" = "0" ]; then
+		bits="M${bits}"
+	fi
+	if [ "${bits}" != "" ]; then
+		echo " ${bits}"
+	else
+		echo ""
+	fi
 }
 
+# get current branch in git repo
+function prompt_parse_git_branch() {
+	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	if [ "${BRANCH}" != "" ]
+	then
+		STAT=$(parse_git_dirty)
+		echo "%{$fg[cyan]%} ${BRANCH}${STAT} %{$reset_color%}"
+	else
+		echo ""
+	fi
+}
+# }}}
+
+# override this, since i'm not happy with the default options
+function git_prompt_info {
+	echo $(prompt_parse_git_branch)
+}
+
+# these are here for posterity
 #ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[cyan]%} "
 #ZSH_THEME_GIT_PROMPT_SUFFIX=" %{$reset_color%}"
 #ZSH_THEME_GIT_PROMPT_DIRTY="M"
 #ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
 #ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-PROMPT='$(pwd_exit)%{$fg_bold[magenta]%}%1~%{$reset_color%} $(git_prompt_info)$(pwd_jobcount)%{$fg_bold[green]%}%{$reset_color%} '
+PROMPT='$(prompt_exit)%{$fg_bold[magenta]%}%1~%{$reset_color%} $(git_prompt_info)$(prompt_jobcount)%{$fg_bold[green]%}%{$reset_color%} '
