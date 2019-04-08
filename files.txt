@@ -23,4 +23,4 @@
 .config/neofetch
 .config/wal
 .fonts
-.oh-my-zsh
+.oh-my-zsh/custom
