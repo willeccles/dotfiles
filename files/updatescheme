@@ -9,3 +9,9 @@ WP=`osascript -e '
 wal --saturate 0.4 -i "${WP}" -n
 
 cp ~/.cache/wal/colors-wal.vim ~/.schemecolors.vim
+
+sed -i ".sedbackup" 's/let /let g:scheme_/g' ~/.schemecolors.vim
+
+rm -f .schemecolors.vim.sedbackup
+
+echo let g:scheme_available="yes" >> ~/.schemecolors.vim

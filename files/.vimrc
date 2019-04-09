@@ -45,7 +45,19 @@ fu! Ftype()
 	return substitute(&filetype, "[[]]", "", "")
 endfunction
 
+" source a file only if it exists
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
 syntax enable "syntax hilighting
+
+" source my colors which are updated from 'updatescheme'
+" if they exist, there will be a variable called g:scheme_available
+" this can be checked with if exists("g:scheme_available")
+call SourceIfExists("~/.schemecolors.vim")
 
 if has("gui_running")
 	let g:dracula_colorterm = 0
