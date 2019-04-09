@@ -15,6 +15,8 @@
 .zshrc
 .path
 .oh-my-zsh/custom/themes/willeccles.zsh-theme
+updatescheme
+.schemecolors.vim
 
 # directories
 .vim

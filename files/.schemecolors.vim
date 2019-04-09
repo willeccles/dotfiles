@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/Users/willeccles/Google Drive/Wallpappers/Artwork/Bottles.jpg"
+let background = "#0b0b0b"
+let foreground = "#e1e0df"
+let cursor     = "#e1e0df"
+
+" Colors
+let color0  = "#0b0b0b"
+let color1  = "#a66047"
+let color2  = "#b2694d"
+let color3  = "#c6957c"
+let color4  = "#4cb2b2"
+let color5  = "#c77d7d"
+let color6  = "#dcbeae"
+let color7  = "#e1e0df"
+let color8  = "#9d9c9c"
+let color9  = "#a66047"
+let color10 = "#b2694d"
+let color11 = "#c6957c"
+let color12 = "#4cb2b2"
+let color13 = "#c77d7d"
+let color14 = "#dcbeae"
+let color15 = "#e1e0df"

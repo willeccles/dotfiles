@@ -1,0 +1,11 @@
+#! /bin/bash
+
+WP=`osascript -e '
+	tell application "Finder"
+	set theDesktopPic to desktop picture as alias
+	set theName to posix path of theDesktopPic
+	end tell'`
+
+wal --saturate 0.4 -i "${WP}" -n
+
+cp ~/.cache/wal/colors-wal.vim ~/.schemecolors.vim
