@@ -22,7 +22,7 @@ function prompt_jobcount {
 	local jobnum=$(jobs -p | wc -l | tr -d ' ')
 	
 	if [ $jobnum -ne 0 ]; then
-		echo "%{$fg[yellow]%}${jobnum}%{$reset_color%}"
+		echo "%{$fg[yellow]%} ${jobnum}%{$reset_color%}"
 	fi
 }
 
@@ -87,4 +87,6 @@ function git_prompt_info {
 #ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
 #ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-PROMPT='$(prompt_exit)%{$fg_bold[magenta]%}%1~%{$reset_color%} $(git_prompt_info)$(prompt_jobcount)%{$fg_bold[green]%}%{$reset_color%} '
+PROMPT='$(prompt_exit)%{$fg_bold[magenta]%}%1~%{$reset_color%} $(git_prompt_info)%{$fg_bold[green]%}%{$reset_color%} '
+
+RPROMPT='$(prompt_jobcount)'
