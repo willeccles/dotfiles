@@ -21,4 +21,4 @@ let g:scheme_color12 = "#4cb2b2"
 let g:scheme_color13 = "#c77d7d"
 let g:scheme_color14 = "#dcbeae"
 let g:scheme_color15 = "#e1e0df"
-let g:scheme_available=yes
+let g:scheme_available="yes"

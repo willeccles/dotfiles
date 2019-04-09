@@ -14,4 +14,4 @@ sed -i ".sedbackup" 's/let /let g:scheme_/g' ~/.schemecolors.vim
 
 rm -f .schemecolors.vim.sedbackup
 
-echo let g:scheme_available="yes" >> ~/.schemecolors.vim
+echo let g:scheme_available=\"yes\" >> ~/.schemecolors.vim

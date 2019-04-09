@@ -45,6 +45,20 @@ fu! Ftype()
 	return substitute(&filetype, "[[]]", "", "")
 endfunction
 
+"line endings
+fu! LEnds()
+	let a:format = substitute(&fileformat, "[[]]", "", "")
+	if a:format == 'unix'
+		return '␊'
+	elseif a:format == 'dos'
+		return '␍␊'
+	elseif a:format == 'mac'
+		return '␍'
+	else
+		return ''
+	endif
+endfunction
+
 " source a file only if it exists
 function! SourceIfExists(file)
   if filereadable(expand(a:file))
@@ -60,11 +74,16 @@ syntax enable "syntax hilighting
 call SourceIfExists("~/.schemecolors.vim")
 
 if has("gui_running")
-	let g:dracula_colorterm = 0
-	colorscheme dracula
+	if !exists("g:scheme_available")
+		let g:dracula_colorterm = 0
+		colorscheme dracula
+	else
+		" this will match my terminal colors which is nice
+		colorscheme walgui
+	endif
 else
 	" this matches the terminal colors
-	colorscheme wal
+	colorscheme walterm
 endif
 
 if !has("gui_running")
@@ -160,24 +179,24 @@ elseif g:colors_name == "dracula"
 		"no mid color for this one
 		highlight CP_LNUM ctermbg=141 ctermfg=255
 	endif
-elseif g:colors_name == "wal"
-	highlight CP_MODE cterm=bold
-	highlight CP_FNAME cterm=bold,italic
-	highlight CP_MID cterm=bold
-	highlight CP_LNUM cterm=bold
+elseif g:colors_name == "walterm" || g:colors_name == "walgui"
+	highlight CP_MODE cterm=bold gui=bold
+	highlight CP_FNAME cterm=bold,italic gui=bold,italic
+	highlight CP_MID cterm=NONE gui=NONE
+	highlight CP_LNUM cterm=bold gui=bold
 endif
 " }}} end status line/tab bar
 
 "statusline
 :set statusline=%#CP_MODE#\ %{toupper(g:currentmode[mode()])}\  "shows mode
-":set statusline+=\ %#CP_MODEDIV#⇢\  "divider after mode
+":set statusline+=\ %#CP_DIV#\|\  "divider after mode
 :set statusline+=%< "where to truncate the line, in other words always show mode
 :set statusline+=%#CP_FNAME#\ %f "filename
 :set statusline+=%{Modstatus()} "modified status of buffer
 :set statusline+=%{ReadOnly()} "redonly status
-":set statusline+=\ %#CP_FNAMEDIV#⇢\  "filename divider
+":set statusline+=\ %#CP_DIV#\|\  "filename divider
 :set statusline+=\ %#CP_MID# "set color for middle of SL
-:set statusline+=\ %{Ftype()} "filetype
+:set statusline+=\ %{Ftype()}\ \ %{LEnds()} "filetype
 :set statusline+=%= "every statusline addition after this line will be right justified
 :set statusline+=%p%%\  "percentage through the file in lines
 :set statusline+=%#CP_LNUM#\ L%l:C%c\  "line number and character on that line
