@@ -267,3 +267,8 @@ set runtimepath^=~/.vim/plugin/gitgutter.vim
 
 "enable gitgutter
 set updatetime=250
+
+augroup zsh_theme_ft
+	au!
+	autocmd BufNewFile,BufRead *.zsh-theme	set syntax=zsh
+augroup END

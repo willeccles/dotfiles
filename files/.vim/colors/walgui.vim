@@ -27,9 +27,9 @@ exe 'hi Type guibg=NONE guifg=' . g:scheme_color3
 exe 'hi Underlined guibg=NONE guifg=' . g:scheme_color1 . ' gui=underline'
 exe 'hi StatusLine guibg=' . g:scheme_color7 . ' guifg=' . g:scheme_color0
 exe 'hi StatusLineNC guibg=' . g:scheme_color8 . ' guifg=' . g:scheme_color0
-exe 'hi TabLine guibg=NONE guifg=' . g:scheme_color8
-exe 'hi TabLineFill guibg=NONE guifg=' . g:scheme_color8
-exe 'hi TabLineSel guibg=' . g:scheme_color4 . ' guifg=' . g:scheme_color0
+exe 'hi TabLine guibg=NONE guifg=NONE gui=NONE'
+exe 'hi TabLineFill guibg=' . g:scheme_color0 . ' guifg=' . g:scheme_color8 . ' gui=NONE'
+exe 'hi TabLineSel guibg=' . g:scheme_color8 . ' guifg=' . g:scheme_color0 . ' gui=BOLD'
 exe 'hi TermCursorNC guibg=' . g:scheme_color3 . ' guifg=' . g:scheme_color0
 exe 'hi VertSplit guibg=' . g:scheme_color8 . ' guifg=' . g:scheme_color0
 exe 'hi Title guibg=NONE guifg=' . g:scheme_color4
