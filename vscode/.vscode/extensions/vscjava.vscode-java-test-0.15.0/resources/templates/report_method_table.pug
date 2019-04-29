@@ -1,0 +1,43 @@
+mixin collapseMethodTable(children, type)
+    - var classIdx = 0
+    //- See https://github.com/pugjs/pug/issues/2559#issuecomment-289873794 for iterating a map in Pug
+    each entry in [...children]
+        - classIdx++
+        ul.list-group.mb-3
+            li.list-group-item.active
+                h5.mb-0 #{entry[0]}
+            - var methodIdx = 0
+            each method in entry[1]
+                - methodIdx++
+                li.list-group-item.list-group-item-action
+                    div.row.accordion-toggle.collapsed
+                        div.col-8(data-toggle="collapse", data-target=`#${type}-${classIdx}-${methodIdx}`, style="cursor:pointer", title="View details") #{method.displayName}
+                        div.col-1.text-right
+                            if !method.details
+                                span.badge.badge-warning Not run
+                            else if method.details.status === 'Pass'
+                                span.badge.badge-success Passed
+                            else if method.details.status === 'Fail'
+                                span.badge.badge-danger Failed
+                            else
+                                span.badge.badge-secondary Skipped
+                        div.col-2.text-right #{method.details && method.details.duration ? method.details.duration + "ms" : "N/A"}
+                        div.col-1.text-right
+                            a(href="#", title="Navigate to Source", uri=`${method.location && method.location.uri ? method.location.uri : ''}`, range=`${method.location && method.location.range ? JSON.stringify(method.location.range) : ''}`, fullname=`${method.fullName}`)
+                                i.fa.fa-external-link
+                    div.mt-2.pl-2.accordion-body(id=`${type}-${classIdx}-${methodIdx}`, class="collapse")
+                        div.row
+                            div.col
+                                h6 Message:
+                        div.row
+                            div.col.mb-1 #{method.details && method.details.message ? method.details.message : "N/A"}
+                        div.row
+                            div.col
+                                h6 Stack trace:
+                        div.row
+                            div.col
+                                if method.details && method.details.trace
+                                    pre
+                                        code #{method.details.trace}
+                                else
+                                    span N/A

@@ -1,0 +1,333 @@
+{
+	"name": "vscode-java-test",
+	"displayName": "Java Test Runner",
+	"description": "%description%",
+	"repository": {
+		"url": "https://github.com/Microsoft/vscode-java-test"
+	},
+	"version": "0.15.0",
+	"publisher": "vscjava",
+	"bugs": {
+		"url": "https://github.com/Microsoft/vscode-java-test/issues"
+	},
+	"homepage": "https://github.com/Microsoft/vscode-java-test/blob/master/extension/README.md",
+	"preview": true,
+	"icon": "resources/logo.png",
+	"keywords": [
+		"java",
+		"test",
+		"junit",
+		"testng",
+		"debug"
+	],
+	"aiKey": "01a9e54d-ccdf-4f27-8058-4839d2555d2d",
+	"engines": {
+		"vscode": "^1.23.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:java",
+		"workspaceContains:pom.xml",
+		"workspaceContains:build.gradle",
+		"onView:testExplorer",
+		"onCommand:java.test.explorer.refresh",
+		"onCommand:java.test.explorer.run",
+		"onCommand:java.test.explorer.debug",
+		"onCommand:java.test.run",
+		"onCommand:java.test.debug",
+		"onCommand:java.test.cancel",
+		"onCommand:java.test.show.report",
+		"onCommand:java.test.show.output",
+		"onCommand:java.test.open.log"
+	],
+	"main": "./dist/extension",
+	"contributes": {
+		"javaExtensions": [
+			"./server/com.microsoft.java.test.plugin-0.15.0.jar"
+		],
+		"views": {
+			"test": [
+				{
+					"id": "testExplorer",
+					"name": "%contributes.views.explorer.testExplorer.name%"
+				}
+			]
+		},
+		"menus": {
+			"view/title": [
+				{
+					"command": "java.test.explorer.run",
+					"when": "view == testExplorer",
+					"group": "navigation@0"
+				},
+				{
+					"command": "java.test.explorer.debug",
+					"when": "view == testExplorer",
+					"group": "navigation@1"
+				},
+				{
+					"command": "java.test.explorer.refresh",
+					"when": "view == testExplorer",
+					"group": "navigation@2"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "java.test.explorer.run",
+					"when": "view == testExplorer",
+					"group": "testExplorer@0"
+				},
+				{
+					"command": "java.test.explorer.debug",
+					"when": "view == testExplorer",
+					"group": "testExplorer@1"
+				},
+				{
+					"command": "java.test.explorer.refresh",
+					"when": "view == testExplorer",
+					"group": "testExplorer@4"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "java.test.explorer.run",
+					"when": "never"
+				},
+				{
+					"command": "java.test.explorer.debug",
+					"when": "never"
+				},
+				{
+					"command": "java.test.explorer.refresh",
+					"when": "never"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "java.test.show.output",
+				"title": "%contributes.commands.java.test.show.output.title%",
+				"category": "Java"
+			},
+			{
+				"command": "java.test.open.log",
+				"title": "%contributes.commands.java.test.open.log.title%",
+				"category": "Java"
+			},
+			{
+				"command": "java.test.explorer.run",
+				"title": "%contributes.commands.java.test.explorer.run.title%",
+				"icon": {
+					"light": "resources/media/light/run.svg",
+					"dark": "resources/media/dark/run.svg"
+				},
+				"category": "Java"
+			},
+			{
+				"command": "java.test.explorer.debug",
+				"title": "%contributes.commands.java.test.explorer.debug.title%",
+				"icon": {
+					"light": "resources/media/light/debug.svg",
+					"dark": "resources/media/dark/debug.svg"
+				},
+				"category": "Java"
+			},
+			{
+				"command": "java.test.cancel",
+				"title": "%contributes.commands.java.test.cancel.title%",
+				"category": "Java"
+			},
+			{
+				"command": "java.test.explorer.refresh",
+				"title": "%contributes.commands.java.test.explorer.refresh.title%",
+				"icon": {
+					"light": "resources/media/light/refresh.svg",
+					"dark": "resources/media/dark/refresh.svg"
+				},
+				"category": "Java"
+			}
+		],
+		"jsonValidation": [
+			{
+				"fileMatch": "launch.test.json",
+				"url": "./launch.test.schema.json"
+			}
+		],
+		"configuration": {
+			"title": "Java Test Runner",
+			"properties": {
+				"java.test.report.position": {
+					"type": "string",
+					"enum": [
+						"sideView",
+						"currentView"
+					],
+					"default": "sideView",
+					"description": "%configuration.java.test.report.position.description%",
+					"scope": "window"
+				},
+				"java.test.log.level": {
+					"type": "string",
+					"enum": [
+						"error",
+						"info",
+						"verbose"
+					],
+					"default": "info",
+					"description": "%configuration.java.test.log.level.description%",
+					"scope": "application"
+				},
+				"java.test.message.hintForDeprecatedConfig": {
+					"type": "boolean",
+					"default": true,
+					"description": "%configuration.java.test.message.hintForDeprecatedConfig.description%",
+					"scope": "application"
+				},
+				"java.test.message.hintForSetingDefaultConfig": {
+					"type": "boolean",
+					"default": true,
+					"description": "%configuration.java.test.message.hintForSetingDefaultConfig.description%",
+					"scope": "application"
+				},
+				"java.test.defaultConfig": {
+					"type": "string",
+					"description": "%configuration.java.test.defaultConfig.description%",
+					"scope": "resource"
+				},
+				"java.test.config": {
+					"type": [
+						"object",
+						"array"
+					],
+					"properties": {
+						"name": {
+							"type": "string",
+							"description": "%configuration.java.test.config.name.description%",
+							"pattern": "^((?!default).)*$",
+							"default": ""
+						},
+						"workingDirectory": {
+							"type": "string",
+							"description": "%configuration.java.test.config.workingDirectory.description%",
+							"default": "${workspaceFolder}"
+						},
+						"vmargs": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"description": "%configuration.java.test.config.vmargs.description%",
+							"default": []
+						},
+						"args": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"description": "%configuration.java.test.config.args.description%",
+							"default": []
+						},
+						"env": {
+							"type": "object",
+							"description": "%configuration.java.test.config.env.description%",
+							"default": {}
+						}
+					},
+					"description": "%configuration.java.test.config.description%",
+					"items": {
+						"type": "object",
+						"description": "%configuration.java.test.config.item.description%",
+						"properties": {
+							"name": {
+								"type": "string",
+								"description": "%configuration.java.test.config.name.description%",
+								"pattern": "^((?!default).)*$",
+								"default": ""
+							},
+							"workingDirectory": {
+								"type": "string",
+								"description": "%configuration.java.test.config.workingDirectory.description%",
+								"default": "${workspaceFolder}"
+							},
+							"vmargs": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"description": "%configuration.java.test.config.vmargs.description%",
+								"default": []
+							},
+							"args": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"description": "%configuration.java.test.config.args.description%",
+								"default": []
+							},
+							"env": {
+								"type": "object",
+								"description": "%configuration.java.test.config.env.description%",
+								"default": {}
+							}
+						}
+					},
+					"scope": "resource"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"compile": "tsc -p ./",
+		"watch": "webpack --mode development --watch --info-verbosity verbose",
+		"test": "gulp install-dependency && node ./node_modules/vscode/bin/test",
+		"lint": "gulp lint",
+		"build-plugin": "gulp build-plugin",
+		"vscode:prepublish": "gulp resources && webpack --mode production"
+	},
+	"extensionDependencies": [
+		"vscjava.vscode-java-debug"
+	],
+	"devDependencies": {
+		"@types/archiver": "^2.1.2",
+		"@types/fs-extra": "^5.0.4",
+		"@types/lodash": "^4.14.119",
+		"@types/mocha": "^2.2.48",
+		"@types/node": "^6.0.110",
+		"@types/pug": "^2.0.4",
+		"bootstrap": "^4.3.1",
+		"gulp": "^4.0.0",
+		"gulp-decompress": "^2.0.2",
+		"gulp-download": "0.0.1",
+		"gulp-sass": "^3.2.1",
+		"gulp-tslint": "^8.1.3",
+		"mocha": "^5.2.0",
+		"pug-loader": "^2.4.0",
+		"ts-loader": "^5.3.1",
+		"tslint": "^5.10.0",
+		"typescript": "^2.8.3",
+		"vscode": "^1.1.30",
+		"webpack": "^4.27.1",
+		"webpack-cli": "^3.1.2"
+	},
+	"dependencies": {
+		"archiver": "^3.0.0",
+		"file-url": "^2.0.2",
+		"fs-extra": "^7.0.0",
+		"get-port": "^4.0.0",
+		"lodash": "^4.17.11",
+		"pug": "^2.0.3",
+		"tree-kill": "^1.2.0",
+		"vscode-extension-telemetry-wrapper": "^0.3.9",
+		"winston": "^3.1.0",
+		"winston-transport": "^4.2.0"
+	},
+	"__metadata": {
+		"id": "67c06b0d-1891-42ca-b2a8-113e79bff069",
+		"publisherId": "bae08b87-578e-41ec-ab1c-0b036e7add88",
+		"publisherDisplayName": "Microsoft"
+	}
+}

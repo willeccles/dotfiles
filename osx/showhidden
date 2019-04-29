@@ -1,0 +1,26 @@
+#! /bin/bash
+
+# if $1 is "on", show hidden files
+# else don't show them
+
+if [ "$1" == "on" ]; then
+	defaults write com.apple.finder AppleShowAllFiles TRUE
+	killall Finder
+	echo "Finder will now show hidden files."
+else
+	defaults write com.apple.finder AppleShowAllFiles FALSE
+	killall Finder
+	echo "Finder will no longer show hidden files."
+fi
+
+#defaults read com.apple.finder AppleShowAllFiles | $state
+
+#if [ $state == "TRUE" ]; then
+#	defaults write com.apple.finder AppleShowAllFiles FALSE
+#	killall Finder
+#	echo "Finder will no longer show hidden files."
+#else
+#	defaults write com.apple.finder AppleShowAllFiles TRUE
+#	killall Finder
+#	echo "Finder will now show hidden files."
+#fi

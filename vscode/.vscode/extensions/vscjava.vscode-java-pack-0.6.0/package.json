@@ -1,0 +1,101 @@
+{
+	"name": "vscode-java-pack",
+	"displayName": "Java Extension Pack",
+	"description": "Popular extensions for Java development and more.",
+	"license": "MIT",
+	"version": "0.6.0",
+	"publisher": "vscjava",
+	"preview": true,
+	"engines": {
+		"vscode": "^1.28.0"
+	},
+	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
+	"icon": "logo.png",
+	"keywords": [
+		"java",
+		"debugger",
+		"junit",
+		"maven",
+		"spring"
+	],
+	"categories": [
+		"Extension Packs"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Microsoft/vscode-java-pack"
+	},
+	"homepage": "https://github.com/Microsoft/vscode-java-pack",
+	"bugs": {
+		"url": "https://github.com/Microsoft/vscode-java-pack"
+	},
+	"main": "./out/extension",
+	"activationEvents": [
+		"onLanguage:java",
+		"workspaceContains:pom.xml",
+		"workspaceContains:build.gradle",
+		"workspaceContains:mnvw",
+		"onCommand:java.overview",
+		"onCommand:java.showLatestReleaseNotes"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "java.overview",
+				"title": "Java: Overview"
+			},
+			{
+				"command": "java.showLatestReleaseNotes",
+				"title": "Java: Show Release Notes"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run build",
+		"compile": "webpack --config webpack.config.js",
+		"watch": "webpack --config webpack.config.js --watch --info-verbosity verbose",
+		"build": "webpack --config webpack.config.js --mode=\"production\"",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/jquery": "^3.3.24",
+		"@types/node": "^8.10.40",
+		"@types/semver": "^5.5.0",
+		"autoprefixer": "^8.5.1",
+		"bootstrap": "^4.3.1",
+		"css-loader": "^0.28.11",
+		"html-webpack-inline-source-plugin": "0.0.10",
+		"html-webpack-plugin": "^3.2.0",
+		"jquery": "^3.3.1",
+		"node-sass": "^4.11.0",
+		"popper.js": "^1.14.7",
+		"postcss-loader": "^2.1.5",
+		"sass-loader": "^7.0.1",
+		"style-loader": "^0.21.0",
+		"ts-loader": "^4.3.0",
+		"tslint": "^5.12.1",
+		"typescript": "^2.6.1",
+		"vscode": "^1.1.26",
+		"webpack": "^4.27.1",
+		"webpack-cli": "^3.2.3"
+	},
+	"extensionPack": [
+		"redhat.java",
+		"vscjava.vscode-java-debug",
+		"vscjava.vscode-java-test",
+		"vscjava.vscode-maven",
+		"vscjava.vscode-java-dependency",
+		"VisualStudioExptTeam.vscodeintellicode"
+	],
+	"dependencies": {
+		"json": "^9.0.6",
+		"semver": "^5.6.0",
+		"vscode-extension-telemetry-wrapper": "^0.3.8"
+	},
+	"__metadata": {
+		"id": "96f11e1f-1a46-4592-b084-f025b2c2a81f",
+		"publisherId": "bae08b87-578e-41ec-ab1c-0b036e7add88",
+		"publisherDisplayName": "Microsoft"
+	}
+}
