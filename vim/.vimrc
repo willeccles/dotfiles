@@ -55,7 +55,7 @@ fu! LEnds()
 	elseif a:format == 'mac'
 		return '␍'
 	else
-		return ''
+		return ' '
 	endif
 endfunction
 

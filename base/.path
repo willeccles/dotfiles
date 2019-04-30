@@ -14,3 +14,5 @@ export CLICOLOR=1
 export EDITOR=vim
 
 export HOMEBREW_NO_AUTO_UPDATE=1
+export PATH="/usr/local/opt/gettext/bin:$PATH"
+export PATH="/usr/local/opt/bison/bin:$PATH"
