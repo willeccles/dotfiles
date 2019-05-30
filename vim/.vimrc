@@ -221,9 +221,10 @@ set shiftwidth=4 "indent 4 spaces when using > to indent
 "reminder: open a fold with za, close a fold with zc, make a fold (in Visual) with zf
 setlocal foldmethod=marker
 
-"TODO: replace tabs with buffers: http://stackoverflow.com/questions/102384/using-vims-tabs-like-buffers
 map <F7> <Esc>:tabp<Return>
 map <F8> <Esc>:tabn<Return>
+map <C-F7> <Esc>:bp<Return>
+map <C-F8> <Esc>:bn<Return>
 "use tabe instead of tabf, e works the same as :e
 map <F9> <Esc>:tabe 
 

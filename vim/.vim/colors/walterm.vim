@@ -29,8 +29,8 @@ hi Underlined ctermbg=NONE ctermfg=1 cterm=underline
 hi StatusLine ctermbg=7 ctermfg=0
 hi StatusLineNC ctermbg=8 ctermfg=0
 hi TabLine ctermbg=NONE ctermfg=NONE cterm=NONE
-hi TabLineFill ctermbg=0 ctermfg=8 cterm=NONE
-hi TabLineSel ctermbg=8 ctermfg=0 cterm=BOLD
+hi TabLineFill ctermbg=NONE ctermfg=8 cterm=NONE
+hi TabLineSel ctermbg=8 ctermfg=NONE cterm=BOLD
 hi TermCursorNC ctermbg=3 ctermfg=0
 hi VertSplit ctermbg=8 ctermfg=0
 hi Title ctermbg=NONE ctermfg=4

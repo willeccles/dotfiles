@@ -1,7 +1,8 @@
 source .path
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/willeccles/.oh-my-zsh"
+#export ZSH="/Users/willeccles/.oh-my-zsh"
+export ZSH="/home/willeccles/.oh-my-zsh"
 
 ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
@@ -18,4 +19,4 @@ source $ZSH/oh-my-zsh.sh
 export SHELL=$(which zsh)
 
 alias please='sudo $(history -p !-1)'
-alias ls=~/ls-icons
+#alias ls=~/ls-icons
