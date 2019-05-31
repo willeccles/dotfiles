@@ -1,8 +1,8 @@
-source .path
+source ~/.path
 
 # Path to your oh-my-zsh installation.
 #export ZSH="/Users/willeccles/.oh-my-zsh"
-export ZSH="/home/willeccles/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 
 ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20

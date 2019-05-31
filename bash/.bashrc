@@ -1,6 +1,6 @@
 # reminder: in vim, visual mode zc = close fold, za = open fold
 
-source .path
+source ~/.path
 
 # colors {{{
 # these are now all set by the terminal's colors, 0-15
