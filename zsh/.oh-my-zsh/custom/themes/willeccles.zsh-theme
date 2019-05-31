@@ -2,9 +2,9 @@ function prompt_exit {
 	local EXIT="$?"
 	
 	if [ $EXIT -ne 0 ]; then
-		# 146 is STOPPED, like control-z, etc.
-		if [ $EXIT -eq 146 ]; then
-			# when its 146 i want it to show me what job i stopped
+		# 148 is STOPPED, like control-z, etc.
+		if [ $EXIT -eq 148 ]; then
+			# when its 148 i want it to show me what job i stopped
 			# just the command name though, no args
 			# this regex is actually cancerous to look at, i know
 			# i'm so sorry, future me

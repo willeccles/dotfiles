@@ -42,9 +42,9 @@ __prompt_command() {
 	PS1+="${c_Git}\`parse_git_branch\`${c_Rst}"
 
 	if [ $EXIT -ne 0 ]; then
-		# 146 is STOPPED, like control-z, etc.
-		if [ $EXIT -eq 146 ]; then
-			# when its 146 i want it to show me what job i stopped
+		# 148 is STOPPED, like control-z, etc.
+		if [ $EXIT -eq 148 ]; then
+			# when its 148 i want it to show me what job i stopped
 			# just the command name though, no args
 			local lastjob="$(ps -p $(jobs -p | sed -e '$!d') -o comm=)"
 			PS1="${c_Job}${lastjob}${c_Rst} $PS1"
