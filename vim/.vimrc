@@ -212,9 +212,15 @@ set guifont=Operator\ Mono\ Book:h12 "for MacVim
 set number "line numbers
 
 filetype plugin indent on "enable indenting
-set tabstop=4 "show existing tabs with 4 spaces width
-set shiftwidth=4 "indent 4 spaces when using > to indent
-"set expandtab "this would put in 4 spaces when pressing tab
+"set tabstop=4 "show existing tabs with 4 spaces width
+"set shiftwidth=4 "indent 4 spaces when using > to indent
+
+" change tabs to 4 spaces to coincide with firmware source
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab "this would put in 4 spaces when pressing tab
 
 "folding should be marker (works like manual, but also folds on triple curly
 "braces automatically)

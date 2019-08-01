@@ -6,18 +6,18 @@
 	..
 1556032632
 'b
-	/Users/willeccles/bin/
+	/home/willeccles/bin/
 	..
-1556032632
+1563465354
 'h
-	/Users/willeccles/
+	/home/willeccles/
 	..
-1556032632
+1563465354
 
 # Bookmarks:
 
 # TUI:
-al
+ar
 q0
 v2
 ov
@@ -26,152 +26,640 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/Users/willeccles
-	Documents
-4
-d/Users/willeccles/Documents
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	usr
+17
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/usr
+	share
+8
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	usr
+17
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/usr
+	share
+8
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/usr/share
+	include
+20
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/usr/share/include
+	pycairo
+1
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/usr/share
+	include
+20
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/usr
+	src
+9
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/usr/src
 	..
 0
-d/Users/willeccles
-	ghidra_scripts
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/usr
+	include
+4
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/usr/include
+	c++
+4
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/usr
+	include
+4
+d/
+	bin
+0
+d/media/willeccles/rootfs1
+	lib
+7
+d/media/willeccles/rootfs1/lib
+	modules
+4
+d/media/willeccles/rootfs1/lib/modules
+	4.19.38-rt19-g1224cd679e
+1
+d/media/willeccles/rootfs1/lib/modules/4.19.38-rt19-g1224cd679e
+	extra
+2
+d/media/willeccles/rootfs1/lib/modules/4.19.38-rt19-g1224cd679e/extra
+	uio_module_drv.ko
+4
+d/media/willeccles/rootfs1/lib/modules/4.19.38-rt19-g1224cd679e
+	kernel
+3
+d/media/willeccles/rootfs1/lib/modules/4.19.38-rt19-g1224cd679e/kernel
+	drivers
+3
+d/media/willeccles/rootfs1/lib/modules/4.19.38-rt19-g1224cd679e/kernel/drivers
+	spi
+28
+d/media/willeccles/rootfs1/lib/modules/4.19.38-rt19-g1224cd679e/kernel/drivers/spi
+	spi-omap2-mcspi.ko
+3
+d/media/willeccles/rootfs1/lib/modules/4.19.38-rt19-g1224cd679e/kernel/drivers
+	spi
+28
+d/media/willeccles/rootfs1/lib/modules/4.19.38-rt19-g1224cd679e/kernel
+	drivers
+3
+d/media/willeccles/rootfs1/lib/modules/4.19.38-rt19-g1224cd679e
+	kernel
+3
+d/media/willeccles/rootfs1/lib/modules
+	4.19.38-rt19-g1224cd679e
+1
+d/media/willeccles/rootfs1/lib
+	modules
+4
+d/media/willeccles/rootfs1
+	lib
+7
+d/media/willeccles/rootfs1/lib
+	modprobe.d
+3
+d/media/willeccles/rootfs1/lib/modprobe.d
+	..
+0
+d/media/willeccles/rootfs1/lib
+	modprobe.d
+3
+d/media/willeccles/rootfs1/lib/modprobe.d
+	systemd.conf
+1
+d/media/willeccles/rootfs1/lib
+	modules
+4
+d/media/willeccles/rootfs1/lib/modules
+	4.19.38-rt19-g1224cd679e
+1
+d/media/willeccles/rootfs1/lib/modules/4.19.38-rt19-g1224cd679e
+	kernel
+3
+d/media/willeccles/rootfs1/lib/modules/4.19.38-rt19-g1224cd679e/kernel
+	drivers
+3
+d/media/willeccles/rootfs1/lib/modules/4.19.38-rt19-g1224cd679e
+	modules.dep
+9
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+	tools
+22
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/tools
+	scripts
+22
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/tools/scripts
+	Makefile.include
+2
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/tools
+	spi
+23
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/tools/spi
+	Makefile
+2
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/tools
+	include
 10
-d/Users/willeccles/ghidra_scripts
-	..
-0
-d/Users/willeccles
-	github
-9
-d/Users/willeccles/github
-	cactusbot
-7
-d/Users/willeccles/github/cactusbot
-	..
-0
-d/Users/willeccles/github
-	cactusbot
-7
-d/Users/willeccles
-	github
-9
-d/Users/willeccles/github
-	cactusbot
-7
-d/Users/willeccles/github/cactusbot
-	..
-0
-d/Users/willeccles/github
-	cactusbot
-7
-d/Users/willeccles/github/cactusbot
-	..
-0
-d/Users/willeccles/github
-	cactusbot
-7
-d/Users/willeccles/github/cactusbot
-	..
-0
-d/Users/willeccles
-	github
-9
-d/Users/willeccles/github
-	cactusbot
-7
-d/Users/willeccles/github/cactusbot
-	cactusbot
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/tools/include
+	linux
 3
-d/Users/willeccles/github
-	cactusbot
-7
-d/Users/willeccles
-	github
-9
-d/Users
-	willeccles
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/tools/include/linux
+	overflow.h
+34
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/tools/include
+	linux
 3
-d/Users/willeccles
-	Desktop
-3
-d/Users/willeccles/Desktop
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/tools
+	include
+10
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+	scripts
+18
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/scripts
+	package
+10
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/scripts/package
 	..
 0
-d/Users/willeccles
-	github
-16
-d/Users/willeccles/github
-	cactusbot
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/scripts
+	mod
+9
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/scripts/mod
+	..
+0
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/scripts
+	basic
+1
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/scripts/basic
+	..
+0
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/scripts
+	gdb
+5
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+	drivers
 7
-d/Users/willeccles/github/cactusbot
-	cactusbot.go
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/drivers
+	spi
+43
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/drivers/spi
+	spidev.o
+47
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/drivers
+	spi
+43
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+	modules.builtin
+38
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support
+	u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16
 4
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16
+	scripts
+20
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/scripts
+	checkpatch.pl
+20
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16
+	scripts
+20
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support
+	u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16
+4
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07
+	board-support
+2
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support
+	extra-drivers
+1
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/extra-drivers
+	..
+0
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support
+	linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+2
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+	scripts
+20
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/scripts
+	Makefile.host
+17
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+	.tmp_versions
+2
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/.tmp_versions
+	..
+0
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+	arch
+5
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch
+	arm
+3
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm
+	mach-omap2
+9
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/mach-omap2
+	include
+1
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/mach-omap2/include
+	..
+0
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/mach-omap2
+	include
+1
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/mach-omap2/include
+	mach
+1
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/mach-omap2/include/mach
+	hardware.h
+1
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/mach-omap2/include
+	mach
+1
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/mach-omap2
+	omap_hwmod_33xx_data.c
+35
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm
+	mach-omap2
+9
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch
+	arm
+3
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+	arch
+3
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch
+	arm
+3
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm
+	configs
+3
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/configs
+	footbridge_defconfig
+32
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm
+	boot
+1
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/boot
+	dts
+3
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/boot/dts
+	am335x-icev2.dts
+12
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/boot
+	dts
+3
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm
+	boot
+1
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/boot
+	Image
+4
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm
+	boot
+1
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch
+	arm
+3
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+	tools
+22
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support
+	linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+2
+d/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07
+	Rules.make
+9
 d
 
 # Right window history (oldest to newest):
-D/Users/willeccles
-	GeekTool
-7
-D/Users
-	willeccles
-3
-D/
-	Users
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e/kernel/drivers
+	ata
+1
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e/kernel
+	arch
+1
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e
+	source
 4
-D/Users
-	willeccles
-3
-D/Users/willeccles
-	GeekTool
-7
-D/Users
-	willeccles
-3
-D/
-	Users
-4
-D/Users
-	willeccles
-3
-D/Users/willeccles
-	github
-21
-D/Users/willeccles/github
-	cactuscontroller
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e/source
+	net
 16
-D/Users/willeccles/github/cactuscontroller
-	commandfunctions.go
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e
+	source
+4
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e/source
+	net
+16
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e
+	source
+4
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules
+	4.19.38-rt19-g1224cd679e
+1
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib
+	modules
+4
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	lib
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib
+	modules
+4
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	lib
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07
+	targetNFS
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	lib
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib
+	modules
+4
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	lib
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07
+	targetNFS
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	lib
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib
+	modules
+4
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	lib
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07
+	targetNFS
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	lib
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib
+	modules
+4
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	lib
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07
+	targetNFS
+7
+D/home/willeccles
+	ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07
+17
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07
+	targetNFS
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	lib
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib
+	modules
+4
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	sys
+15
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/sys
+	..
+0
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	lib
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib
+	modules
+4
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules
+	4.19.38-rt19-g1224cd679e
+1
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e
+	extra
+2
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e/extra
+	pvrsrvkm.ko
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e
+	kernel
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e/kernel
+	drivers
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e/kernel/drivers
+	spi
+28
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e/kernel/drivers/spi
+	spi-omap2-mcspi.ko
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e/kernel/drivers
+	spi
+28
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e/kernel
+	drivers
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules/4.19.38-rt19-g1224cd679e
+	kernel
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib/modules
+	4.19.38-rt19-g1224cd679e
+1
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS/lib
+	modules
+4
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/targetNFS
+	lib
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07
+	targetNFS
+7
+D/home/willeccles
+	ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07
+17
+D/home
+	willeccles
+1
+D/
+	media
+9
+D/media
+	willeccles
+1
+D/media/willeccles
+	rootfs1
+3
+D/media/willeccles/rootfs1
+	boot
+2
+D/media/willeccles/rootfs1/boot
+	..
+0
+D/media/willeccles/rootfs1
+	boot
+2
+D/media/willeccles/rootfs1/boot
+	System.map
+1
+D/media/willeccles/rootfs1
+	lib
+7
+D/media/willeccles/rootfs1/lib
+	modules
+4
+D/media/willeccles/rootfs1/lib/modules
+	4.19.38-rt19-g1224cd679e
+1
+D/media/willeccles/rootfs1/lib/modules/4.19.38-rt19-g1224cd679e
+	modules.alias.bin
+6
+D/media/willeccles
+	..
+0
+D/media
+	willeccles
+1
+D/
+	home
 5
-D/Users/willeccles/github
-	cactuscontroller
+D/home
+	willeccles
+1
+D/home/willeccles
+	ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07
+17
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07
+	board-support
+2
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support
+	linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+2
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+	arch
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch
+	arm
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm
+	configs
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/configs
+	tisdk_am335x-icev2-rt_defconfig
+37
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm
+	configs
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/configs
+	tisdk_am335x-icev2-rt_defconfig
+37
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm
+	configs
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch
+	arm
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e
+	arch
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support
+	u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16
+4
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16
+	configs
+8
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/configs
+	am335x_evm_defconfig
+32
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16
+	common
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/common
+	..
+0
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16
+	configs
+8
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/configs
+	am335x_evm_defconfig
+32
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16
+	common
+7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/common
+	..
+0
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16
+	arch
+4
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/arch
+	arm
+2
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/arch/arm
+	cpu
+1
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/arch/arm/cpu
+	arm11
+1
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/arch/arm
+	cpu
+1
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/arch/arm/cpu
+	armv7
+8
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/arch/arm/cpu/armv7
+	virt-v7.c
+30
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/arch/arm/cpu
+	armv7
+8
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/arch/arm
+	cpu
+1
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/arch
+	arm
+2
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16
+	api
+3
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/api
+	..
+0
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16
+	include
 16
-D/Users/willeccles
-	github
-19
-D/Users
-	willeccles
-3
-D/Users/willeccles
-	GeekTool
-7
-D/Users
-	willeccles
-3
-D/Users/willeccles
-	GeekTool
-7
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16/include
+	..
+0
+D/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/u-boot-2019.01+gitAUTOINC+8b90adfb16-g8b90adfb16
+	TISDK-README
+28
 D
 
 # Command line history (oldest to newest):
 :cd
+:w
+:?
+:help
+:set vicmd 'vim -p'
+:set vicmd "vim -p"
+:set vicmd "vim\ -p"
+:vicmd
+:get vicmd
 :q
 
 # Search history (oldest to newest):
+/vi
+/v
+/spi
+/ko
+/git
+/ice
+/335
+/335x
 
 # Prompt history (oldest to newest):
+ptisdk_am335x-icev2-rt_defconfig
 
 # Local filter history (oldest to newest):
 
 # Registers:
-""/Users/willeccles/.local/share/vifm/Trash/000_addwheels
+""/home/willeccles/ti-processor-sdk-linux-rt-am335x-evm-06.00.00.07/board-support/linux-rt-4.19.38+gitAUTOINC+1224cd679e-g1224cd679e/arch/arm/configs/tisdk_am335x-evm-rt_defconfig
 
 # Directory stack (oldest to newest):
 
@@ -182,6 +670,30 @@ t/Users/willeccles/.local/share/vifm/Trash/000_javacr
 	/Users/willeccles/javacr
 t/Users/willeccles/.local/share/vifm/Trash/000_addwheels
 	/Users/willeccles/addwheels
+t/media/willeccles/rootfs1/.vifm-Trash-0/000_am335x-pocketbeagle.dtb
+	/media/willeccles/rootfs1/boot/am335x-pocketbeagle.dtb
+t/media/willeccles/rootfs1/.vifm-Trash-0/000_am335x-evmsk.dtb
+	/media/willeccles/rootfs1/boot/am335x-evmsk.dtb
+t/media/willeccles/rootfs1/.vifm-Trash-0/000_am335x-evm.dtb
+	/media/willeccles/rootfs1/boot/am335x-evm.dtb
+t/media/willeccles/rootfs1/.vifm-Trash-0/000_am335x-bonegreen.dtb
+	/media/willeccles/rootfs1/boot/am335x-bonegreen.dtb
+t/media/willeccles/rootfs1/.vifm-Trash-0/000_am335x-bonegreen-wireless.dtb
+	/media/willeccles/rootfs1/boot/am335x-bonegreen-wireless.dtb
+t/media/willeccles/rootfs1/.vifm-Trash-0/000_am335x-boneblue.dtb
+	/media/willeccles/rootfs1/boot/am335x-boneblue.dtb
+t/media/willeccles/rootfs1/.vifm-Trash-0/000_am335x-boneblack.dtb
+	/media/willeccles/rootfs1/boot/am335x-boneblack.dtb
+t/media/willeccles/rootfs1/.vifm-Trash-0/000_am335x-boneblack-wireless.dtb
+	/media/willeccles/rootfs1/boot/am335x-boneblack-wireless.dtb
+t/media/willeccles/rootfs1/.vifm-Trash-0/000_am335x-boneblack-pru-adc.dtb
+	/media/willeccles/rootfs1/boot/am335x-boneblack-pru-adc.dtb
+t/media/willeccles/rootfs1/.vifm-Trash-0/000_am335x-boneblack-iot-cape.dtb
+	/media/willeccles/rootfs1/boot/am335x-boneblack-iot-cape.dtb
+t/media/willeccles/rootfs1/.vifm-Trash-0/000_am335x-bone.dtb
+	/media/willeccles/rootfs1/boot/am335x-bone.dtb
+t/.vifm-Trash-0/000_rootfs
+	/media/willeccles/rootfs
 
 # State:
 f
