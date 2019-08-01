@@ -18,4 +18,6 @@ source $ZSH/oh-my-zsh.sh
 export SHELL=$(which zsh)
 
 alias please='sudo $(history -p !-1)'
-alias ls=~/ls-icons
+if [[ -a "$(which ls-icons)" ]]; then
+    alias ls=$(which ls-icons)
+fi
