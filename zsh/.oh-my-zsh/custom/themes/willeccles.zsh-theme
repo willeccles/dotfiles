@@ -8,7 +8,7 @@ function prompt_exit {
 			# just the command name though, no args
 			# this regex is actually cancerous to look at, i know
 			# i'm so sorry, future me
-			local lastjob=$(jobs -p | tail -n 1 | perl -pe 's/^\S+\s+\+\s+\S+\s+\S+\s+//' | perl -pe 's/\s.+//')
+			local lastjob=$(jobs -p | grep -v pwd | tail -n 1 | perl -pe 's/^\S+\s+\+\s+\S+\s+\S+\s+//' | perl -pe 's/\s.+//')
 			echo "%{$fg[yellow]%}${lastjob} %{$reset_color%}"
 		elif [ $EXIT -eq 130 ]; then
 			echo "%{$fg[yellow]%}^C %{$reset_color%}"
