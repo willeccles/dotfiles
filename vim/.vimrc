@@ -5,6 +5,7 @@ set laststatus=2
 set noshowmode
 set t_Co=256
 runtime macros/matchit.vim "this allows % to match HTML/XML tags, as well as the default opening and closing ([{<
+set modeline
 
 autocmd GUIEnter * set vb t_vb=
 
@@ -222,10 +223,25 @@ set shiftwidth=4
 set smarttab
 set expandtab "this would put in 4 spaces when pressing tab
 
-"folding should be marker (works like manual, but also folds on triple curly
-"braces automatically)
-"reminder: open a fold with za, close a fold with zc, make a fold (in Visual) with zf
-setlocal foldmethod=marker
+"fold on markers in scripts, don't fold on markers in other files
+"reminder:
+"  - open a fold with zo
+"  - toggle a fold with za (or zz or Z - see map below)
+"  - close a fold with zc
+"  - make a fold with zf
+"  - delete a fold at cursor with zd
+"  - delete a fold recursively at cursor with zD
+setlocal foldmethod=syntax
+setlocal foldlevelstart=99 "don't automatically fold everything
+"setlocal foldnestmax=10
+augroup vimrc
+	au!
+	autocmd BufNewFile,BufRead *.sh,*.zsh-theme,*.vimrc,*rc,*.conf	setlocal foldlevel=0 | setlocal foldmethod=marker
+augroup END
+
+"use zz to toggle folds
+nmap zz za
+nmap Z  za
 
 map <F7> <Esc>:tabp<Return>
 map <F8> <Esc>:tabn<Return>
