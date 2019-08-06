@@ -8,8 +8,10 @@ function prompt_exit {
 			# just the command name though, no args
 			# this regex is actually cancerous to look at, i know
 			# i'm so sorry, future me
-			local lastjob=$(jobs -p | grep -v pwd | tail -n 1 | perl -pe 's/^\S+\s+\+\s+\S+\s+\S+\s+//' | perl -pe 's/\s.+//')
-			echo "%{$fg[yellow]%}${lastjob} %{$reset_color%}"
+			#local lastjob=$(jobs -p | grep -v pwd | tail -n 1 | perl -pe 's/^\S+\s+\+\s+\S+\s+\S+\s+//' | perl -pe 's/\s.+//')
+            # hooray! saved from the horrible regex!
+            local lastjob=$(jobs | grep -v pwd | perl -pe "s/[\s\t]+/ /g" | cut -d" " -f4)
+			echo "%{$fg[yellow]%}${lastjob}  %{$reset_color%}"
 		elif [ $EXIT -eq 130 ]; then
 			echo "%{$fg[yellow]%}^C %{$reset_color%}"
 		else
@@ -19,7 +21,7 @@ function prompt_exit {
 }
 
 function prompt_jobcount {
-	local jobnum=$(jobs -p | wc -l | tr -d ' ')
+	local jobnum=$(jobs | grep "\[" | wc -l | tr -d ' ')
 	
 	if [ $jobnum -ne 0 ]; then
 		echo "%{$fg[yellow]%} ${jobnum}%{$reset_color%}"
