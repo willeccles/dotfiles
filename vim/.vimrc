@@ -295,3 +295,15 @@ augroup zsh_theme_ft
 	au!
 	autocmd BufNewFile,BufRead *.zsh-theme	set syntax=zsh
 augroup END
+
+"enable hex editing for binary files
+"when starting vim with -b, this will edit the file with hex
+augroup Binary
+  au!
+  au BufReadPost * if &bin | %!xxd
+  au BufReadPost * set ft=xxd | endif
+  au BufWritePre * if &bin | %!xxd -r
+  au BufWritePre * endif
+  au BufWritePost * if &bin | %!xxd
+  au BufWritePost * set nomod | endif
+augroup END
