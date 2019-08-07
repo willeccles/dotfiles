@@ -44,7 +44,7 @@ __prompt_command() {
 		if [ $EXIT -eq 148 ]; then
 			# when its 148 i want it to show me what job i stopped
 			# just the command name though, no args
-			local lastjob="$(ps -p $(jobs -p | sed -e '$!d') -o comm=)"
+            local lastjob=$(jobs | grep "+" | perl -pe "s/[\s\t]+/ /g" | cut -d" " -f3)
 			PS1="${c_Job}${lastjob}${c_Rst} $PS1"
 		elif [ $EXIT -eq 130 ]; then
 			PS1="${c_Job}^C${C_Rst} $PS1"

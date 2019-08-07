@@ -4,13 +4,8 @@ function prompt_exit {
 	if [ $EXIT -ne 0 ]; then
 		# 148 is STOPPED, like control-z, etc.
 		if [ $EXIT -eq 148 ]; then
-			# when its 148 i want it to show me what job i stopped
-			# just the command name though, no args
-			# this regex is actually cancerous to look at, i know
-			# i'm so sorry, future me
-			#local lastjob=$(jobs -p | grep -v pwd | tail -n 1 | perl -pe 's/^\S+\s+\+\s+\S+\s+\S+\s+//' | perl -pe 's/\s.+//')
-            # hooray! saved from the horrible regex!
-            local lastjob=$(jobs | grep -v pwd | perl -pe "s/[\s\t]+/ /g" | cut -d" " -f4)
+            # the + indicates the last job
+            local lastjob=$(jobs | grep "+" | perl -pe "s/[\s\t]+/ /g" | cut -d" " -f4)
 			echo "%{$fg[yellow]%}${lastjob}  %{$reset_color%}"
 		elif [ $EXIT -eq 130 ]; then
 			echo "%{$fg[yellow]%}^C %{$reset_color%}"
