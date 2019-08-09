@@ -274,7 +274,7 @@ map <F9> <Esc>:tabe
 map <F11> <Esc>:bp<Return>
 map <F12> <Esc>:bn<Return>
 
-map <F10> <Esc>:%s/\([)>a-zA-Z0-9]\) {/\1 {/ge<Return>:%s/{\zs\s\+\ze$//ge<Return>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<Return>:%s/\r//ge<Return>:%s/[\s\t ]\/\/\+\zs\([^\s\t ]\)/ \1/g<Return>ggVG=:retab:w<Return>
+map <F10> <Esc>:%s/\([)>a-zA-Z0-9]\) {/\1 {/ge<Return>:%s/{\zs\s\+\ze$//ge<Return>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<Return>:%s/\r//ge<Return>:%s/}\zs\([^\s\t ]\)/ \1/ge<Return>:%s/[\s\t ]\/\/\+\zs\([^\s\t ]\)/ \1/ge<Return>ggVG=:retab:w<Return>
 
 "compile
 map <F1> <Esc>:make<Return>
