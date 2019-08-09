@@ -65,9 +65,9 @@ endfunction
 
 " source a file only if it exists
 function! SourceIfExists(file)
-  if filereadable(expand(a:file))
-    exe 'source' a:file
-  endif
+    if filereadable(expand(a:file))
+        exe 'source' a:file
+    endif
 endfunction
 
 let g:go_highlight_array_whitespace_error = 0
@@ -274,7 +274,7 @@ map <F9> <Esc>:tabe
 map <F11> <Esc>:bp<Return>
 map <F12> <Esc>:bn<Return>
 
-map <F10> <Esc>:%s/\([)>a-zA-Z0-9]\){/\1 {/ge<Return>:%s/{\zs\s\+\ze$//ge<Return>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<Return>:%s/\r//ge<Return>ggVG=:w<Return>
+map <F10> <Esc>:%s/\([)>a-zA-Z0-9]\) {/\1 {/ge<Return>:%s/{\zs\s\+\ze$//ge<Return>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<Return>:%s/\r//ge<Return>ggVG=:retab:w<Return>
 
 "compile
 map <F1> <Esc>:make<Return>
@@ -320,11 +320,11 @@ augroup END
 "enable hex editing for binary files
 "when starting vim with -b, this will edit the file with hex
 augroup Binary
-  au!
-  au BufReadPost * if &bin | %!xxd
-  au BufReadPost * set ft=xxd | endif
-  au BufWritePre * if &bin | %!xxd -r
-  au BufWritePre * endif
-  au BufWritePost * if &bin | %!xxd
-  au BufWritePost * set nomod | endif
+    au!
+    au BufReadPost * if &bin | %!xxd
+    au BufReadPost * set ft=xxd | endif
+    au BufWritePre * if &bin | %!xxd -r
+    au BufWritePre * endif
+    au BufWritePost * if &bin | %!xxd
+    au BufWritePost * set nomod | endif
 augroup END
