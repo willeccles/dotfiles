@@ -257,10 +257,10 @@ setlocal foldlevelstart=99 "don't automatically fold everything
 "setlocal foldnestmax=10
 augroup vimrc
     au!
-    autocmd BufNewFile,BufRead *.sh,*.zsh-theme,*.vimrc,*rc,*.conf  setlocal foldlevel=0 | setlocal foldmethod=marker
+    autocmd BufNewFile,BufRead *.sh,*.zsh-theme,*.vimrc,*.vim,*rc,*.conf  setlocal foldlevel=0 | setlocal foldmethod=marker
 augroup END
 
-"use zz to toggle folds
+"use zz or Z to toggle folds
 nmap zz za
 nmap Z  za
 
