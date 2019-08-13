@@ -8,6 +8,9 @@ runtime macros/matchit.vim "this allows % to match HTML/XML tags, as well as the
 set modeline
 set background=dark
 
+" keep 5 lines of context around the cursor
+set scrolloff=5
+
 set termguicolors
 
 autocmd GUIEnter * set vb t_vb=
