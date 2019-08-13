@@ -72,9 +72,69 @@ function prompt_parse_git_branch() {
 }
 # }}}
 
+# svn things {{{
+function parse_svn_dirty() {
+    svnstatus=`svn status 2> /dev/null`
+    dirty=`echo -n "${svnstatus}" 2> /dev/null | grep ^M &> /dev/null; echo "$?"`
+    newfile=`echo -n "${svnstatus}" 2> /dev/null | grep ^A &> /dev/null; echo "$?"`
+    untracked=`echo -n "${svnstatus}" 2> /dev/null | grep "^?" &> /dev/null; echo "$?"`
+    deleted=`echo -n "${svnstatus}" 2> /dev/null | grep ^D &> /dev/null; echo "$?"`
+    missing=`echo -n "${svnstatus}" 2> /dev/null | grep "^!" &> /dev/null; echo "$?"`
+    bits=''
+    if [ "${newfile}" = "0" ]; then
+        bits="+${bits}"
+    fi
+    if [ "${missing}" = "0" ]; then
+        bits="!${bits}"
+    fi
+    if [ "${untracked}" = "0" ]; then
+        bits="?${bits}"
+    fi
+    if [ "${deleted}" = "0" ]; then
+        bits="x${bits}"
+    fi
+    if [ "${dirty}" = "0" ]; then
+        bits="M${bits}"
+    fi
+    
+    if [ "${bits}" != "" ]; then
+        echo " ${bits}"
+    else
+        echo ""
+    fi
+}
+
+function prompt_parse_svn_repo() {
+    svnrepo=`svn info 2>&1 | grep ^URL`
+    svnstatus=`svn status 2>&1`
+    svnignored=`echo -n ${svnstatus} 2> /dev/null | grep "^I \+." &> /dev/null; echo "$?"`
+    svnuntracked=`echo -n ${svnstatus} 2> /dev/null | grep "^? \+." &> /dev/null; echo "$?"`
+    if [ "${svnrepo}" != "" ]; then
+        STAT=$(parse_svn_dirty)
+		echo "%{$fg[cyan]%} ${svnrepo##*/}${STAT} %{$reset_color%}"
+    else
+        if [ "${svnuntracked}" = "0" ]; then
+            echo "%{$fg[cyan]%} ${PWD##*/}:? %{$reset_color%}"
+        elif [ "${svnignored}" = "0" ]; then
+            echo "%{$fg[cyan]%} ${PWD##*/}:I %{$reset_color%}"
+        else
+            echo ""
+        fi
+    fi
+}
+#}}}
+
 # override this, since i'm not happy with the default options
 function git_prompt_info {
 	echo $(prompt_parse_git_branch)
+}
+
+function vcs_prompt_info {
+    STAT=$(prompt_parse_git_branch)
+    if [ "${STAT}" = "" ]; then
+        STAT=$(prompt_parse_svn_repo)
+    fi
+    echo "${STAT}"
 }
 
 # these are here for posterity
@@ -84,6 +144,6 @@ function git_prompt_info {
 #ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
 #ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-PROMPT='$(prompt_exit)%{$fg_bold[magenta]%}%1~%{$reset_color%} $(git_prompt_info)%{$fg_bold[green]%}%{$reset_color%} '
+PROMPT='$(prompt_exit)%{$fg_bold[magenta]%}%1~%{$reset_color%} $(vcs_prompt_info)%{$fg_bold[green]%}%{$reset_color%} '
 
 RPROMPT='$(prompt_jobcount)'
