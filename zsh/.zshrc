@@ -11,6 +11,14 @@ plugins=(osx git colored-man-pages zsh-autosuggestions zsh-syntax-highlighting)
 
 ZSH_THEME=willeccles
 
+# setup for my theme
+if [[ -a "$(which git)" ]]; then
+    export HAS_GIT="yes"
+fi
+if [[ -a "$(which svn)" ]]; then
+    export HAS_SVN="yes"
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # wasn't working, at least on mac os

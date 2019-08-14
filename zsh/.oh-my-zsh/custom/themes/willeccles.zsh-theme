@@ -26,6 +26,10 @@ function prompt_jobcount {
 # git things {{{
 # get current status of git repo
 function parse_git_dirty() {
+    if [ "${HAS_GIT}" = "" ]; then
+        echo ""
+        return
+    fi
 	gstatus=`git status 2>&1 | tee`
 	dirty=`echo -n "${gstatus}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
 	untracked=`echo -n "${gstatus}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
@@ -105,8 +109,14 @@ function parse_svn_dirty() {
 }
 
 function prompt_parse_svn_repo() {
-    svnrepo=`svn info 2>&1 | grep ^URL`
-    svnstatus=`svn status 2>&1`
+    # check to see that SVN is installed
+    if [ "${HAS_SVN}" = "" ]; then
+        echo ""
+        return
+    fi
+
+    svnrepo=`svn info 2> /dev/null | grep ^URL`
+    svnstatus=`svn status 2> /dev/null`
     svnignored=`echo -n ${svnstatus} 2> /dev/null | grep "^I \+." &> /dev/null; echo "$?"`
     svnuntracked=`echo -n ${svnstatus} 2> /dev/null | grep "^? \+." &> /dev/null; echo "$?"`
     if [ "${svnrepo}" != "" ]; then
