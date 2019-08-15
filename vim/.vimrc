@@ -13,6 +13,8 @@ set scrolloff=3
 
 set termguicolors
 
+set nrformats=alpha " allow g<C-a> to increment letters
+
 autocmd GUIEnter * set vb t_vb=
 
 " modes
