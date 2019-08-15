@@ -252,7 +252,7 @@ set expandtab "this would put in 4 spaces when pressing tab
 "fold on markers in scripts, don't fold on markers in other files
 "reminder:
 "  - open a fold with zo
-"  - toggle a fold with za (or zz or Z - see map below)
+"  - toggle a fold with za (or Z - see map below)
 "  - close a fold with zc
 "  - make a fold with zf
 "  - delete a fold at cursor with zd
@@ -265,9 +265,9 @@ augroup vimrc
     autocmd BufNewFile,BufRead *.sh,*.zsh-theme,*.vimrc,*.vim,*rc,*.conf  setlocal foldlevel=0 | setlocal foldmethod=marker
 augroup END
 
-"use zz or Z to toggle folds
-nmap zz za
+"use Z to toggle folds
 nmap Z  za
+"used to have zz for this, but then discovered what zz does
 
 map <F7> <Esc>:tabp<Return>
 map <F8> <Esc>:tabn<Return>
