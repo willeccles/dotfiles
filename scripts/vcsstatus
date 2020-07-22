@@ -1,0 +1,31 @@
+#! /bin/bash
+
+# Get the current status in version control regardless of which VCS you're using.
+# This particularly means SVN and git since those are the ones that I use.
+
+GIT=$(which git 2> /dev/null)
+SVN=$(which svn 2> /dev/null)
+
+if [ "${GIT}" != "" ]; then
+    ISGIT=$(git branch 2> /dev/null)
+    if [ "${ISGIT}" != "" ]; then
+        git status
+        exit 0
+    fi
+fi
+
+if [ "${SVN}" != "" ]; then
+    ISSVN=$(svn info &> /dev/null; echo -n "$?")
+    if [ "${ISSVN}" = "0" ]; then
+        svn status
+        exit 0
+    fi
+fi
+
+if [ "${GIT}" = "" ] && [ "${SVN}" = "" ]; then
+    >&2 echo "Neither git nor svn were found."
+    exit 1
+else
+    >&2 echo "${PWD} is not a git or subversion repository."
+    exit 1
+fi

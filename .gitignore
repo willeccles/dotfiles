@@ -1,0 +1,5 @@
+.DS_Store
+*.swp
+config/.config/vifm/vifminfo
+config/.config/asciinema/install-id
+vim/.vim/plugged

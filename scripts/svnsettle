@@ -1,0 +1,51 @@
+#! /bin/bash
+
+# File: svnsettle
+# Author: Will Eccles
+# Date: 2019-08-14T07:42R
+
+# Description: This script takes any unknown files in an SVN repo (not counting
+#  ignored ones, obviously) and adds them. If there are any missing files, it
+#  will remove them from SVN. Note that this is not necessarily a perfect
+#  solution, but it does what I wanted it to. It's definitely not the cleanest
+#  script around, but it gets the job done.
+
+SVNREPO=$(svn info &> /dev/null; echo "$?" 2> /dev/null)
+if [ "${SVNREPO}" = "1" ]; then
+    >&2 echo "Not an SVN repo."
+    exit 1
+fi
+
+STAT=$(svn status 2> /dev/null | grep "^[!?]" 2> /dev/null)
+if [ "${STAT}" = "" ]; then
+    echo "Nothing to settle."
+    exit 0
+fi
+
+UNKNOWN=$(svn status 2> /dev/null | grep "^\?" 2> /dev/null \
+    | perl -pe 's/^\?\s+//' 2> /dev/null)
+
+UCOUNT=$(echo -n "${UNKNOWN}" 2> /dev/null | wc -l 2> /dev/null)
+
+if [ "${UNKNOWN}" != "" ]; then
+    echo "Adding ${UCOUNT} unknown file(s)..."
+
+    for f in ${UNKNOWN}; do
+        svn add "${f}"
+    done
+fi
+
+MISSING=$(svn status 2> /dev/null | grep "^!" 2> /dev/null \
+    | perl -pe 's/^!\s+//' 2> /dev/null)
+
+MCOUNT=$(echo -n "${MISSING}" 2> /dev/null | wc -l 2> /dev/null)
+
+if [ "${MISSING}" != "" ]; then
+    echo "Removing ${COUNT} missing file(s)..."
+
+    for f in ${MISSING}; do
+        svn remove "${f}"
+    done
+fi
+
+echo "Settled. Added ${UCOUNT}; Removed ${MCOUNT}."
