@@ -179,6 +179,7 @@ let g:NERDTreeDirArrowExpandable='▸'
 let g:NERDTreeDirArrowCollapsible='▾'
 set wildignore+=*.so,*.swp,*.zip
 
+"ALE
 let g:ale_completion_enabled=1
 
 "ctrlp.vim
@@ -199,6 +200,9 @@ if executable('ag')
 endif
 
 let g:ctrlp_cache_dir=$HOME . '/.cache/ctrlp'
+
+"limelight
+let g:limelight_conceal_ctermfg=1
 
 "enable limelight for goyo
 autocmd! User GoyoEnter Limelight
@@ -221,10 +225,10 @@ syntax enable "syntax hilighting
 set background=dark
 set termguicolors
 
-let g:gruvbox_plugin_hi_groups=1
-let g:gruvbox_filetype_hi_groups=1
+let g:gruvbox_italic=1
+let g:gruvbox_invert_selection=0
 
-colorscheme gruvbox8
+colorscheme gruvbox
 
 " setup italics in terminal
 if !has("gui_running")
