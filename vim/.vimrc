@@ -23,8 +23,10 @@ set switchbuf=useopen " see :h switchbuf
 set title
 set titlestring=%t\ -\ NVIM
 
-set undodir=/tmp/vim-undodir
-set undofile
+if has('persistent_undo')
+    set undodir=/tmp/vim-undodir
+    set undofile
+endif
 
 " splitting {{{
 " internal helper for splitting naturally
@@ -51,7 +53,7 @@ endfu
 " use :S <filenames...> to open 1 or more splits in a 'natural' way
 " this can be used with no args, which is identical to just calling a split
 " function
-command! -nargs=* -complete=file S call SplitNatural(<f-args>) 
+command! -nargs=* -complete=file S call SplitNatural(<f-args>)
 
 set splitright
 set splitbelow
@@ -69,65 +71,22 @@ endif
 
 " functions and such {{{
 
-" modes
-let g:currentmode={
-            \ 'n'  : 'N',
-            \ 'no' : 'N·OP',
-            \ 'v'  : 'V',
-            \ 'V'  : 'V·L',
-            \ '' : 'V·B',
-            \ 's'  : 'S',
-            \ 'S'  : 'S·L',
-            \ '' : 'S·B',
-            \ 'i'  : 'I',
-            \ 'R'  : 'R',
-            \ 'Rv' : 'V·R',
-            \ 'c'  : 'Cmd',
-            \ 'cv' : 'V·Ex',
-            \ 'ce' : 'Ex',
-            \ 'r'  : 'P',
-            \ 'rm' : 'M',
-            \ 'r?' : 'Conf',
-            \ '!'  : 'Sh',
-            \ 't'  : 'T',
-            \}
-
-"for adding a plus to the statusline when a file has been modified
-fu! Modstatus()
-    return &modified ? '+' : ''
-endfunction
-
-"readonly status
-fu! ReadOnly()
-    return &readonly ? ' [RO]' : ''
-endfunction
-
-"filetype
-fu! Ftype()
-    return substitute(&filetype, "[[]]", "", "")
-endfunction
-
-"line endings
-fu! LEnds()
-    let l:format = substitute(&fileformat, "[[]]", "", "")
-"    if l:format == 'unix'
-"        return '␊'
-"    elseif l:format == 'dos'
-"        return '␍␊'
-"    elseif l:format == 'mac'
-"        return '␍'
-"    else
-"        return ' '
-"    endif
-    return l:format
-endfunction
-
 " source a file only if it exists
 function! SourceIfExists(file)
     if filereadable(expand(a:file))
         exe 'source' a:file
     endif
 endfunction
+
+"function to strip whitespace from the start/end of a string string
+fu! StripSpaces(instr)
+    " trim is in neovim and in vim >= 8.0.1630
+    if has('nvim') || v:versionlong >= 8001630
+        return trim(a:instr)
+    else
+        return substitute(a:instr, '^\_s*\(.\{-}\)\_s*$', '\1', '')
+    endif
+endfu
 
 " end functions and stuff }}}
 
@@ -261,18 +220,88 @@ endif
 " end highlighting }}}
 
 " statusline fields {{{
+
+" supporting functions {{{
+" modes
+let g:currentmode={
+            \ 'n'  : 'N',
+            \ 'no' : 'N·OP',
+            \ 'v'  : 'V',
+            \ 'V'  : 'V·L',
+            \ '' : 'V·B',
+            \ 's'  : 'S',
+            \ 'S'  : 'S·L',
+            \ '' : 'S·B',
+            \ 'i'  : 'I',
+            \ 'R'  : 'R',
+            \ 'Rv' : 'V·R',
+            \ 'c'  : 'Cmd',
+            \ 'cv' : 'V·Ex',
+            \ 'ce' : 'Ex',
+            \ 'r'  : 'P',
+            \ 'rm' : 'M',
+            \ 'r?' : 'Conf',
+            \ '!'  : 'Sh',
+            \ 't'  : 'T',
+            \}
+
+"for adding a plus to the statusline when a file has been modified
+fu! Modstatus()
+    return &modified ? '+' : ''
+endfunction
+
+"readonly status
+fu! ReadOnly()
+    return &readonly ? ' [RO]' : ''
+endfunction
+
+"filetype
+fu! Ftype()
+    return substitute(&filetype, "[[]]", "", "")
+endfunction
+
+"line endings
+fu! LEnds()
+    let l:format = substitute(&fileformat, "[[]]", "", "")
+    return l:format
+endfunction
+
+"git status
+fu! GitStatus()
+    let [a,m,r] = GitGutterGetHunkSummary()
+    let str = ''
+
+    if a > 0
+        let str .= printf(' +%d', a)
+    endif
+
+    if m > 0
+        let str .= printf(' ~%d', m)
+    endif
+
+    if r > 0
+        let str .= printf(' -%d', r)
+    endif
+
+    if len(str) > 0
+        return printf(' [%s] ', StripSpaces(str))
+    else
+        return str
+    endif
+endfu
+" end supporting functions }}}
+
 "statusline
 :set statusline=%#CP_MODE#\ %{toupper(g:currentmode[mode()])}\  "shows mode
-":set statusline+=\ %#CP_DIV#\|\  "divider after mode
 :set statusline+=%< "where to truncate the line, in other words always show mode
-":set statusline+=%#CP_LNUM#%n: " buffer number
+:set statusline+=%#CP_LNUM#%n: " buffer number
+:set statusline+=%{ReadOnly()} "readonly status
 :set statusline+=%#CP_FNAME#\ %f "filename
 :set statusline+=%{Modstatus()} "modified status of buffer
-:set statusline+=%{ReadOnly()} "redonly status
-":set statusline+=\ %#CP_DIV#\|\  "filename divider
 :set statusline+=\ %#CP_MID# "set color for middle of SL
 :set statusline+=\ %{Ftype()}\ \ %{LEnds()} "filetype
 :set statusline+=%= "every statusline addition after this line will be right justified
+:set statusline+=%{GitStatus()} "git information
 :set statusline+=\ %p%%\  "percentage through the file in lines
 :set statusline+=%#CP_LNUM#\ L%l:C%c\  "line number and character on that line
 
@@ -342,7 +371,7 @@ nmap <C-j> <C-Down>
 map <F7> <Esc>:tabp<Return>
 map <F8> <Esc>:tabn<Return>
 "use tabe instead of tabf, e works the same as :e
-map <F9> <Esc>:tabe 
+map <F9> <Esc>:tabe
 map <C-F7> <Esc>:bp<Return>
 map <C-F8> <Esc>:bn<Return>
 
