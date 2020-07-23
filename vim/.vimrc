@@ -386,7 +386,7 @@ map <F6> <Esc>:cclose<Return>
 augroup vimrc
     au!
     autocmd BufNewFile,BufRead Makefile,*.mk,*.sh,*.zsh-theme,*.vimrc,*.vim,*rc,*.conf  setlocal foldlevel=0 | setlocal foldmethod=marker
-    autocmd BufNewFile,BufRead *.tex,*.md,*.txt,*.rtf,README setlocal textwidth=100
+    autocmd BufNewFile,BufRead *.tex,*.md,*.txt,*.rtf,README setlocal textwidth=80
 augroup END
 
 " disable bells
