@@ -130,6 +130,4 @@ if [ "$TERM" = "linux" ]; then
     clear # fix some weird artifacting
 fi
 
-if [ -f "$HOME/.localprofile" ]; then
-    . "$HOME/.localprofile"
-fi
+[ -f ~/.localprofile ] && . ~/.localprofile

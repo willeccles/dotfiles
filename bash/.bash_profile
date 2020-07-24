@@ -7,3 +7,4 @@ PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
 export PATH
 
 export PATH="$HOME/.cargo/bin:$PATH"
+if [ -e /Users/cactus/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/cactus/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

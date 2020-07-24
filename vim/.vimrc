@@ -106,15 +106,16 @@ else
 endif
 
 call plug#begin('~/.vim/plugged')
+" Plug 'junegunn/fzf', {'do': {->fzf#install()}, 'on': 'FZF'}
+Plug 'LnL7/vim-nix', {'for': 'nix'}
 Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
 Plug 'adelarsq/vim-matchit'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dense-analysis/ale'
-" Plug 'junegunn/fzf', {'do': {->fzf#install()}, 'on': 'FZF'}
+Plug 'godlygeek/tabular', {'on': 'Tab'}
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
-Plug 'godlygeek/tabular', {'on': 'Tab'}
 Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', 'LiveEasyAlign']}
 Plug 'junegunn/vim-markdown-toc', {'for': 'markdown'}
 Plug 'junegunn/vim-slash'
