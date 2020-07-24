@@ -114,6 +114,7 @@ Plug 'dense-analysis/ale'
 " Plug 'junegunn/fzf', {'do': {->fzf#install()}, 'on': 'FZF'}
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
+Plug 'godlygeek/tabular', {'on': 'Tab'}
 Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', 'LiveEasyAlign']}
 Plug 'junegunn/vim-markdown-toc', {'for': 'markdown'}
 Plug 'junegunn/vim-slash'
