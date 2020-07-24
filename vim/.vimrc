@@ -295,7 +295,7 @@ endfu
 "statusline
 :set statusline=%#CP_MODE#\ %{toupper(g:currentmode[mode()])}\  "shows mode
 :set statusline+=%< "where to truncate the line, in other words always show mode
-:set statusline+=%#CP_LNUM#%n: " buffer number
+:set statusline+=\ %#CP_LNUM#%n: " buffer number
 :set statusline+=%{ReadOnly()} "readonly status
 :set statusline+=%#CP_FNAME#\ %f "filename
 :set statusline+=%{Modstatus()} "modified status of buffer
