@@ -126,6 +126,7 @@ Plug 'sickill/vim-pasta'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
 Plug 'troydm/zoomwintab.vim', {'on': ['ZoomWinTabIn', 'ZoomWinTabOut', 'ZoomWinTabToggle']}
+Plug 'whatyouhide/vim-lengthmatters'
 call plug#end()
 
 "enable gitgutter
