@@ -118,6 +118,7 @@ Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
 Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', 'LiveEasyAlign']}
 Plug 'junegunn/vim-markdown-toc', {'for': 'markdown'}
+Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-slash'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
