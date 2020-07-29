@@ -127,7 +127,7 @@ Plug 'sickill/vim-pasta'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
 Plug 'troydm/zoomwintab.vim', {'on': ['ZoomWinTabIn', 'ZoomWinTabOut', 'ZoomWinTabToggle']}
-Plug 'whatyouhide/vim-lengthmatters'
+Plug 'whatyouhide/vim-lengthmatters', {'on': ['LengthmattersToggle', 'LengthmattersEnable']}
 call plug#end()
 
 "enable gitgutter
@@ -261,7 +261,12 @@ endfunction
 
 "filetype
 fu! Ftype()
-    return substitute(&filetype, "[[]]", "", "")
+    let str = substitute(&filetype, "[[]]", "", "")
+    if len(str) > 0
+        return printf(' %s ', str)
+    else
+        return str
+    endif
 endfunction
 
 "line endings
@@ -303,7 +308,7 @@ endfu
 :set statusline+=%#CP_FNAME#\ %f "filename
 :set statusline+=%{Modstatus()} "modified status of buffer
 :set statusline+=\ %#CP_MID# "set color for middle of SL
-:set statusline+=\ %{Ftype()}\ \ %{LEnds()} "filetype
+:set statusline+=%{Ftype()}\ %{LEnds()} "filetype
 :set statusline+=%= "every statusline addition after this line will be right justified
 :set statusline+=%{GitStatus()} "git information
 :set statusline+=\ %p%%\  "percentage through the file in lines
