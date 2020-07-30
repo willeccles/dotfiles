@@ -128,6 +128,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
 Plug 'troydm/zoomwintab.vim', {'on': ['ZoomWinTabIn', 'ZoomWinTabOut', 'ZoomWinTabToggle']}
 Plug 'whatyouhide/vim-lengthmatters', {'on': ['LengthmattersToggle', 'LengthmattersEnable']}
+Plug 'ervandew/supertab'
 call plug#end()
 
 "enable gitgutter
@@ -144,6 +145,10 @@ set wildignore+=*.so,*.swp,*.zip
 
 "ALE
 let g:ale_completion_enabled=1
+
+"supertab
+let g:SuperTabDefaultCompletionType="<c-n>"
+let g:SuperTabLongestEnhanced=1
 
 "ctrlp.vim
 set wildmode=list:longest,list:full
@@ -468,6 +473,7 @@ augroup END
 set completeopt+=preview
 set completeopt+=menuone
 set completeopt+=noinsert
+set completeopt+=longest
 set shortmess+=c
 
 "set complete=.,b,u,]
