@@ -385,7 +385,7 @@ nmap <C-j> <C-Down>
 map <F7> <Esc>:tabp<Return>
 map <F8> <Esc>:tabn<Return>
 "use tabe instead of tabf, e works the same as :e
-map <F9> <Esc>:tabe
+map <F9> <Esc>:tabe<Space>
 map <C-F7> <Esc>:bp<Return>
 map <C-F8> <Esc>:bn<Return>
 
