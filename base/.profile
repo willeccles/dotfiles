@@ -61,6 +61,10 @@ if hascommand vifm; then
     alias f="vifm"
 fi
 
+if hascommand nvim; then
+    export MANPAGER='nvim +Man! +"set nocul" +"set noshowcmd" +"set noruler" +"set noshowmode" +"set laststatus=2" +"set statusline=%#CP_MANBAR#\ %t%=%p%%\ L%l:C%c\ "'
+fi
+
 # alias for git
 alias g="git"
 alias gc="git commit -am"
@@ -130,4 +134,6 @@ if [ "$TERM" = "linux" ]; then
     clear # fix some weird artifacting
 fi
 
-[ -f ~/.localprofile ] && . ~/.localprofile
+if [ -f ~/.localprofile ]; then
+    . ~/.localprofile
+fi

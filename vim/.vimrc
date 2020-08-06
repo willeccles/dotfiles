@@ -128,7 +128,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
 Plug 'troydm/zoomwintab.vim', {'on': ['ZoomWinTabIn', 'ZoomWinTabOut', 'ZoomWinTabToggle']}
 Plug 'whatyouhide/vim-lengthmatters', {'on': ['LengthmattersToggle', 'LengthmattersEnable']}
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 call plug#end()
 
 "enable gitgutter
@@ -216,14 +216,15 @@ highlight CP_MODE guibg=#3c3836 guifg=#928374 gui=bold
 highlight CP_FNAME guibg=#3c3836 guifg=#ebdbb2 gui=italic
 highlight CP_MID guibg=#3c3836 guifg=#928374
 highlight CP_LNUM guibg=#3c3836 guifg=#ebdbb2
+highlight CP_MANBAR guibg=#3c3836 guifg=#ebdbb2
 
 "I have termguicolors on, but if this causes issues this can be enabled again
-if !has("gui_running")
-    highlight CP_MODE ctermbg=237 ctermfg=245 cterm=bold
-    highlight CP_FNAME ctermbg=237 ctermfg=223 cterm=italic
-    highlight CP_MID ctermbg=237 ctermfg=245
-    highlight CP_LNUM ctermbg=237 ctermfg=223
-endif
+"if !has("gui_running")
+"    highlight CP_MODE ctermbg=237 ctermfg=245 cterm=bold
+"    highlight CP_FNAME ctermbg=237 ctermfg=223 cterm=italic
+"    highlight CP_MID ctermbg=237 ctermfg=245
+"    highlight CP_LNUM ctermbg=237 ctermfg=223
+"endif
 " }}} end status line/tab bar
 
 " end highlighting }}}
