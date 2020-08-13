@@ -176,6 +176,8 @@ let g:limelight_conceal_ctermfg=1
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+let g:goyo_width=81
+
 "easy align
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
