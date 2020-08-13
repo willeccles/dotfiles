@@ -8,36 +8,42 @@ c_Rst="\[\e[m\]"
 
 PROMPT_COMMAND=__prompt_command # sets the PS1 after commands
 
-__prompt_command() {
-	local EXIT="$?"
-	PS1=""
+if command -v promptus >/dev/null; then
+    __prompt_command() {
+        PS1="$(promptus "$?")"
+    }
+else
+    __prompt_command() {
+        local EXIT="$?"
+        PS1=""
 
-	local jobnum=$(jobs -p | wc -l | tr -d ' ')
+        local jobnum=$(jobs -p | wc -l | tr -d ' ')
 
-	PS1+="${c_Bold}${c_Magenta}\W ${c_Rst}"
-	#PS1+="${c_Cyan}\`parse_git_branch\`${c_Rst}"
-	
-	if [ $jobnum -ne 0 ]; then
-		PS1="${c_Yellow}\j${c_Rst} $PS1"
-	fi
+        PS1+="${c_Bold}${c_Magenta}\W ${c_Rst}"
+        #PS1+="${c_Cyan}\`parse_git_branch\`${c_Rst}"
 
-	if [ $EXIT -ne 0 ]; then
-		if [[ "$EXIT" == "${CONTROL_Z_CODE}" ]]; then
-            local lastjob=$(jobs | grep "+" | perl -pe "s/[\s\t]+/ /g" | cut -d" " -f3)
-			PS1="${c_Yellow}${lastjob}${c_Rst} $PS1"
-		elif [[ "$EXIT" == "130" ]]; then
-			PS1="${c_Yellow}^C ${C_Rst} $PS1"
-		else
-			PS1="${c_Red}${EXIT}${c_Rst} $PS1"
-		fi
-	fi
+        if [ $jobnum -ne 0 ]; then
+            PS1="${c_Yellow}\j${c_Rst} $PS1"
+        fi
 
-	PS1+="${c_Green}${PROMPT_CHAR}${c_Rst} "
+        if [ $EXIT -ne 0 ]; then
+            if [[ "$EXIT" == "${CONTROL_Z_CODE}" ]]; then
+                local lastjob=$(jobs | grep "+" | perl -pe "s/[\s\t]+/ /g" | cut -d" " -f3)
+                PS1="${c_Yellow}${lastjob}${c_Rst} $PS1"
+            elif [[ "$EXIT" == "130" ]]; then
+                PS1="${c_Yellow}^C ${C_Rst} $PS1"
+            else
+                PS1="${c_Red}${EXIT}${c_Rst} $PS1"
+            fi
+        fi
 
-	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-		PS1="${c_Cyan}[\u@\h]${c_Rst} $PS1"
-	fi
-}
+        PS1+="${c_Green}${PROMPT_CHAR}${c_Rst} "
+
+        if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+            PS1="${c_Cyan}[\u@\h]${c_Rst} $PS1"
+        fi
+    }
+fi
 
 # continuation prompt (e.g. when a line ends in \)
 PS2="${c_Green}${PROMPT_CHAR}${c_Rst} "

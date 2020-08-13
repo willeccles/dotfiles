@@ -20,7 +20,13 @@ for config_file ($ZSH/lib/*.zsh); do
     source $config_file
 done
 
+if command -v promptus >/dev/null; then
+    precmd() { PROMPT="$(eval 'promptus $?')" }
+fi
+
+# this won't get used if promptus is found above
 export PROMPT="%F{yellow}%(?..%(130?.^C.%(${CONTROL_Z_CODE}?.^Z.%(148?.^Z.%B%F{red}%?))) )%B%F{magenta}%1~ %b%(!.%F{red}.%F{green})${PROMPT_CHAR}%f "
+
 export RPROMPT='%F{yellow}%(1j.%j.)%f'
 export PROMPT2="%F{yellow}${PROMPT_CHAR}%f "
 if [ -e /Users/cactus/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/cactus/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
