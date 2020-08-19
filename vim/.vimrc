@@ -146,6 +146,7 @@ set wildignore+=*.so,*.swp,*.zip
 "ALE
 let g:ale_completion_enabled=1
 let g:ale_pattern_options = { '\.h$': {'ale_linters': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
+let g:ale_hover_cursor=0
 
 "supertab
 let g:SuperTabDefaultCompletionType="<c-n>"
