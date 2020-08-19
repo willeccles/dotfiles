@@ -145,6 +145,7 @@ set wildignore+=*.so,*.swp,*.zip
 
 "ALE
 let g:ale_completion_enabled=1
+let g:ale_pattern_options = { '\.h$': {'ale_linters': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
 
 "supertab
 let g:SuperTabDefaultCompletionType="<c-n>"
@@ -162,7 +163,9 @@ let g:ctrlp_use_caching = 1
 
 "if the silver searcher is installed
 if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
+    "set grepprg=ag\ --nogroup\ --nocolor
+    set grepprg=ag\ --vimgrep\ $*
+    set grepformat=%f:%l:%c:%m
     let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
     let g:ctrlp_use_caching=0
 endif

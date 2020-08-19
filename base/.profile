@@ -43,8 +43,6 @@ if hascommand nvim; then
     alias vimdiff="nvim -d"
     alias ex="nvim -e"
     alias view="nvim -R"
-else
-    alias nvim="vim"
 fi
 alias e="vim -p"
 alias eb="vim -b"
