@@ -288,6 +288,10 @@ endfunction
 
 "git status
 fu! GitStatus()
+    if !exists("*GitGutterGetHunkSummary")
+        return ""
+    endif
+
     let [a,m,r] = GitGutterGetHunkSummary()
     let str = ''
 
