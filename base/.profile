@@ -23,9 +23,9 @@ hascommand() {
 }
 
 if hascommand nvim; then
-    export EDITOR="`command -v nvim`"
+    export EDITOR="nvim"
 else
-    export EDITOR="`command -v vim`"
+    export EDITOR="vim"
 fi
 
 if hascommand open; then
@@ -90,6 +90,14 @@ if hascommand kiss; then
     export KISS_FORCE=0
     export KISS_ROOT=/
     export KISS_DEBUG=0
+fi
+
+if hascommand cpm; then
+    alias ci="sudo cpm install"
+    alias cl="cpm list"
+    alias cr="sudo cpm remove"
+    alias cI="cpm show"
+    alias cs="cpm search"
 fi
 
 if [ -f ~/.config/uncrustify.cfg ]; then
