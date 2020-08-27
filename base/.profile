@@ -29,7 +29,7 @@ else
 fi
 
 if hascommand open; then
-    export OPENER="`command -v open`"
+    export OPENER="open"
 fi
 
 if [ "$(uname -s)" = "Darwin" ]; then
