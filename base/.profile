@@ -23,13 +23,13 @@ hascommand() {
 }
 
 if hascommand nvim; then
-    export EDITOR="`command -v nvim`"
+    export EDITOR="nvim"
 else
-    export EDITOR="`command -v vim`"
+    export EDITOR="vim"
 fi
 
 if hascommand open; then
-    export OPENER="`command -v open`"
+    export OPENER="open"
 fi
 
 if [ "$(uname -s)" = "Darwin" ]; then
