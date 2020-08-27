@@ -106,7 +106,6 @@ else
 endif
 
 call plug#begin('~/.vim/plugged')
-" Plug 'junegunn/fzf', {'do': {->fzf#install()}, 'on': 'FZF'}
 Plug 'LnL7/vim-nix', {'for': 'nix'}
 Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
 Plug 'adelarsq/vim-matchit'
@@ -118,15 +117,16 @@ Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
 Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', 'LiveEasyAlign']}
 Plug 'junegunn/vim-markdown-toc', {'for': 'markdown'}
-Plug 'junegunn/vim-peekaboo'
+"Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-slash'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'sbdchd/neoformat', {'on': 'Neoformat'}
+if executable('uncrustify')
+    Plug 'sbdchd/neoformat', {'on': 'Neoformat'}
+endif
 Plug 'sickill/vim-pasta'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
-Plug 'troydm/zoomwintab.vim', {'on': ['ZoomWinTabIn', 'ZoomWinTabOut', 'ZoomWinTabToggle']}
 Plug 'whatyouhide/vim-lengthmatters', {'on': ['LengthmattersToggle', 'LengthmattersEnable']}
 "Plug 'ervandew/supertab'
 call plug#end()
