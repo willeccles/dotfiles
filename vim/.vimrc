@@ -113,7 +113,7 @@ Plug 'adelarsq/vim-matchit'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dense-analysis/ale'
-Plug 'godlygeek/tabular', {'on': 'Tab'}
+Plug 'godlygeek/tabular'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
 Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', 'LiveEasyAlign']}
@@ -464,19 +464,21 @@ augroup END
 " I want section 2 before second 3
 " Example: open() -> open(3pm) which is in the perl manual
 " I want open(2)
-autocmd BufNewFile,BufRead * let b:man_default_sects='2,3'
+autocmd BufNewFile,BufRead * let b:man_default_sects='2,2p,3,3p'
 
 "enable hex editing for binary files
 "when starting vim with -b, this will edit the file with hex
-augroup Binary
-    au!
-    au BufReadPost * if &bin | %!xxd
-    au BufReadPost * set ft=xxd | endif
-    au BufWritePre * if &bin | %!xxd -r
-    au BufWritePre * endif
-    au BufWritePost * if &bin | %!xxd
-    au BufWritePost * set nomod | endif
-augroup END
+if executable('xxd')
+    augroup Binary
+        au!
+        au BufReadPost * if &bin | %!xxd
+        au BufReadPost * set ft=xxd | endif
+        au BufWritePre * if &bin | %!xxd -r
+        au BufWritePre * endif
+        au BufWritePost * if &bin | %!xxd
+        au BufWritePost * set nomod | endif
+    augroup END
+endif
 
 " end autogroups/commands }}}
 
