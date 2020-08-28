@@ -28,7 +28,7 @@ else
 
         if [ $EXIT -ne 0 ]; then
             if [[ "$EXIT" == "${CONTROL_Z_CODE}" ]]; then
-                local lastjob=$(jobs | grep "+" | perl -pe "s/[\s\t]+/ /g" | cut -d" " -f3)
+                local lastjob=$(jobs | grep "+" | sed -E "s/\s+/ /g" | cut -d" " -f3)
                 PS1="${c_Yellow}${lastjob}${c_Rst} $PS1"
             elif [[ "$EXIT" == "130" ]]; then
                 PS1="${c_Yellow}^C ${C_Rst} $PS1"
