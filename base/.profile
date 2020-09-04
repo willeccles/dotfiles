@@ -60,9 +60,9 @@ if hascommand vifm; then
     alias f="vifm"
 fi
 
-if hascommand nvim; then
-    export MANPAGER='nvim +Man! +"set nocul" +"set noshowcmd" +"set noruler" +"set noshowmode" +"set laststatus=2" +"set statusline=%#CP_MANBAR#\ %t%=%p%%\ L%l:C%c\ "'
-fi
+#if hascommand nvim; then
+#    export MANPAGER='nvim +Man! +"set nocul" +"set noshowcmd" +"set noruler" +"set noshowmode" +"set laststatus=2" +"set statusline=%#CP_MANBAR#\ %t%=%p%%\ L%l:C%c\ "'
+#fi
 
 # alias for git
 alias g="git"
