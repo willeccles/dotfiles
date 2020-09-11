@@ -348,6 +348,9 @@ set shiftwidth=4
 set smarttab
 set expandtab
 
+" see cinoptions-values
+set cino=(0,Ws,m1,l1,j1,J1
+
 "fold on markers in scripts, don't fold on markers in other files
 "reminder:
 "  - open a fold with zo
