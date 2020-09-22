@@ -29,4 +29,7 @@ export PROMPT="%F{yellow}%(?..%(130?.^C.%(${CONTROL_Z_CODE}?.^Z.%(148?.^Z.%B%F{r
 
 export RPROMPT='%F{yellow}%(1j.%j.)%f'
 export PROMPT2="%F{yellow}${PROMPT_CHAR}%f "
+
+printf "\033[92m---,--'-{\033[91m@\033[m\n"
+
 if [ -e /Users/cactus/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/cactus/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
