@@ -348,6 +348,9 @@ set shiftwidth=4
 set smarttab
 set expandtab
 
+" see cinoptions-values
+set cino=ws,l1,j1,J1
+
 "fold on markers in scripts, don't fold on markers in other files
 "reminder:
 "  - open a fold with zo
@@ -464,7 +467,8 @@ augroup END
 " I want section 2 before second 3
 " Example: open() -> open(3pm) which is in the perl manual
 " I want open(2)
-autocmd BufNewFile,BufRead * let b:man_default_sects='2,2p,3,3p'
+autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cc let b:man_default_sectionss='2,2p,3,3p'
+let g:man_hardwrap=''
 
 "enable hex editing for binary files
 "when starting vim with -b, this will edit the file with hex

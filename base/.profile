@@ -88,9 +88,9 @@ if hascommand kiss; then
 fi
 
 if hascommand cpm; then
-    alias ci="sudo cpm install"
+    alias ci="cpm install"
     alias cl="cpm list"
-    alias cr="sudo cpm remove"
+    alias cr="cpm remove"
     alias cI="cpm show"
     alias cs="cpm search"
 fi
