@@ -88,6 +88,21 @@ fu! StripSpaces(instr)
     endif
 endfu
 
+" TODO: finish this, rather than using the gross spacevim plugin thing
+" testing for todo listing
+"fu! ShowTodos(...)
+"    if a:0 == 0
+"        " use the current buffer
+"        exec 'grep!' 'TODO' expand('%')
+"    else
+"        " search through all args
+"        exec 'grep!' 'TODO' a:000
+"    endif
+"endfu
+"
+"command! -nargs=* -complete=file ShowTodos call ShowTodos(<f-args>)
+
+
 " end functions and stuff }}}
 
 " plugins {{{
