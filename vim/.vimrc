@@ -21,7 +21,11 @@ set hidden " see :h hidden
 set switchbuf=useopen " see :h switchbuf
 
 set title
-set titlestring=%t\ -\ NVIM
+if has('nvim')
+    set titlestring=%t\ -\ NVIM
+else
+    set titlestring=%t\ -\ VIM
+endif
 
 if has('persistent_undo')
     set undodir=/tmp/vim-undodir
@@ -127,6 +131,7 @@ Plug 'adelarsq/vim-matchit'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dense-analysis/ale'
+Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
@@ -136,9 +141,9 @@ Plug 'junegunn/vim-markdown-toc', {'for': 'markdown'}
 Plug 'junegunn/vim-slash'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
-if executable('uncrustify')
-    Plug 'sbdchd/neoformat', {'on': 'Neoformat'}
-endif
+"if executable('uncrustify')
+"    Plug 'sbdchd/neoformat', {'on': 'Neoformat'}
+"endif
 Plug 'sickill/vim-pasta'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
@@ -439,6 +444,8 @@ map <F4> <Esc>:cprevious<Return>
 map <F5> <Esc>:cnext<Return>
 "close error output
 map <F6> <Esc>:cclose<Return>
+
+let mapleader=";"
 
 " end keybinds }}}
 
