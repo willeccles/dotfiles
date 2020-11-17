@@ -109,13 +109,13 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: "SF Mono"
+    family: "Cozette"
 
     # The `style` can be specified to pick a specific face.
-    style: Light
+    #style: Light
 
   # Bold font face
-  bold:
+  #bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
@@ -123,10 +123,10 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    style: Semibold
+    #style: Semibold
 
   # Italic font face
-  italic:
+  #italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
@@ -134,10 +134,10 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    style: Light Italic
+    #style: Light Italic
 
   # Bold italic font face
-  bold_italic:
+  #bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
@@ -145,23 +145,23 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    style: Semibold Italic
+    #style: Semibold Italic
 
   # Point size
-  size: 16.0
+  size: 13.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
-    x: 1
-    y: 0
+    x: 2
+    y: 1
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
-  #glyph_offset:
-  #  x: 0
-  #  y: 0
+  glyph_offset:
+    x: 0
+    y: 1
 
   # Thin stroke font rendering (macOS only)
   #
