@@ -369,7 +369,7 @@ set smarttab
 set expandtab
 
 " see cinoptions-values
-set cino=ws,l1,j1,J1,g2,h2
+set cino=ws,l1,j1,J1,g2,h2,E-s
 
 "fold on markers in scripts, don't fold on markers in other files
 "reminder:
