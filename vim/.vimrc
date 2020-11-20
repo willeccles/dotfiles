@@ -131,24 +131,21 @@ Plug 'adelarsq/vim-matchit'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dense-analysis/ale'
-Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
 Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', 'LiveEasyAlign']}
 Plug 'junegunn/vim-markdown-toc', {'for': 'markdown'}
-"Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-slash'
+Plug 'justinmk/vim-sneak'
+Plug 'machakann/vim-highlightedyank'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
-"if executable('uncrustify')
-"    Plug 'sbdchd/neoformat', {'on': 'Neoformat'}
-"endif
 Plug 'sickill/vim-pasta'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
+Plug 'unblevable/quick-scope'
 Plug 'whatyouhide/vim-lengthmatters', {'on': ['LengthmattersToggle', 'LengthmattersEnable']}
-"Plug 'ervandew/supertab'
 call plug#end()
 
 "enable gitgutter
@@ -168,19 +165,13 @@ let g:ale_completion_enabled=1
 let g:ale_pattern_options = { '\.h$': {'ale_linters': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
 let g:ale_hover_cursor=0
 
-"supertab
-let g:SuperTabDefaultCompletionType="<c-n>"
-let g:SuperTabLongestEnhanced=1
-
 "ctrlp.vim
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|tox|ico|git|hg|svn))$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 let g:ctrlp_use_caching = 1
-
-"FZF
-"let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.6, 'border': 'sharp'}}
+let g:ctrlp_cache_dir=$HOME . '/.cache/ctrlp'
 
 "if the silver searcher is installed
 if executable('ag')
@@ -191,8 +182,6 @@ if executable('ag')
     let g:ctrlp_use_caching=0
 endif
 
-let g:ctrlp_cache_dir=$HOME . '/.cache/ctrlp'
-
 "limelight
 let g:limelight_conceal_ctermfg=1
 
@@ -200,11 +189,15 @@ let g:limelight_conceal_ctermfg=1
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+"goyo
 let g:goyo_width=81
 
 "easy align
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
+
+"quick-scope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " end plugins }}}
 
@@ -401,32 +394,32 @@ nmap ;z za
 
 " sort using control-s, reverse sort using control-shift-s
 " doesn't work right now for some reason, too lazy to fix
-vnoremap <C-s> :'<,'>sort<Return>
-vnoremap <C-S> :'<,'>sort!<Return>
+vnoremap <C-s> :'<,'>sort<CR>
+vnoremap <C-S> :'<,'>sort!<CR>
 
 " copy to clipboard in visual mode with c-y
 if has('clipboard')
-    vnoremap <C-y> "+y<Return>
+    vnoremap <C-y> "+y<CR>
 endif
 
-nnoremap g= :retab<Return>mvgg=G`v
+nnoremap g= :retab<CR>mvgg=G`v
 
-nnoremap <C-Up> "ldd2k"Lp
+nnoremap <C-Up> "lddk"LP
 nnoremap <C-Down> "ldd"Lp
 nmap <C-k> <C-Up>
 nmap <C-j> <C-Down>
 
-map <F7> <Esc>:tabp<Return>
-map <F8> <Esc>:tabn<Return>
+map <silent> <F7> <Esc>:tabp<CR>
+map <silent> <F8> <Esc>:tabn<CR>
 "use tabe instead of tabf, e works the same as :e
 map <F9> <Esc>:tabe<Space>
-map <C-F7> <Esc>:bp<Return>
-map <C-F8> <Esc>:bn<Return>
+map <silent> <C-F7> <Esc>:bp<CR>
+map <silent> <C-F8> <Esc>:bn<CR>
 
-map <F11> <Esc>:bp<Return>
-map <F12> <Esc>:bn<Return>
+map <silent> <F11> <Esc>:bp<CR>
+map <silent> <F12> <Esc>:bn<CR>
 
-map <F10> <Esc>mp:%s/\([)>a-zA-Z0-9]\) {/\1 {/ge<Return>:%s/{\zs\s\+\ze$//ge<Return>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<Return>:%s/\r//ge<Return>:%s/}\zs\([^\s\t ;,\])}]\)/ \1/ge<Return>:%s/\(^\\|[\s\t ]\)\/\{2,}<\?!\?\zs\([^!<\s\t ]\)/ \2/ge<Return>:%s/[^\s\t ]\zs{/ {/ge<Return>gg=G:retab<Return>`p
+map <silent> <F10> <Esc>mp:%s/\([)>a-zA-Z0-9]\) {/\1 {/ge<CR>:%s/{\zs\s\+\ze$//ge<CR>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<CR>:%s/\r//ge<CR>:%s/}\zs\([^\s\t ;,\])}]\)/ \1/ge<CR>:%s/\(^\\|[\s\t ]\)\/\{2,}<\?!\?\zs\([^!<\s\t ]\)/ \2/ge<CR>:%s/[^\s\t ]\zs{/ {/ge<CR>gg=G:retab<CR>`p
 
 " use F1 to look up help pages and man pages
 nmap <F1> K
@@ -435,15 +428,15 @@ vnoremap < <gv
 vnoremap > >gv
 
 "compile
-map <F2> <Esc>:make<Return>
+map <silent> <F2> <Esc>:make<CR>
 "open error list
-map <F3> <Esc>:copen<Return>
+map <silent> <F3> <Esc>:copen<CR>
 "previous error
-map <F4> <Esc>:cprevious<Return>
+map <silent> <F4> <Esc>:cprevious<CR>
 "next error
-map <F5> <Esc>:cnext<Return>
+map <silent> <F5> <Esc>:cnext<CR>
 "close error output
-map <F6> <Esc>:cclose<Return>
+map <silent> <F6> <Esc>:cclose<CR>
 
 let mapleader=";"
 
