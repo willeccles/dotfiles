@@ -13,6 +13,10 @@ set siso=5
 " disable wrapping
 set nowrap
 
+set tw=80
+" see fo-table
+set fo=jcroqln1
+
 set lazyredraw
 
 set nrformats=alpha " allow g<C-a> to increment letters
@@ -458,7 +462,7 @@ let mapleader=";"
 augroup vimrc
     au!
     autocmd BufNewFile,BufRead Makefile,*.mk,*.sh,*.zsh-theme,*.vimrc,*.vim,*rc,*.conf  setlocal foldlevel=0 | setlocal foldmethod=marker
-    autocmd BufNewFile,BufRead *.tex,*.md,*.txt,*.rtf,README setlocal textwidth=80
+    "autocmd BufNewFile,BufRead *.tex,*.md,*.txt,*.rtf,README setlocal textwidth=80
 augroup END
 
 " disable bells
