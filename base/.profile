@@ -74,6 +74,7 @@ export PF_COL1=3
 if hascommand clang; then
     export CC=clang
     export CXX=clang++
+    export LD=clang
 fi
 
 export MAKEFLAGS=-j`nproc`
