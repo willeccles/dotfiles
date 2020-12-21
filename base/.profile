@@ -13,6 +13,7 @@ export PATH="/usr/local/opt/bison/bin:$PATH"
 
 export PATH="$PATH:/opt/local/libexec/gnubin"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/bin"
 
 export CLICOLOR=1
 
