@@ -168,6 +168,9 @@ set wildignore+=*.so,*.swp,*.zip
 let g:ale_completion_enabled=1
 let g:ale_pattern_options = { '\.h$': {'ale_linters': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
 let g:ale_hover_cursor=0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_c_cc_options='-Wall -pedantic -std=c11 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
 
 "ctrlp.vim
 set wildmode=list:longest,list:full
@@ -399,8 +402,8 @@ nmap ;z za
 
 " sort using control-s, reverse sort using control-shift-s
 " doesn't work right now for some reason, too lazy to fix
-vnoremap <C-s> :'<,'>sort<CR>
-vnoremap <C-S> :'<,'>sort!<CR>
+nnoremap <C-s> vip:sort<CR>
+nnoremap <M-s> vip:sort!<CR>
 
 " copy to clipboard in visual mode with c-y
 if has('clipboard')

@@ -13,6 +13,7 @@ export PATH="/usr/local/opt/bison/bin:$PATH"
 
 export PATH="$PATH:/opt/local/libexec/gnubin"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/bin"
 
 export CLICOLOR=1
 
@@ -74,6 +75,7 @@ export PF_COL1=3
 if hascommand clang; then
     export CC=clang
     export CXX=clang++
+    export LD=clang
 fi
 
 export MAKEFLAGS=-j`nproc`

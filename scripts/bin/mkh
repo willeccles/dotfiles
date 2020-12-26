@@ -1,0 +1,46 @@
+#! /bin/bash
+
+if [[ $# == 0 ]]; then
+    >&2 echo "Please supply at least one header name"
+    exit 1
+fi
+
+shopt -s extglob nocasematch
+
+# TODO: support creation in a directory which isn't PWD
+for header in "$@"; do
+    if [[ ! "$header" =~ .*\.h(h|pp)? ]]; then
+        header="${header/%+(.)}.h"
+    fi
+
+    base="${header%.*}"
+    base="${base//[^A-Z0-9_]/_}"
+    base="${base##+(_)}"
+    if [[ "$base" =~ [0-9].* ]]; then
+        base="_$base"
+    fi
+
+    ext="${header##*.}"
+
+    if [[ -e "$header" ]]; then
+        >&2 echo "$header already exists; skipping"
+        continue
+    fi
+
+    dir="${PWD##*/}"
+    dir="${dir//[^A-Z0-9_]/_}"
+    dir="${dir##+(_)}"
+    if [[ "$dir" =~ [0-9].* ]]; then
+        dir="_$dir"
+    fi
+
+    guard="${dir^^}_${base^^}_${ext^^}_"
+    guard="${guard//+(_)/_}"
+
+    if touch "$header"; then
+        echo "#ifndef $guard" > "$header"
+        echo "#define $guard" >> "$header"
+        echo "#endif /* $guard */" >> "$header"
+        echo "Created $header"
+    fi
+done
