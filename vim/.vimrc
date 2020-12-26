@@ -359,14 +359,15 @@ set cursorline
 
 filetype plugin indent on "enable indenting
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set smarttab
 set expandtab
 
 " see cinoptions-values
-set cino=ws,l1,j1,J1,g2,h2,E-s
+"set cino=ws,l1,j1,J1,g2,h2,E-s
+set cino=h1,l1,g1,t0,i4,+4,(0,w1,W4,E-s
 
 "fold on markers in scripts, don't fold on markers in other files
 "reminder:
