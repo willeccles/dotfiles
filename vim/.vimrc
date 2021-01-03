@@ -15,7 +15,7 @@ set nowrap
 
 set tw=80
 " see fo-table
-set fo=jcroqln1
+set fo=tjcroqln1
 
 set lazyredraw
 
@@ -356,7 +356,8 @@ endfu
 
 set guifont=Operator\ Mono\ Book:h12 "for MacVim
 
-set nu rnu "relative line numbers
+set rnu "relative line numbers
+"set nu "show current line number as well
 
 set cursorline
 
