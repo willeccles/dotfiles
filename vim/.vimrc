@@ -4,6 +4,8 @@ set noshowmode
 set t_Co=256
 set modeline
 
+set noruler
+
 " keep 3 lines of context around the cursor
 set so=3
 set siso=5
