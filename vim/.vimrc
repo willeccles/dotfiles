@@ -28,36 +28,36 @@ set switchbuf=useopen " see :h switchbuf
 
 set title
 if has('nvim')
-    set titlestring=%t\ -\ NVIM
+  set titlestring=%t\ -\ NVIM
 else
-    set titlestring=%t\ -\ VIM
+  set titlestring=%t\ -\ VIM
 endif
 
 if has('persistent_undo')
-    set undodir=/tmp/vim-undodir
-    set undofile
+  set undodir=/tmp/vim-undodir
+  set undofile
 endif
 
 " splitting {{{
 " internal helper for splitting naturally
 fu! s:SplitHelper(f)
-    if winwidth('%') >= (winheight('%') * 2)
-        exec 'vsplit '.a:f
-    else
-        exec 'split '.a:f
-    endif
+  if winwidth('%') >= (winheight('%') * 2)
+    exec 'vsplit '.a:f
+  else
+    exec 'split '.a:f
+  endif
 endfu
 
 " split naturally with 0 or more files (0 == identical to calling either split
 " or vsplit, depending on the current window size
 fu! SplitNatural(...)
-    if a:0 == 0
-        call s:SplitHelper('')
-    else
-        for fname in a:000
-            call s:SplitHelper(fname)
-        endfor
-    endif
+  if a:0 == 0
+    call s:SplitHelper('')
+  else
+    for fname in a:000
+      call s:SplitHelper(fname)
+    endfor
+  endif
 endfu
 
 " use :S <filenames...> to open 1 or more splits in a 'natural' way
@@ -70,12 +70,12 @@ set splitbelow
 " end splitting }}}
 
 if !has("gui_running")
-    set mouse=a
+  set mouse=a
 endif
 set backspace=indent,eol,start
 
 if has('extra_search')
-    set hlsearch
+  set hlsearch
 endif
 " end general config }}}
 
@@ -83,19 +83,19 @@ endif
 
 " source a file only if it exists
 function! SourceIfExists(file)
-    if filereadable(expand(a:file))
-        exe 'source' a:file
-    endif
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
 endfunction
 
 "function to strip whitespace from the start/end of a string string
 fu! StripSpaces(instr)
-    " trim is in neovim and in vim >= 8.0.1630
-    if has('nvim') || v:versionlong >= 8001630
-        return trim(a:instr)
-    else
-        return substitute(a:instr, '^\_s*\(.\{-}\)\_s*$', '\1', '')
-    endif
+  " trim is in neovim and in vim >= 8.0.1630
+  if has('nvim') || v:versionlong >= 8001630
+    return trim(a:instr)
+  else
+    return substitute(a:instr, '^\_s*\(.\{-}\)\_s*$', '\1', '')
+  endif
 endfu
 
 " TODO: finish this, rather than using the gross spacevim plugin thing
@@ -120,14 +120,14 @@ endfu
 let g:plug_window='noautocmd vertical topleft new'
 "if vim-plug isn't installed when vim is started, this will install it
 if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
 else
-    autocmd VimEnter *
-                \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-                \|   PlugInstall --sync | q
-                \| endif
+  autocmd VimEnter *
+        \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+        \|   PlugInstall --sync | q
+        \| endif
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -184,11 +184,11 @@ let g:ctrlp_cache_dir=$HOME . '/.cache/ctrlp'
 
 "if the silver searcher is installed
 if executable('ag')
-    "set grepprg=ag\ --nogroup\ --nocolor
-    set grepprg=ag\ --vimgrep\ $*
-    set grepformat=%f:%l:%c:%m
-    let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
-    let g:ctrlp_use_caching=0
+  "set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --vimgrep\ $*
+  set grepformat=%f:%l:%c:%m
+  let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+  let g:ctrlp_use_caching=0
 endif
 
 "limelight
@@ -228,15 +228,15 @@ colorscheme gruvbox
 
 " setup italics in terminal
 if !has("gui_running")
-    set t_ZH=[3m
-    set t_ZR=[23m
+  set t_ZH=[3m
+  set t_ZR=[23m
 endif
 
 " change the cursors if we are in the terminal
 if !has("gui_running")
-    let &t_SI.="\e[5 q"
-    let &t_SR.="\e[4 q"
-    let &t_EI.="\e[1 q"
+  let &t_SI.="\e[5 q"
+  let &t_SR.="\e[4 q"
+  let &t_EI.="\e[1 q"
 endif
 
 " {{{ status line/tabs colors
@@ -262,79 +262,79 @@ highlight CP_MANBAR guibg=#3c3836 guifg=#ebdbb2
 " supporting functions {{{
 " modes
 let g:currentmode={
-            \ 'n'  : 'N',
-            \ 'no' : 'N·OP',
-            \ 'v'  : 'V',
-            \ 'V'  : 'V·L',
-            \ '' : 'V·B',
-            \ 's'  : 'S',
-            \ 'S'  : 'S·L',
-            \ '' : 'S·B',
-            \ 'i'  : 'I',
-            \ 'R'  : 'R',
-            \ 'Rv' : 'V·R',
-            \ 'c'  : 'Cmd',
-            \ 'cv' : 'V·Ex',
-            \ 'ce' : 'Ex',
-            \ 'r'  : 'P',
-            \ 'rm' : 'M',
-            \ 'r?' : 'Conf',
-            \ '!'  : 'Sh',
-            \ 't'  : 'T',
-            \}
+      \ 'n'  : 'N',
+      \ 'no' : 'N·OP',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V·L',
+      \ '' : 'V·B',
+      \ 's'  : 'S',
+      \ 'S'  : 'S·L',
+      \ '' : 'S·B',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'Rv' : 'V·R',
+      \ 'c'  : 'Cmd',
+      \ 'cv' : 'V·Ex',
+      \ 'ce' : 'Ex',
+      \ 'r'  : 'P',
+      \ 'rm' : 'M',
+      \ 'r?' : 'Conf',
+      \ '!'  : 'Sh',
+      \ 't'  : 'T',
+      \}
 
 "for adding a plus to the statusline when a file has been modified
 fu! Modstatus()
-    return &modified ? '+' : ''
+  return &modified ? '+' : ''
 endfunction
 
 "readonly status
 fu! ReadOnly()
-    return &readonly ? ' [RO]' : ''
+  return &readonly ? ' [RO]' : ''
 endfunction
 
 "filetype
 fu! Ftype()
-    let str = substitute(&filetype, "[[]]", "", "")
-    if len(str) > 0
-        return printf(' %s ', str)
-    else
-        return str
-    endif
+  let str = substitute(&filetype, "[[]]", "", "")
+  if len(str) > 0
+    return printf(' %s ', str)
+  else
+    return str
+  endif
 endfunction
 
 "line endings
 fu! LEnds()
-    let l:format = substitute(&fileformat, "[[]]", "", "")
-    return l:format
+  let l:format = substitute(&fileformat, "[[]]", "", "")
+  return l:format
 endfunction
 
 "git status
 fu! GitStatus()
-    if !exists("*GitGutterGetHunkSummary")
-        return ""
-    endif
+  if !exists("*GitGutterGetHunkSummary")
+    return ""
+  endif
 
-    let [a,m,r] = GitGutterGetHunkSummary()
-    let str = ''
+  let [a,m,r] = GitGutterGetHunkSummary()
+  let str = ''
 
-    if a > 0
-        let str .= printf(' +%d', a)
-    endif
+  if a > 0
+    let str .= printf(' +%d', a)
+  endif
 
-    if m > 0
-        let str .= printf(' ~%d', m)
-    endif
+  if m > 0
+    let str .= printf(' ~%d', m)
+  endif
 
-    if r > 0
-        let str .= printf(' -%d', r)
-    endif
+  if r > 0
+    let str .= printf(' -%d', r)
+  endif
 
-    if len(str) > 0
-        return printf(' [%s] ', StripSpaces(str))
-    else
-        return str
-    endif
+  if len(str) > 0
+    return printf(' [%s] ', StripSpaces(str))
+  else
+    return str
+  endif
 endfu
 " end supporting functions }}}
 
@@ -359,7 +359,7 @@ endfu
 set guifont=Operator\ Mono\ Book:h12 "for MacVim
 
 set rnu "relative line numbers
-"set nu "show current line number as well
+set nu "show current line number as well
 
 set cursorline
 
@@ -410,7 +410,7 @@ nnoremap <M-s> vip:sort!<CR>
 
 " copy to clipboard in visual mode with c-y
 if has('clipboard')
-    vnoremap <C-y> "+y<CR>
+  vnoremap <C-y> "+y<CR>
 endif
 
 nnoremap g= :retab<CR>mvgg=G`v
@@ -467,47 +467,46 @@ let mapleader=";"
 " autogroups/commands {{{
 " set up foldmethods and text widths based on filetypes
 augroup vimrc
-    au!
-    autocmd BufNewFile,BufRead Makefile,*.mk,*.sh,*.zsh-theme,*.vimrc,*.vim,*rc,*.conf  setlocal foldlevel=0 | setlocal foldmethod=marker
-    "autocmd BufNewFile,BufRead *.tex,*.md,*.txt,*.rtf,README setlocal textwidth=80
+  au!
+  autocmd BufNewFile,BufRead Makefile,*.mk,*.sh,*.zsh-theme,*.vimrc,*.vim,*rc,*.conf  setlocal foldlevel=0 | setlocal foldmethod=marker
+  "autocmd BufNewFile,BufRead *.tex,*.md,*.txt,*.rtf,README setlocal textwidth=80
 augroup END
 
 " disable bells
 autocmd GUIEnter * set vb t_vb=
 
 augroup zsh_theme_ft
-    au!
-    autocmd BufNewFile,BufRead *.zsh-theme  setlocal filetype=zsh
+  au!
+  autocmd BufNewFile,BufRead *.zsh-theme  setlocal filetype=zsh
 augroup END
 
 augroup arduino_ino
-    au!
-    autocmd BufNewFile,BufRead *.ino  setlocal filetype=cpp
+  au!
+  autocmd BufNewFile,BufRead *.ino  setlocal filetype=cpp
 augroup END
 
 augroup vifm_ft
-    au!
-    autocmd BufNewFile,BufRead *.vifm,vifm*  setlocal ft=vim
+  au!
+  autocmd BufNewFile,BufRead *.vifm,vifm*  setlocal ft=vim
 augroup END
 
 " I want section 2 before second 3
 " Example: open() -> open(3pm) which is in the perl manual
 " I want open(2)
-autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cc let b:man_default_sects='2,2p,3,3p'
-let g:man_hardwrap=''
+autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cc let b:man_default_sects='2,3'
 
 "enable hex editing for binary files
 "when starting vim with -b, this will edit the file with hex
 if executable('xxd')
-    augroup Binary
-        au!
-        au BufReadPost * if &bin | %!xxd
-        au BufReadPost * set ft=xxd | endif
-        au BufWritePre * if &bin | %!xxd -r
-        au BufWritePre * endif
-        au BufWritePost * if &bin | %!xxd
-        au BufWritePost * set nomod | endif
-    augroup END
+  augroup Binary
+    au!
+    au BufReadPost * if &bin | %!xxd
+    au BufReadPost * set ft=xxd | endif
+    au BufWritePre * if &bin | %!xxd -r
+    au BufWritePre * endif
+    au BufWritePost * if &bin | %!xxd
+    au BufWritePost * set nomod | endif
+  augroup END
 endif
 
 " end autogroups/commands }}}
