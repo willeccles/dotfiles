@@ -100,17 +100,22 @@ endfu
 
 " TODO: finish this, rather than using the gross spacevim plugin thing
 " testing for todo listing
-"fu! ShowTodos(...)
-"    if a:0 == 0
-"        " use the current buffer
-"        exec 'grep!' 'TODO' expand('%')
-"    else
-"        " search through all args
-"        exec 'grep!' 'TODO' a:000
-"    endif
-"endfu
-"
-"command! -nargs=* -complete=file ShowTodos call ShowTodos(<f-args>)
+fu! ShowTodos(...)
+    if a:0 == 0
+        " use the current buffer
+        silent exec 'lgrep!' 'TODO' fnameescape(expand('%'))
+    else
+        " search through all args
+        silent exec 'lgrep!' 'TODO' join(map(copy(a:000), 'fnameescape(v:val)'))
+    endif
+    lopen
+    " echo getloclist(0)
+    " for todo in getloclist(0)
+    "   echo expand('#' . todo["bufnr"] . ':t') . ':' . todo["lnum"] . ':' . todo["col"] . ': ' . todo["text"][todo["col"]-1:]
+    " endfor
+endfu
+
+command! -nargs=* -complete=file ShowTodos call ShowTodos(<f-args>)
 
 
 " end functions and stuff }}}
@@ -169,10 +174,11 @@ set wildignore+=*.so,*.swp,*.zip
 "ALE
 let g:ale_completion_enabled=1
 let g:ale_pattern_options = { '\.h$': {'ale_linters': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
-let g:ale_hover_cursor=0
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
 let g:ale_c_cc_options='-Wall -pedantic -std=c11 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
+let g:ale_hover_cursor=0
+let g:ale_lint_on_text_changed=0
+let g:ale_lint_on_insert_leave=0
+let g:ale_lint_on_save=1
 
 "ctrlp.vim
 set wildmode=list:longest,list:full
