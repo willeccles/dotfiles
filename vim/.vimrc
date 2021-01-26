@@ -411,8 +411,8 @@ nmap ;z za
 
 " sort using control-s, reverse sort using control-shift-s
 " doesn't work right now for some reason, too lazy to fix
-nnoremap <C-s> vip:sort<CR>
-nnoremap <M-s> vip:sort!<CR>
+nnoremap <silent> <C-s> vip:sort<CR>
+nnoremap <silent> <M-s> vip:sort!<CR>
 
 " copy to clipboard in visual mode with c-y
 if has('clipboard')
