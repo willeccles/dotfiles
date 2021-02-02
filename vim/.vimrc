@@ -17,7 +17,7 @@ set nowrap
 
 set tw=80
 " see fo-table
-set fo=tjcroqln1a
+set fo=tjcroqln1
 
 set lazyredraw
 
