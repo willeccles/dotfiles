@@ -7,17 +7,7 @@ general {
   interval = 5
 }
 
-order += "load"
-order += "memory"
 order += "tztime local"
-
-load {
-        format = "%1min"
-}
-
-memory {
-        format = "%used"
-}
 
 tztime local {
         format = "%Y-%m-%d %H:%M:%S"
