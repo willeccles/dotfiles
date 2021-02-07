@@ -1,0 +1,24 @@
+general {
+  output_format = "i3bar"
+  colors = true
+  color_good = "#98971A"
+  color_degraded = "#D79921"
+  color_bad = "#CC241D"
+  interval = 5
+}
+
+order += "load"
+order += "memory"
+order += "tztime local"
+
+load {
+        format = "%1min"
+}
+
+memory {
+        format = "%used"
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+}
