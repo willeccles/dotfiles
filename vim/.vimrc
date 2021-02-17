@@ -176,6 +176,10 @@ let g:ale_completion_enabled=1
 let g:ale_pattern_options = { '\.h$': {'ale_linters': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
 let g:ale_c_cc_options='-Wall -pedantic -std=c11 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
 let g:ale_hover_cursor=0
+let g:ale_floating_preview=1
+let g:ale_cursor_detail=1
+let g:ale_close_preview_on_insert=1
+"since LSP sucks, these options are useless with completion enabled
 let g:ale_lint_on_text_changed=0
 let g:ale_lint_on_insert_leave=0
 let g:ale_lint_on_save=1
