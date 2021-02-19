@@ -6,3 +6,7 @@ source ~/.vimrc
 au TermOpen * setlocal nonumber nornu so=0 | startinsert
 
 set inccommand=nosplit
+
+" partially transparent popup menu and floating windows
+set pb=20
+set winbl=20

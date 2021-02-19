@@ -21,7 +21,7 @@ set fo=tjcroqln1
 
 set lazyredraw
 
-set nrformats=alpha " allow g<C-a> to increment letters
+set nrformats=alpha,bin,hex,octal
 
 set hidden " see :h hidden
 set switchbuf=useopen " see :h switchbuf
