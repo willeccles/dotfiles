@@ -1,6 +1,0 @@
-#! /usr/bin/osascript
-
-tell application "Finder"
-set theDesktopPic to desktop picture as alias
-set theName to posix path of theDesktopPic
-end tell
