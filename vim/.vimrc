@@ -383,7 +383,7 @@ set expandtab
 
 " see cinoptions-values
 "set cino=ws,l1,j1,J1,g2,h2,E-s
-set cino=h1,l1,g1,t0,i4,+4,(0,w1,W4,E-s
+set cino=hs,l1,g0,t0,i4,+4,(0,w1,W4,E-s
 
 "fold on markers in scripts, don't fold on markers in other files
 "reminder:
