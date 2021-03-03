@@ -231,7 +231,7 @@ syntax enable "syntax hilighting
 set background=dark
 set termguicolors
 
-let g:gruvbox_italic=1
+let g:gruvbox_italic=0
 let g:gruvbox_invert_selection=0
 
 colorscheme gruvbox
@@ -251,7 +251,7 @@ endif
 
 " {{{ status line/tabs colors
 highlight CP_MODE guibg=#3c3836 guifg=#928374 gui=bold
-highlight CP_FNAME guibg=#3c3836 guifg=#ebdbb2 gui=italic
+highlight CP_FNAME guibg=#3c3836 guifg=#ebdbb2
 highlight CP_MID guibg=#3c3836 guifg=#928374
 highlight CP_LNUM guibg=#3c3836 guifg=#ebdbb2
 highlight CP_MANBAR guibg=#3c3836 guifg=#ebdbb2
