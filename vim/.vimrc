@@ -157,9 +157,10 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'whatyouhide/vim-lengthmatters', {'on': ['LengthmattersToggle', 'LengthmattersEnable']}
+Plug 'zhimsel/vim-stay'
 call plug#end()
 
-"enable gitgutter
+"make gitgutter faster
 set updatetime=250
 
 "NERDTree settings
@@ -219,6 +220,9 @@ xmap ga <Plug>(EasyAlign)
 
 "quick-scope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+"vim-stay
+set viewoptions=cursor,folds,slash,unix
 
 " end plugins }}}
 
@@ -395,8 +399,10 @@ set cino=hs,l1,g0,t0,i4,+4,(0,w1,W4,E-s,N-s
 "  - make a fold with zf
 "  - delete a fold at cursor with zd
 "  - delete a fold recursively at cursor with zD
-set foldmethod=syntax
-set foldlevelstart=99 "don't automatically fold everything
+" NOTE! Having this enabled makes some things way slower! (running clang-format
+" on a huge C/C++ file can take exponentially longer than with this off)
+"set foldmethod=syntax
+"set foldlevelstart=99 "don't automatically fold everything
 "setlocal foldnestmax=10
 
 " end tabs, folds, and line numbers }}}
