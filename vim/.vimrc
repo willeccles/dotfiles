@@ -162,6 +162,11 @@ call plug#end()
 
 "make gitgutter faster
 set updatetime=250
+"also, disable gitgutter in diff mode (if I'm viewing a diff, there's a good
+"chance I don't need to see git information)
+if &diff
+  let g:gitgutter_enabled=0
+endif
 
 "NERDTree settings
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -177,7 +182,8 @@ let g:ale_completion_enabled=1
 let g:ale_pattern_options = { '\.h$': {'ale_linters': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
 let g:ale_c_cc_options='-Wall -pedantic -std=c11 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
 let g:ale_cpp_cc_options='-Wall -pedantic -std=c++17 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
-let g:ale_c_parse_makefile=1
+let g:ale_c_parse_compile_commands=1
+let g:ale_cpp_parse_compile_commands=1
 let g:ale_hover_cursor=0
 " let g:ale_floating_preview=1
 let g:ale_cursor_detail=0

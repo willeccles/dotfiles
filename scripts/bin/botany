@@ -1,0 +1,83 @@
+#!/bin/bash -e
+
+botany_root="${BOTANY_ROOT:-$HOME/botany}"
+
+run() {
+  if [[ ! -f "$botany_root/botany.py" ]]; then
+    >&2 echo "$botany_root does not appear to contain botany (try --install)"
+    exit 1
+  fi
+
+  if ! command -v python3 >/dev/null; then
+    >&2 echo "python3 not found!"
+    exit 1
+  fi
+
+  python3 "$botany_root/botany.py"
+}
+
+view() {
+  if [[ ! -f "$botany_root/botany-view.py" ]]; then
+    >&2 echo "$botany_root does not appear to contain botany (try --install)"
+    exit 1
+  fi
+
+  if ! command -v python3 >/dev/null; then
+    >&2 echo "python3 not found!"
+    exit 1
+  fi
+
+  python3 "$botany_root/botany-view.py"
+}
+
+install() {
+  echo "installing to $botany_root..."
+
+  if [[ -e "$botany_root" ]]; then
+    >&2 echo "$botany_root already exists"
+    exit 1
+  fi
+
+  if ! command -v git >/dev/null; then
+    >&2 echo "git not found!"
+    exit 1
+  fi
+
+  git clone https://github.com/jifunks/botany --depth 1 "$botany_root"
+
+  echo "botany installed!"
+
+  if ! command -v python3 >/dev/null; then
+    echo "you'll need to install python3 to use botany!"
+  fi
+}
+
+help() {
+  cat - <<EOM
+usage: botany [-hiv]
+
+Arguments are optional. With none specified, the interactive botany menu will
+run. Else:
+  -h | --help     print this message
+  -i | --install  install botany
+  -v | --view     view your garden (but don't run the interactive menu)
+
+All operations will use the botany installation specified in the environment
+variable \$BOTANY_ROOT, if defined. Else, they will default to \$HOME/botany.
+EOM
+}
+
+if [[ $# == 0 ]]; then
+  python3 "$botany_root/botany.py"
+else
+  case "$1" in
+    --view|-v)    view    ;;
+    --install|-i) install ;;
+    --help|-h)    help    ;;
+    *)
+      >&2 echo "unknown option: $1"
+      >&2 echo "see botany --help for details"
+      exit 1
+      ;;
+  esac
+fi
