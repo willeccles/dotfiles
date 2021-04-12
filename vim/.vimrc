@@ -519,6 +519,8 @@ augroup END
 " I want open(2)
 autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cc let b:man_default_sects='2,3'
 
+autocmd BufNewFile,BufRead *.dts,*.dtsi setlocal tw=0
+
 "enable hex editing for binary files
 "when starting vim with -b, this will edit the file with hex
 if executable('xxd')
