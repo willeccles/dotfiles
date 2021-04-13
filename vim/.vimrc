@@ -17,7 +17,7 @@ set nowrap
 
 set tw=80
 " see fo-table
-set fo=tjcroqln1
+set fo=tjcrqln1
 
 set lazyredraw
 
@@ -181,7 +181,7 @@ set wildignore+=*.so,*.swp,*.zip
 let g:ale_completion_enabled=1
 let g:ale_pattern_options = { '\.h$': {'ale_linters': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
 let g:ale_c_cc_options='-Wall -pedantic -std=c11 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
-let g:ale_cpp_cc_options='-Wall -pedantic -std=c++17 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
+let g:ale_cpp_cc_options='-Wall -pedantic -std=c++20 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
 let g:ale_c_parse_compile_commands=1
 let g:ale_cpp_parse_compile_commands=1
 let g:ale_hover_cursor=0
@@ -462,6 +462,8 @@ nmap <F1> K
 vnoremap < <gv
 vnoremap > >gv
 
+nnoremap ;o A<CR>
+
 "compile
 map <silent> <F2> <Esc>:make<CR>
 "open error list
@@ -520,6 +522,8 @@ augroup END
 autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cc let b:man_default_sects='2,3'
 
 autocmd BufNewFile,BufRead *.dts,*.dtsi setlocal tw=0
+
+autocmd BufNewFile,BufRead * setl fo-=o
 
 "enable hex editing for binary files
 "when starting vim with -b, this will edit the file with hex
