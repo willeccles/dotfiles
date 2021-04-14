@@ -98,26 +98,6 @@ fu! StripSpaces(instr)
   endif
 endfu
 
-" TODO: finish this, rather than using the gross spacevim plugin thing
-" testing for todo listing
-fu! ShowTodos(...)
-    if a:0 == 0
-        " use the current buffer
-        silent exec 'lgrep!' 'TODO' fnameescape(expand('%'))
-    else
-        " search through all args
-        silent exec 'lgrep!' 'TODO' join(map(copy(a:000), 'fnameescape(v:val)'))
-    endif
-    lopen
-    " echo getloclist(0)
-    " for todo in getloclist(0)
-    "   echo expand('#' . todo["bufnr"] . ':t') . ':' . todo["lnum"] . ':' . todo["col"] . ': ' . todo["text"][todo["col"]-1:]
-    " endfor
-endfu
-
-command! -nargs=* -complete=file ShowTodos call ShowTodos(<f-args>)
-
-
 " end functions and stuff }}}
 
 " plugins {{{
@@ -159,6 +139,8 @@ Plug 'unblevable/quick-scope'
 Plug 'whatyouhide/vim-lengthmatters', {'on': ['LengthmattersToggle', 'LengthmattersEnable']}
 Plug 'zhimsel/vim-stay'
 call plug#end()
+
+set runtimepath+=~/git/vim-cactodo
 
 "make gitgutter faster
 set updatetime=250
