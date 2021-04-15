@@ -16,6 +16,7 @@ set siso=5
 set nowrap
 
 set tw=80
+set colorcolumn=81
 " see fo-table
 set fo=tjcrqln1
 
@@ -136,7 +137,7 @@ Plug 'sickill/vim-pasta'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
-Plug 'whatyouhide/vim-lengthmatters', {'on': ['LengthmattersToggle', 'LengthmattersEnable']}
+Plug 'whatyouhide/vim-lengthmatters'
 Plug 'zhimsel/vim-stay'
 call plug#end()
 
@@ -209,6 +210,9 @@ xmap ga <Plug>(EasyAlign)
 "quick-scope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
+"vim-lengthmatters
+let g:lengthmatters_on_by_default=0
+
 "vim-stay
 set viewoptions=cursor,folds,slash,unix
 
@@ -243,20 +247,26 @@ if !has("gui_running")
   let &t_EI.="\e[1 q"
 endif
 
-" {{{ status line/tabs colors
-highlight CP_MODE guibg=#3c3836 guifg=#928374 gui=bold
-highlight CP_FNAME guibg=#3c3836 guifg=#ebdbb2
-highlight CP_MID guibg=#3c3836 guifg=#928374
-highlight CP_LNUM guibg=#3c3836 guifg=#ebdbb2
-highlight CP_MANBAR guibg=#3c3836 guifg=#ebdbb2
+highlight ColorColumn guibg=#32302f
 
-"I have termguicolors on, but if this causes issues this can be enabled again
-"if !has("gui_running")
-"    highlight CP_MODE ctermbg=237 ctermfg=245 cterm=bold
-"    highlight CP_FNAME ctermbg=237 ctermfg=223 cterm=italic
-"    highlight CP_MID ctermbg=237 ctermfg=245
-"    highlight CP_LNUM ctermbg=237 ctermfg=223
-"endif
+"vim-lengthmatters
+call lengthmatters#highlight('guibg=#cc241d')
+
+"vim-better-whitespace
+highlight ExtraWhitespace guibg=#fb4934
+
+" {{{ status line/tabs colors
+
+"default status line colors which have to be specified because this is compared
+"with StatusLineNC when falling back to that
+highlight StatusLine guibg=#3c3836 guifg=#ebdbb2
+"non-focused status line colors to fall back to when User1..2 aren't used
+highlight StatusLineNC guibg=#32302f guifg=#bdae93
+
+"use these with %1* and %2*
+highlight User1 guibg=#3c3836 guifg=#928374
+highlight User2 guibg=#3c3836 guifg=#ebdbb2
+
 " }}} end status line/tab bar
 
 " end highlighting }}}
@@ -343,18 +353,18 @@ endfu
 " end supporting functions }}}
 
 "statusline
-:set statusline=%#CP_MODE#\ %{toupper(g:currentmode[mode()])}\  "shows mode
+:set statusline=%1*\ %{toupper(g:currentmode[mode()])}\  "shows mode
 :set statusline+=%< "where to truncate the line, in other words always show mode
-:set statusline+=\ %#CP_LNUM#%n: " buffer number
+:set statusline+=\ %2*%n: " buffer number
 :set statusline+=%{ReadOnly()} "readonly status
-:set statusline+=%#CP_FNAME#\ %f "filename
+:set statusline+=\ %f "filename
 :set statusline+=%{Modstatus()} "modified status of buffer
-:set statusline+=\ %#CP_MID# "set color for middle of SL
-:set statusline+=%{Ftype()}\ %{LEnds()} "filetype
+":set statusline+=\ %#CP_MID# "set color for middle of SL
+:set statusline+=\ %1*%{Ftype()}\ %{LEnds()} "filetype
 :set statusline+=%= "every statusline addition after this line will be right justified
 :set statusline+=%{GitStatus()} "git information
 :set statusline+=\ %p%%\  "percentage through the file in lines
-:set statusline+=%#CP_LNUM#\ L%l:C%c\  "line number and character on that line
+:set statusline+=%2*\ L%l:C%c\  "line number and character on that line
 
 " end statusline fields }}}
 
