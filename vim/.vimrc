@@ -161,8 +161,9 @@ let g:NERDTreeDirArrowCollapsible='▾'
 set wildignore+=*.so,*.swp,*.zip
 
 "ALE
+" TODO: replace with nvim-lsp, probably
 let g:ale_completion_enabled=1
-let g:ale_pattern_options = { '\.h$': {'ale_linters': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
+let g:ale_pattern_options = { '\.h$': {'ale_linters': ['clangd', 'ccls', 'clang', 'clangcheck', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
 let g:ale_c_cc_options='-Wall -pedantic -std=c11 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
 let g:ale_cpp_cc_options='-Wall -pedantic -std=c++20 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
 let g:ale_c_parse_compile_commands=1
@@ -407,20 +408,36 @@ set cino=hs,l1,g0,t0,i4,+4,(0,w1,W4,E-s,N-s
 
 " keybinds {{{
 
+" key used for <Leader>
+let mapleader=";"
+
 "press escape to exit insert mode in terminal to be able to switch windows
 tnoremap <Esc> <C-\><C-n>
 tmap <C-w> <Esc><C-w>
 
 "switch windows with <Tab> followed by a direction
+"also works with leader
 nnoremap <Tab> <C-w>
+nnoremap <Leader><Up> <C-w><Up>
+nnoremap <Leader><Down> <C-w><Down>
+nnoremap <Leader><Left> <C-w><Left>
+nnoremap <Leader><Right> <C-w><Right>
+nnoremap <Leader>k <C-w><Up>
+nnoremap <Leader>j <C-w><Down>
+nnoremap <Leader>h <C-w><Left>
+nnoremap <Leader>l <C-w><Right>
 
 "use Z to toggle folds
-nmap Z  za
-"also use ;z to toggle folds
-nmap ;z za
+nnoremap Z za
+"also use <Leader>z to toggle folds
+nnoremap <Leader>z za
 
-" sort using control-s, reverse sort using control-shift-s
-" doesn't work right now for some reason, too lazy to fix
+"use <Leader>s to save the file (if it was changed)
+nnoremap <silent> <Leader>s :up<CR>
+"use <Leader>S to strip trailing whitespace
+nnoremap <silent> <Leader>S :silent! StripWhitespace<CR>
+
+" sort paragraphs using control-s, reverse sort using alt-s
 nnoremap <silent> <C-s> vip:sort<CR>
 nnoremap <silent> <M-s> vip:sort!<CR>
 
@@ -429,45 +446,44 @@ if has('clipboard')
   vnoremap <C-y> "+y<CR>
 endif
 
-nnoremap g= :retab<CR>mvgg=G`v
+nnoremap <silent> g= :retab<CR>mvgg=G`v
 
-nnoremap <C-Up> "lddk"LP
-nnoremap <C-Down> "ldd"Lp
+nnoremap <silent> <C-Up> :move--<CR>
+nnoremap <silent> <C-Down> :move+<CR>
 nmap <C-k> <C-Up>
 nmap <C-j> <C-Down>
 
-map <silent> <F7> <Esc>:tabp<CR>
-map <silent> <F8> <Esc>:tabn<CR>
+noremap <silent> <F7> <Esc>:tabp<CR>
+noremap <silent> <F8> <Esc>:tabn<CR>
 "use tabe instead of tabf, e works the same as :e
-map <F9> <Esc>:tabe<Space>
-map <silent> <C-F7> <Esc>:bp<CR>
-map <silent> <C-F8> <Esc>:bn<CR>
+noremap <F9> <Esc>:tabe<Space>
+noremap <silent> <C-F7> <Esc>:bp<CR>
+noremap <silent> <C-F8> <Esc>:bn<CR>
 
-map <silent> <F11> <Esc>:bp<CR>
-map <silent> <F12> <Esc>:bn<CR>
+noremap <silent> <F11> <Esc>:bp<CR>
+noremap <silent> <F12> <Esc>:bn<CR>
 
-map <silent> <F10> <Esc>mp:%s/\([)>a-zA-Z0-9]\) {/\1 {/ge<CR>:%s/{\zs\s\+\ze$//ge<CR>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<CR>:%s/\r//ge<CR>:%s/}\zs\([^\s\t ;,\])}]\)/ \1/ge<CR>:%s/\(^\\|[\s\t ]\)\/\{2,}<\?!\?\zs\([^!<\s\t ]\)/ \2/ge<CR>:%s/[^\s\t ]\zs{/ {/ge<CR>gg=G:retab<CR>`p
+"map <silent> <F10> <Esc>mp:%s/\([)>a-zA-Z0-9]\) {/\1 {/ge<CR>:%s/{\zs\s\+\ze$//ge<CR>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<CR>:%s/\r//ge<CR>:%s/}\zs\([^\s\t ;,\])}]\)/ \1/ge<CR>:%s/\(^\\|[\s\t ]\)\/\{2,}<\?!\?\zs\([^!<\s\t ]\)/ \2/ge<CR>:%s/[^\s\t ]\zs{/ {/ge<CR>gg=G:retab<CR>`p
 
 " use F1 to look up help pages and man pages
-nmap <F1> K
+nnoremap <F1> K
 
 vnoremap < <gv
 vnoremap > >gv
 
-nnoremap ;o A<CR>
+"<Leader>o will be like o, but will continue comments if &fo doesn't include o
+nnoremap <Leader>o A<CR>
 
 "compile
-map <silent> <F2> <Esc>:make<CR>
+noremap <silent> <F2> <Esc>:make<CR>
 "open error list
-map <silent> <F3> <Esc>:copen<CR>
+noremap <silent> <F3> <Esc>:copen<CR>
 "previous error
-map <silent> <F4> <Esc>:cprevious<CR>
+noremap <silent> <F4> <Esc>:cprevious<CR>
 "next error
-map <silent> <F5> <Esc>:cnext<CR>
+noremap <silent> <F5> <Esc>:cnext<CR>
 "close error output
-map <silent> <F6> <Esc>:cclose<CR>
-
-let mapleader=";"
+noremap <silent> <F6> <Esc>:cclose<CR>
 
 " end keybinds }}}
 
