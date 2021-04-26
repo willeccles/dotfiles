@@ -139,9 +139,24 @@ Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'zhimsel/vim-stay'
+
+if has('nvim')
+  if executable('tree-sitter')
+    "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    "Plug 'romgrk/nvim-treesitter-context'
+  endif
+endif
+
 call plug#end()
 
 set runtimepath+=~/git/vim-cactodo
+
+if has('nvim')
+  "lua require('cactus.config')
+
+  "set foldmethod=expr
+  "set foldexpr=nvim_treesitter#foldexpr()
+endif
 
 "make gitgutter faster
 set updatetime=250
@@ -433,9 +448,9 @@ nnoremap Z za
 nnoremap <Leader>z za
 
 "use <Leader>s to save the file (if it was changed)
-nnoremap <silent> <Leader>s :up<CR>
+"nnoremap <silent> <Leader>s :up<CR>
 "use <Leader>S to strip trailing whitespace
-nnoremap <silent> <Leader>S :silent! StripWhitespace<CR>
+"nnoremap <silent> <Leader>S :silent! StripWhitespace<CR>
 
 " sort paragraphs using control-s, reverse sort using alt-s
 nnoremap <silent> <C-s> vip:sort<CR>
