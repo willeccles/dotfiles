@@ -1,46 +1,10 @@
+" source base config
 exe 'source' "~/.vim/base.vim"
 
 " general config {{{
 
-" set laststatus=2
 set noshowmode
 set t_Co=256
-" set modeline
-
-" set noruler
-
-" keep 3 lines of context around the cursor
-"set so=3
-" set siso=5
-
-"set lbr "wrap properly
-
-" disable wrapping
-"set nowrap
-
-" set tw=80
-" set colorcolumn=81
-" see fo-table
-" set fo=tjcrqln1
-
-" set lazyredraw
-
-" set nrformats=alpha,bin,hex,octal
-
-" set hidden " see :h hidden
-" set switchbuf=useopen " see :h switchbuf
-
-" set title
-" if has('nvim')
-"   set titlestring=%t\ -\ NVIM
-" else
-"   set titlestring=%t\ -\ VIM
-" endif
-
-" if has('persistent_undo')
-"   set undodir=/tmp/vim-undodir
-"   set undofile
-" endif
 
 " splitting {{{
 " internal helper for splitting naturally
@@ -73,14 +37,6 @@ command! -nargs=* -complete=file S call SplitNatural(<f-args>)
 " set splitbelow
 " end splitting }}}
 
-" if !has("gui_running")
-"   set mouse=a
-" endif
-" set backspace=indent,eol,start
-
-" if has('extra_search')
-"   set hlsearch
-" endif
 " end general config }}}
 
 " functions and such {{{
@@ -205,8 +161,6 @@ let g:ctrlp_cache_dir=$HOME . '/.cache/ctrlp'
 
 "if the silver searcher is installed
 if executable('ag')
-  " set grepprg=ag\ --vimgrep\ $*
-  " set grepformat=%f:%l:%c:%m
   let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
   let g:ctrlp_use_caching=0
 endif
@@ -253,10 +207,10 @@ let g:gruvbox_invert_selection=0
 colorscheme gruvbox
 
 " setup italics in terminal
-if !has("gui_running")
-  set t_ZH=[3m
-  set t_ZR=[23m
-endif
+" if !has("gui_running")
+"   set t_ZH=[3m
+"   set t_ZR=[23m
+" endif
 
 " change the cursors if we are in the terminal
 if !has("gui_running")
@@ -386,197 +340,5 @@ endfu
 
 " end statusline fields }}}
 
-" tabs, folds, line numbers, font {{{
-
-" set guifont=Operator\ Mono\ Book:h12 "for MacVim
-
-" set rnu "relative line numbers
-" set nu "show current line number as well
-
-" set cursorline
-
-" filetype plugin indent on "enable indenting
-
-" set tabstop=2
-" set softtabstop=2
-" set shiftwidth=2
-" set smarttab
-" set expandtab
-
-" see cinoptions-values
-"set cino=ws,l1,j1,J1,g2,h2,E-s
-" set cino=hs,l1,g0,t0,i4,+4,(0,w1,W4,E-s,N-s
-
-"fold on markers in scripts, don't fold on markers in other files
-"reminder:
-"  - open a fold with zo
-"  - toggle a fold with za (or Z - see map below)
-"  - close a fold with zc
-"  - make a fold with zf
-"  - delete a fold at cursor with zd
-"  - delete a fold recursively at cursor with zD
-" NOTE! Having this enabled makes some things way slower! (running clang-format
-" on a huge C/C++ file can take exponentially longer than with this off)
-"set foldmethod=syntax
-"set foldlevelstart=99 "don't automatically fold everything
-"setlocal foldnestmax=10
-
-" end tabs, folds, and line numbers }}}
-
-" keybinds {{{
-
-" key used for <Leader>
-
+" source keybinds
 exe 'source' "~/.vim/binds.vim"
-" let mapleader=";"
-"
-" "press escape to exit insert mode in terminal to be able to switch windows
-" tnoremap <Esc> <C-\><C-n>
-" tmap <C-w> <Esc><C-w>
-"
-" "switch windows with <Tab> followed by a direction
-" "also works with leader
-" nnoremap <Tab> <C-w>
-" nnoremap <Leader><Up> <C-w><Up>
-" nnoremap <Leader><Down> <C-w><Down>
-" nnoremap <Leader><Left> <C-w><Left>
-" nnoremap <Leader><Right> <C-w><Right>
-" nnoremap <Leader>k <C-w><Up>
-" nnoremap <Leader>j <C-w><Down>
-" nnoremap <Leader>h <C-w><Left>
-" nnoremap <Leader>l <C-w><Right>
-"
-" "use Z to toggle folds
-" nnoremap Z za
-" "also use <Leader>z to toggle folds
-" nnoremap <Leader>z za
-"
-" "use <Leader>s to save the file (if it was changed)
-" "nnoremap <silent> <Leader>s :up<CR>
-" "use <Leader>S to strip trailing whitespace
-" "nnoremap <silent> <Leader>S :silent! StripWhitespace<CR>
-"
-" " sort paragraphs using control-s, reverse sort using alt-s
-" nnoremap <silent> <C-s> vip:sort<CR>
-" nnoremap <silent> <M-s> vip:sort!<CR>
-"
-" " copy to clipboard in visual mode with c-y
-" if has('clipboard')
-"   vnoremap <C-y> "+y<CR>
-" endif
-"
-" nnoremap <silent> g= :retab<CR>mvgg=G`v
-"
-" nnoremap <silent> <C-Up> :move--<CR>
-" nnoremap <silent> <C-Down> :move+<CR>
-" nmap <C-k> <C-Up>
-" nmap <C-j> <C-Down>
-"
-" noremap <silent> <F7> <Esc>:tabp<CR>
-" noremap <silent> <F8> <Esc>:tabn<CR>
-" "use tabe instead of tabf, e works the same as :e
-" noremap <F9> <Esc>:tabe<Space>
-" noremap <silent> <C-F7> <Esc>:bp<CR>
-" noremap <silent> <C-F8> <Esc>:bn<CR>
-"
-" noremap <silent> <F11> <Esc>:bp<CR>
-" noremap <silent> <F12> <Esc>:bn<CR>
-"
-" "map <silent> <F10> <Esc>mp:%s/\([)>a-zA-Z0-9]\) {/\1 {/ge<CR>:%s/{\zs\s\+\ze$//ge<CR>:%s/\([^\s\t ]\)[\s\t ]*\n[\s\t ]*{\(.*\)$/\1 {\r\2/ge<CR>:%s/\r//ge<CR>:%s/}\zs\([^\s\t ;,\])}]\)/ \1/ge<CR>:%s/\(^\\|[\s\t ]\)\/\{2,}<\?!\?\zs\([^!<\s\t ]\)/ \2/ge<CR>:%s/[^\s\t ]\zs{/ {/ge<CR>gg=G:retab<CR>`p
-"
-" " use F1 to look up help pages and man pages
-" nnoremap <F1> K
-"
-" vnoremap < <gv
-" vnoremap > >gv
-"
-" "<Leader>o will be like o, but will continue comments if &fo doesn't include o
-" nnoremap <Leader>o A<CR>
-"
-" "compile
-" noremap <silent> <F2> <Esc>:make<CR>
-" "open error list
-" noremap <silent> <F3> <Esc>:copen<CR>
-" "previous error
-" noremap <silent> <F4> <Esc>:cprevious<CR>
-" "next error
-" noremap <silent> <F5> <Esc>:cnext<CR>
-" "close error output
-" noremap <silent> <F6> <Esc>:cclose<CR>
-
-" end keybinds }}}
-
-" compiling {{{
-"java compilation stuff
-"autocmd Filetype java set makeprg=cd\ '%:h'\ &&\ javac\ '%:t'
-"autocmd Filetype java set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
-"c compilation stuff
-"autocmd Filetype c set makeprg=gcc\ -o\ '%<'.out\ '%'
-"c++ compilation stuff
-"autocmd Filetype cpp,c++ set makeprg=g++\ -o\ '%<'.out\ '%'\ -std=c++17
-
-" end compiling }}}
-
-" autogroups/commands {{{
-" set up foldmethods and text widths based on filetypes
-" augroup vimrc
-"   au!
-"   autocmd BufNewFile,BufRead Makefile,*.mk,*.sh,*.zsh-theme,*.vimrc,*.vim,*rc,*.conf  setlocal foldlevel=0 | setlocal foldmethod=marker
-"   "autocmd BufNewFile,BufRead *.tex,*.md,*.txt,*.rtf,README setlocal textwidth=80
-" augroup END
-
-" disable bells
-" autocmd GUIEnter * set vb t_vb=
-"
-" augroup zsh_theme_ft
-"   au!
-"   autocmd BufNewFile,BufRead *.zsh-theme  setlocal filetype=zsh
-" augroup END
-"
-" augroup arduino_ino
-"   au!
-"   autocmd BufNewFile,BufRead *.ino  setlocal filetype=cpp
-" augroup END
-"
-" augroup vifm_ft
-"   au!
-"   autocmd BufNewFile,BufRead *.vifm,vifm*  setlocal ft=vim
-" augroup END
-
-" I want section 2 before second 3
-" Example: open() -> open(3pm) which is in the perl manual
-" I want open(2)
-" autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cc let b:man_default_sects='2,3'
-"
-" autocmd BufNewFile,BufRead *.dts,*.dtsi setlocal tw=0
-"
-" autocmd BufNewFile,BufRead * setl fo-=o
-"
-" "enable hex editing for binary files
-" "when starting vim with -b, this will edit the file with hex
-" if executable('xxd')
-"   augroup Binary
-"     au!
-"     au BufReadPost * if &bin | %!xxd
-"     au BufReadPost * set ft=xxd | endif
-"     au BufWritePre * if &bin | %!xxd -r
-"     au BufWritePre * endif
-"     au BufWritePost * if &bin | %!xxd
-"     au BufWritePost * set nomod | endif
-"   augroup END
-" endif
-
-" end autogroups/commands }}}
-
-" completion {{{
-" set completeopt+=preview
-" set completeopt+=menuone
-" set completeopt+=noinsert
-" set completeopt+=longest
-" set shortmess+=c
-
-"set complete=.,b,u,]
-"set wildmode=longest,list:longest
-"set completeopt=menu,preview
-
-" end completion }}}
