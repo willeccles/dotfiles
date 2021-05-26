@@ -76,7 +76,7 @@ set shortmess+=c
 
 augroup vimrc
   au!
-  autocmd BufNewFile,BufRead Makefile,*.mk,*.sh,*.zsh-theme,*.vimrc,*.vim,*rc,*.conf  setlocal foldlevel=0 | setlocal foldmethod=marker
+  autocmd BufNewFile,BufRead Makefile,*.mk,*.sh,*.zsh-theme,*.vimrc,*.vim,*rc,*.conf  setl foldlevel=0 foldmethod=marker
 augroup END
 
 " disable bells
@@ -99,7 +99,9 @@ augroup END
 
 autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cc let b:man_default_sects='2,3'
 
-autocmd BufNewFile,BufRead *.dts,*.dtsi setlocal tw=0
+autocmd BufNewFile,BufRead *.dot,*.dts,*.dtsi setl tw=0 colorcolumn=
+
+autocmd BufNewFile,BufRead Kbuild setlocal ft=make
 
 autocmd BufNewFile,BufRead * setl fo-=o
 
