@@ -23,11 +23,8 @@ set splitright
 set splitbelow
 
 set title
-if has('nvim')
-  set titlestring=%t\ -\ NVIM
-else
-  set titlestring=%t\ -\ VIM
-endif
+" overridden in init.vim for nvim
+set titlestring=%t\ -\ VIM
 
 if has('persistent_undo')
   set undodir=/tmp/vim-undodir
