@@ -86,10 +86,10 @@ Plug 'godlygeek/tabular'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
 Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', 'LiveEasyAlign']}
-Plug 'junegunn/vim-markdown-toc', {'for': 'markdown'}
 Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-sneak'
 Plug 'machakann/vim-highlightedyank'
+Plug 'mzlogin/vim-markdown-toc', {'for': 'markdown', 'tag': '*'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'sickill/vim-pasta'
@@ -106,6 +106,10 @@ if has('nvim')
   endif
 endif
 
+if has('nvim-0.5.0')
+  Plug 'folke/which-key.nvim'
+endif
+
 call plug#end()
 
 set runtimepath+=~/git/vim-cactodo
@@ -115,6 +119,14 @@ if has('nvim')
 
   "set foldmethod=expr
   "set foldexpr=nvim_treesitter#foldexpr()
+endif
+
+if has('nvim-0.5.0')
+  lua << EOF
+require("which-key").setup {
+  --config goes here
+}
+EOF
 endif
 
 "make gitgutter faster
