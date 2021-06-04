@@ -99,11 +99,8 @@ Plug 'unblevable/quick-scope'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'zhimsel/vim-stay'
 
-if has('nvim')
-  if executable('tree-sitter')
-    "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    "Plug 'romgrk/nvim-treesitter-context'
-  endif
+if has('nvim') && executable('tree-sitter')
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 
 if has('nvim-0.5.0')
@@ -115,18 +112,10 @@ call plug#end()
 set runtimepath+=~/git/vim-cactodo
 
 if has('nvim')
-  "lua require('cactus.config')
+  lua require('cactus.config')
 
   "set foldmethod=expr
   "set foldexpr=nvim_treesitter#foldexpr()
-endif
-
-if has('nvim-0.5.0')
-  lua << EOF
-require("which-key").setup {
-  --config goes here
-}
-EOF
 endif
 
 "make gitgutter faster

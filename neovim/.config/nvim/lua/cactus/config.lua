@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
   ensure_installed = "maintained",
   ignore_install = { "json" },
   highlight = {
@@ -13,3 +13,14 @@ require'nvim-treesitter.configs'.setup {
     enable = false,
   },
 }
+
+if vim.version()["minor"] >= 5 then
+  require('which-key').setup {
+    plugins = {
+      spelling = {
+        enabled = true,
+        suggestions = 20,
+      },
+    },
+  }
+end
