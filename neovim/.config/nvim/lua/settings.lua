@@ -1,76 +1,85 @@
 local cmd = vim.cmd
 local fn = vim.fn
 local o = vim.o
-local w = vim.w
-local b = vim.b
+local w = vim.wo
+local b = vim.bo
 
-o.showmode = false
-o.t_Co = "256"
-
-o.laststatus = 2
-o.modeline = true
-o.ruler = false
-
-o.so = 3
-o.siso = 3
-
-o.wrap = false
-
-o.tw = 80
-o.colorcolumn = "81"
-
-o.fo = "tjcrqln1"
-
-o.lazyredraw = true
-
-o.nrformats = "alpha,bin,hex,octal"
-
-o.hidden = true
-o.switchbuf = "useopen"
-
-o.splitright = true
-o.splitbelow = true
-
-o.title = true
-o.titlestring = "%t - NVIM"
-
-o.undodir = "/tmp/nvim-undodir"
-o.undofile = true
-
-o.mouse = "a"
-
-o.backspace = "indent,eol,start"
-
-o.hlsearch = true
-
-o.updatetime = 500
-
-if fn.executable("ag") then
-  o.grepprg = "ag --vimgrep $*"
-  o.grepformat = "%f:%l:%c:%m"
+function set(key, value)
+  if not pcall(function() vim.wo[key] = value end) then
+    pcall(function() vim.bo[key] = value end)
+  end
+  vim.o[key] = value
 end
 
-w.rnu = true
-w.nu = true
+set('showmode', false)
+set('t_Co', "256")
 
-w.cursorline = true
+set('laststatus', 2)
+set('modeline', true)
+set('ruler', false)
 
-cmd 'filetype plugin indent on'
-cmd 'syntax enable'
+set('so', 3)
+set('siso', 3)
 
-o.background = "dark"
-o.termguicolors = true
+set('wrap', false)
 
-o.tabstop = 2
-o.softtabstop = 2
-o.shiftwidth = 2
-o.smarttab = true
-o.expandtab = true
+set('tw', 80)
+set('colorcolumn', "81")
 
-o.cino = "hs,l1,g0,t0,i4,+4,(0,w1,W4,E-s,N-s"
+set('fo', "tjcrqln1")
 
-o.completeopt = o.completeopt .. ",preview"
-o.completeopt = o.completeopt .. ",menuone"
-o.completeopt = o.completeopt .. ",noinsert"
-o.completeopt = o.completeopt .. ",longest"
-o.shortmess = o.shortmess .. "c"
+set('lazyredraw', true)
+
+set('nrformats', "alpha,bin,hex,octal")
+
+set('hidden', true)
+set('switchbuf', "useopen")
+
+set('splitright', true)
+set('splitbelow', true)
+
+set('title', true)
+set('titlestring', "%t - NVIM")
+
+set('undodir', "/tmp/nvim-undodir")
+set('undofile', true)
+
+set('mouse', "a")
+
+set('backspace', "indent,eol,start")
+
+set('hlsearch', true)
+
+set('updatetime', 500)
+
+if fn.executable("ag") then
+  set('grepprg', "ag --vimgrep $*")
+  set('grepformat', "%f:%l:%c:%m")
+end
+
+set('rnu', true)
+set('rnu', true)
+
+set('cursorline', true)
+
+cmd[[filetype plugin indent on]]
+cmd[[syntax enable]]
+
+set('background', "dark")
+set('termguicolors', true)
+
+set('tabstop', 2)
+set('softtabstop', 2)
+set('shiftwidth', 2)
+set('smarttab', true)
+set('expandtab', true)
+
+set('cino', "hs,l1,g0,t0,i4,+4,(0,w1,W4,E-s,N-s")
+
+set('completeopt', 'menu,preview,menuone,noinsert,longest')
+o.shortmess = o.shortmess .. 'c'
+
+set('pb', 20)
+set('winbl', 20)
+
+set('inccommand', 'nosplit')
