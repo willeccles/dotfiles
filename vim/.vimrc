@@ -98,25 +98,9 @@ Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'zhimsel/vim-stay'
-
-if has('nvim') && executable('tree-sitter')
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-endif
-
-if has('nvim-0.5.0')
-  Plug 'folke/which-key.nvim'
-endif
-
 call plug#end()
 
 set runtimepath+=~/git/vim-cactodo
-
-if has('nvim')
-  lua require('cactus.config')
-
-  "set foldmethod=expr
-  "set foldexpr=nvim_treesitter#foldexpr()
-endif
 
 "make gitgutter faster
 " set updatetime=250
@@ -136,7 +120,6 @@ let g:NERDTreeDirArrowCollapsible='▾'
 set wildignore+=*.so,*.swp,*.zip
 
 "ALE
-" TODO: replace with nvim-lsp, probably
 let g:ale_completion_enabled=1
 let g:ale_pattern_options = { '\.h$': {'ale_linters': ['clangd', 'ccls', 'clang', 'clangcheck', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
 let g:ale_c_cc_options='-Wall -pedantic -std=c11 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
