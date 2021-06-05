@@ -58,7 +58,7 @@ if fn.executable("ag") then
 end
 
 set('rnu', true)
-set('rnu', true)
+set('nu', true)
 
 set('cursorline', true)
 
