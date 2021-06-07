@@ -13,3 +13,5 @@ cmd 'packadd packer.nvim'
 cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
 require('plugins')
+
+require('keybindings')

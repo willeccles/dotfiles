@@ -98,7 +98,19 @@ Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'zhimsel/vim-stay'
+
+if has('nvim-0.5.0')
+  if executable('tree-sitter')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  endif
+  Plug 'folke/which-key.nvim'
+endif
+
 call plug#end()
+
+if has('nvim-0.5.0')
+  lua require('cactus.config')
+endif
 
 set runtimepath+=~/git/vim-cactodo
 
