@@ -23,4 +23,30 @@ return require("packer").startup(function()
       }
     end
   }
+
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    cond = function()
+      return vim.fn.executable("tree-sitter")
+    end,
+    run = ":TSUpdate",
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        ensure_installed = "maintained",
+        ignore_install = { "json" },
+        highlight = {
+          enable = true,
+          custom_captures = {
+            ["punctuation.bracket"] = "",
+            ["punctuation.delimiter"] = "",
+            ["operator"] = "",
+          },
+          disable = { "c", "cpp" },
+        },
+        indent = {
+          enable = false,
+        },
+      }
+    end
+  }
 end)

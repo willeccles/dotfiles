@@ -15,7 +15,7 @@ end
 vim.g.mapleader = ' '
 
 -- press escape to exit insert mode in terminal to be able to switch windows
-noremap('t', '<Esc>', '<C-\><C-n>')
+noremap('t', '<Esc>', '<C-\\><C-n>')
 map('t', '<C-w>', '<Esc><C-w>')
 
 -- switch windows with tab or leader
