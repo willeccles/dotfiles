@@ -5,3 +5,4 @@ config/.config/asciinema/install-id
 vim/.vim/plugged
 vim/.vim/.netrwhist
 config/.config/vifm/vifminfo.json
+neovim/.config/nvim/plugin
