@@ -15,3 +15,5 @@ cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 require('plugins')
 
 require('keybindings')
+
+require('statusline')

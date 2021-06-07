@@ -1,8 +1,8 @@
 return require("packer").startup(function()
-  use {"wbthomason/packer.nvim", opt = true}
+  use { "wbthomason/packer.nvim", opt = true }
 
   use {
-    "morhetz/gruvbox",
+    "willeccles/gruvbox",
     config = function()
       vim.g.gruvbox_italic = false
       vim.g.gruvbox_invert_selection = false
@@ -46,6 +46,27 @@ return require("packer").startup(function()
         indent = {
           enable = false,
         },
+      }
+    end
+  }
+
+  use {
+    "lewis6991/gitsigns.nvim",
+    cond = function()
+      return vim.fn.executable('git')
+    end,
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require('gitsigns').setup {
+        signs = {
+          add          = { hl = 'GruvboxGreenSign', text = '+' },
+          change       = { hl = 'GruvboxAquaSign', text = '~' },
+          delete       = { hl = 'GruvboxRedSign', text = '_' },
+          topdelete    = { hl = 'GruvboxRedSign', text = '‾' },
+          changedelete = { hl = 'GruvboxAquaSign', text = '~' },
+        },
+        numhl = false,
+        linehl = false,
       }
     end
   }
