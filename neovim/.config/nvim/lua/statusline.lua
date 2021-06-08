@@ -94,5 +94,4 @@ function _G.statusline()
   })
 end
 
-vim.o.statusline = '%!v:lua.statusline()'
-vim.wo.statusline = vim.o.statusline
+vim.opt.statusline = '%!v:lua.statusline()'

@@ -5,14 +5,11 @@ local w = vim.wo
 local b = vim.bo
 
 function set(key, value)
-  if not pcall(function() vim.wo[key] = value end) then
-    pcall(function() vim.bo[key] = value end)
-  end
-  vim.o[key] = value
+  vim.opt[key] = value
 end
 
 set('showmode', false)
-set('t_Co', "256")
+vim.g.t_Co = "256"
 
 set('laststatus', 2)
 set('modeline', true)
@@ -62,8 +59,8 @@ set('nu', true)
 
 set('cursorline', true)
 
-cmd[[filetype plugin indent on]]
-cmd[[syntax enable]]
+cmd 'filetype plugin indent on'
+cmd 'syntax enable'
 
 set('background', "dark")
 set('termguicolors', true)
@@ -77,7 +74,7 @@ set('expandtab', true)
 set('cino', "hs,l1,g0,t0,i4,+4,(0,w1,W4,E-s,N-s")
 
 set('completeopt', 'menu,preview,menuone,noinsert,longest')
-o.shortmess = o.shortmess .. 'c'
+vim.opt.shortmess:append('c')
 
 set('pb', 20)
 set('winbl', 20)
