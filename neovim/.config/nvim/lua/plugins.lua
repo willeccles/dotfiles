@@ -7,6 +7,16 @@ return require("packer").startup(function()
       vim.g.gruvbox_italic = false
       vim.g.gruvbox_invert_selection = false
       vim.cmd('colorscheme gruvbox')
+
+      --default status line colors which have to be specified because this is compared
+      --with StatusLineNC when falling back to that
+      vim.cmd [[highlight StatusLine guibg=#3c3836 guifg=#ebdbb2]]
+      --non-focused status line colors to fall back to when User1..2 aren't used
+      vim.cmd [[highlight StatusLineNC guibg=#32302f guifg=#bdae93]]
+
+      --use these with %1* and %2*
+      vim.cmd [[highlight User1 guibg=#3c3836 guifg=#928374]]
+      vim.cmd [[highlight User2 guibg=#3c3836 guifg=#ebdbb2]]
     end
   }
 
@@ -41,7 +51,7 @@ return require("packer").startup(function()
             ["punctuation.delimiter"] = "",
             ["operator"] = "",
           },
-          disable = { "c", "cpp" },
+          disable = { "c", "cpp", "bash" },
         },
         indent = {
           enable = false,
@@ -69,5 +79,13 @@ return require("packer").startup(function()
         linehl = false,
       }
     end
+  }
+
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+    },
   }
 end)

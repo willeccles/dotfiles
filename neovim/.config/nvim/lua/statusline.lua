@@ -25,11 +25,11 @@ function mode()
 end
 
 function rdonly()
-  return vim.b.readonly and '[RO] ' or ''
+  return vim.bo.readonly and '[RO] ' or ''
 end
 
 function modified()
-  return vim.b.modified and '+ ' or ' '
+  return vim.bo.modified and '+ ' or ' '
 end
 
 function ftype()
@@ -79,7 +79,7 @@ function gitstatus()
 end
 
 function _G.statusline()
-  local parts = {
+  return table.concat({
     mode(), --mode
     '%2* %n: ', -- buffer number
     rdonly(), --read-only status
@@ -91,25 +91,8 @@ function _G.statusline()
     gitstatus(), --git status
     ' %p%% ', --percentage through the file
     '%2* L%l:C%c ', --line number and column number
-  }
-
-  return table.concat(parts)
+  })
 end
-
-
---default status line colors which have to be specified because this is compared
---with StatusLineNC when falling back to that
-vim.cmd [[highlight StatusLine guibg=#3c3836 guifg=#ebdbb2]]
---non-focused status line colors to fall back to when User1..2 aren't used
-vim.cmd [[highlight StatusLineNC guibg=#32302f guifg=#bdae93]]
-
---use these with %1* and %2*
-vim.cmd [[highlight User1 guibg=#3c3836 guifg=#928374]]
-vim.cmd [[highlight User2 guibg=#3c3836 guifg=#ebdbb2]]
---vim.api.nvim_set_hl(0, 'StatusLine',   {guibg='#3c3836', guifg='#ebdbb2'})
---vim.api.nvim_set_hl(0, 'StatusLineNC', {guibg='#32302f', guifg='#bdae93'})
---vim.api.nvim_set_hl(0, 'User1',        {guibg='#3c3836', guifg='#928374'})
---vim.api.nvim_set_hl(0, 'User2',        {guibg='#3c3836', guifg='#ebdbb2'})
 
 vim.o.statusline = '%!v:lua.statusline()'
 vim.wo.statusline = vim.o.statusline

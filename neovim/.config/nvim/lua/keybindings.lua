@@ -47,3 +47,15 @@ noremap('n', '<C-Up>', ':move--<CR>', {silent = true})
 noremap('n', '<C-Down>', ':move+<CR>', {silent = true})
 map('n', '<C-k>', '<C-Up>', {silent = true})
 map('n', '<C-j>', '<C-Down>', {silent = true})
+
+noremap('', '<F7>', '<Esc>:tabp<CR>', {silent = true})
+noremap('', '<F8>', '<Esc>:tabn<CR>', {silent = true})
+noremap('', '<F9>', '<Esc>:tabe<Space>')
+noremap('', '<C-F7>', '<Esc>:bp<CR>', {silent = true})
+noremap('', '<C-F8>', '<Esc>:bn<CR>', {silent = true})
+
+noremap('v', '<', '<gv')
+noremap('v', '>', '>gv')
+
+-- use <Leader>o like o, but continues comments if &fo doesn't include o
+noremap('n', '<Leader>o', 'A<CR>')
