@@ -8,7 +8,7 @@ require('nvim-treesitter.configs').setup {
       ["punctuation.delimiter"] = "",
       ["operator"] = "",
     },
-    disable = { "c", "cpp" },
+    disable = { "c", "cpp", "bash" },
   },
   indent = {
     enable = false,

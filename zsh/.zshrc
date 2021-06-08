@@ -20,6 +20,44 @@ for config_file ($ZSH/lib/*.zsh); do
     source $config_file
 done
 
+ENABLE_VIM_MODE=""
+
+if [[ "${ENABLE_VIM_MODE}" == "enable" ]]; then
+  # enable vim mode
+  bindkey -v
+  # remove mode switching delay
+  KEYTIMEOUT=5
+  # change cursor shape for different vi modes
+  function zle-keymap-select {
+    case "${KEYMAP}" in
+      vicmd)
+        echo -ne '\e[1 q'
+        ;;
+      main|viins|'')
+        echo -ne '\e[5 q'
+        ;;
+    esac
+
+    if [[ "$1" == "block" ]]; then
+      echo -ne '\e[1 q'
+    elif [[ "$1" == "beam" ]]; then
+      echo -ne '\e[5 q'
+    fi
+  }
+zle -N zle-keymap-select
+autoload edit-command-line && zle -N edit-command-line && {
+  bindkey -M vicmd v edit-command-line
+}
+
+
+echo -ne '\e[5 q'
+
+function _fix_cursor() {
+  echo -ne '\e[5 q'
+}
+precmd_functions+=(_fix_cursor)
+fi
+
 if command -v promptus >/dev/null; then
     precmd() { PROMPT="$(eval 'promptus $?')" }
 fi
