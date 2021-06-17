@@ -120,3 +120,18 @@ let g:vim_json_warnings=0
 
 set listchars=tab:-->,trail:+,nbsp:+
 set list
+
+if executable('wsl-clip')
+  let g:clipboard = {
+        \ 'name': 'wsl-clip',
+        \ 'copy': {
+          \ '+': 'wsl-clip copy',
+          \ '*': 'wsl-clip copy',
+        \ },
+        \ 'paste': {
+          \ '+': 'wsl-clip paste',
+          \ '*': 'wsl-clip paste',
+        \ },
+        \ 'cache-enabled': 0,
+        \}
+endif
