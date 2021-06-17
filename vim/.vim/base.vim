@@ -115,3 +115,8 @@ if executable('xxd')
     au BufWritePost * set nomod | endif
   augroup END
 endif
+
+let g:vim_json_warnings=0
+
+set listchars=tab:-->,trail:+,nbsp:+
+set list

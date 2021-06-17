@@ -210,9 +210,13 @@ colorscheme gruvbox
 
 " change the cursors if we are in the terminal
 if !has("gui_running")
-  let &t_SI.="\e[5 q"
-  let &t_SR.="\e[4 q"
-  let &t_EI.="\e[1 q"
+  if !has('nvim')
+    let &t_SI.="\e[5 q"
+    let &t_SR.="\e[4 q"
+    let &t_EI.="\e[1 q"
+  else
+    set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
+  endif
 endif
 
 highlight ColorColumn guibg=#32302f

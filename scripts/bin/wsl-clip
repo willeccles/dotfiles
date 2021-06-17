@@ -1,0 +1,12 @@
+#!/bin/sh
+
+case "$1" in
+  paste)
+    powershell.exe Get-Clipboard -Raw \
+      | tr -d '\r' \
+      | awk 'NR>1{print previous} {previous=$0} END {printf("%s", $0)}'
+    ;;
+  copy)
+    tee <&0 | clip.exe
+    ;;
+esac
