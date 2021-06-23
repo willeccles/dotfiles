@@ -8,3 +8,4 @@ config/.config/vifm/vifminfo.json
 neovim/.config/nvim/plugin
 weechat/.weechat/logs
 weechat/.weechat/weechat.log
+vim/.vim/view

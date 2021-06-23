@@ -15,6 +15,7 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
+--[[
 if vim.version()["minor"] >= 5 then
   require('which-key').setup {
     plugins = {
@@ -25,3 +26,4 @@ if vim.version()["minor"] >= 5 then
     },
   }
 end
+--]]

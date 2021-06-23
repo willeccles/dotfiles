@@ -103,7 +103,7 @@ if has('nvim-0.5.0')
   if executable('tree-sitter')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   endif
-  Plug 'folke/which-key.nvim'
+  "Plug 'folke/which-key.nvim'
 endif
 
 call plug#end()

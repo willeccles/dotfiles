@@ -135,3 +135,6 @@ if executable('wsl-clip')
         \ 'cache-enabled': 0,
         \}
 endif
+
+"set langmap='dg,ek,fe,gt,il,jy,kn,lu,nj,pr,rs,sd,tf,ui,yo,o\;,\;p,DG,EK,FE,GT,IL,JY,KN,LU,NJ,PR,RS,SD,TF,UI,YO,O:,:P'
+"set nolangremap
