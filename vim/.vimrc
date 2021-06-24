@@ -81,7 +81,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
 Plug 'adelarsq/vim-matchit'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
@@ -101,7 +101,7 @@ Plug 'zhimsel/vim-stay'
 
 if has('nvim-0.5.0')
   if executable('tree-sitter')
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   endif
   "Plug 'folke/which-key.nvim'
 endif
@@ -109,7 +109,7 @@ endif
 call plug#end()
 
 if has('nvim-0.5.0')
-  lua require('cactus.config')
+  "lua require('cactus.config')
 endif
 
 set runtimepath+=~/git/vim-cactodo
@@ -136,6 +136,7 @@ let g:ale_completion_enabled=1
 let g:ale_pattern_options = { '\.h$': {'ale_linters': ['clangd', 'ccls', 'clang', 'clangcheck', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
 let g:ale_c_cc_options='-Wall -pedantic -std=c11 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
 let g:ale_cpp_cc_options='-Wall -pedantic -std=c++20 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
+let g:ale_cache_executable_check_failures=1
 let g:ale_c_parse_compile_commands=1
 let g:ale_cpp_parse_compile_commands=1
 let g:ale_hover_cursor=0

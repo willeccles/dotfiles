@@ -63,7 +63,7 @@ set shiftwidth=2
 set smarttab
 set expandtab
 
-set cino=hs,l1,g0,t0,i4,+4,(0,w1,W4,E-s,N-s
+set cino=h1,l1,g1,t0,i4,+4,(0,w1,W4,E-s,N-s
 
 set completeopt+=preview
 set completeopt+=menuone
