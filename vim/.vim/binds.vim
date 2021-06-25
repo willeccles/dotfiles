@@ -36,7 +36,9 @@ if has('clipboard')
   vnoremap <C-y> "+y<CR>
 endif
 
-nnoremap <silent> g= :retab<CR>mvgg=G`v
+nnoremap <silent> g= :retab<CR>msHmtgg=G'tzt`s
+
+nnoremap <silent> <Leader>f msHmt:%!clang-format<CR>'tzt`s
 
 nnoremap <silent> <C-Up> :move--<CR>
 nnoremap <silent> <C-Down> :move+<CR>
