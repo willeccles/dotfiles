@@ -343,3 +343,6 @@ endfu
 
 " source keybinds
 exe 'source' "~/.vim/binds.vim"
+
+" finally, autocommands
+exe 'source' "~/.vim/autocmds.vim"
