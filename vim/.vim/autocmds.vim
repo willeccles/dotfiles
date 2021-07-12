@@ -27,7 +27,7 @@ autocmd BufNewFile,BufRead *.dot,*.dts,*.dtsi setl tw=0 colorcolumn=
 
 autocmd BufNewFile,BufRead Kbuild setlocal ft=make
 
-autocmd BufNewFile,BufRead * setl fo-=o
+"autocmd BufNewFile,BufRead * setl fo-=o
 
 "enable hex editing for binary files
 "when starting vim with -b, this will edit the file with hex
