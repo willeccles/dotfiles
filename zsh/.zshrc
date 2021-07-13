@@ -24,9 +24,14 @@ done
 # search function.
 function _fzf_history() {
   emulate -LR zsh
+  if [[ -n "$BUFFER" ]]; then
+    _query="--query=$BUFFER"
+  else
+    unset _query
+  fi
   LBUFFER="$(fc -lnr 0 | awk '{sub(/ *$/, "", $0);} !_[$0]++' | \
     fzf --reverse --height='20%' --min-height=10 --no-sort --border=rounded \
-    --prompt="reverse history search: " --tiebreak=index)" || true
+    --prompt="reverse history search: " --tiebreak=index ${_query})" || true
   zle redisplay
 }
 if command -v fzf >/dev/null; then
