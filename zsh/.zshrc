@@ -17,49 +17,25 @@ source "$ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # source all the other configs stolen from oh-my-zsh
 for config_file ($ZSH/lib/*.zsh); do
-    source $config_file
+  source $config_file
 done
 
-ENABLE_VIM_MODE=""
-
-if [[ "${ENABLE_VIM_MODE}" == "enable" ]]; then
-  # enable vim mode
-  bindkey -v
-  # remove mode switching delay
-  KEYTIMEOUT=5
-  # change cursor shape for different vi modes
-  function zle-keymap-select {
-    case "${KEYMAP}" in
-      vicmd)
-        echo -ne '\e[1 q'
-        ;;
-      main|viins|'')
-        echo -ne '\e[5 q'
-        ;;
-    esac
-
-    if [[ "$1" == "block" ]]; then
-      echo -ne '\e[1 q'
-    elif [[ "$1" == "beam" ]]; then
-      echo -ne '\e[5 q'
-    fi
-  }
-zle -N zle-keymap-select
-autoload edit-command-line && zle -N edit-command-line && {
-  bindkey -M vicmd v edit-command-line
+# Search command history with fzf when I press C-r instead of the awful builtin
+# search function.
+function _fzf_history() {
+  emulate -LR zsh
+  LBUFFER="$(fc -lnr 0 | awk '{sub(/ *$/, "", $0);} !_[$0]++' | \
+    fzf --reverse --height='20%' --min-height=10 --no-sort --border=rounded \
+    --prompt="reverse history search: " --tiebreak=index)" || true
+  zle redisplay
 }
-
-
-echo -ne '\e[5 q'
-
-function _fix_cursor() {
-  echo -ne '\e[5 q'
-}
-precmd_functions+=(_fix_cursor)
+if command -v fzf >/dev/null; then
+  zle -N _fzf_history
+  bindkey '^r' _fzf_history
 fi
 
 if command -v promptus >/dev/null; then
-    precmd() { PROMPT="$(eval 'promptus $?')" }
+  precmd() { PROMPT="$(eval 'promptus $?')" }
 fi
 
 # this won't get used if promptus is found above
