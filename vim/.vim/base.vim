@@ -72,6 +72,7 @@ set completeopt+=longest
 set shortmess+=c
 
 let g:vim_json_warnings=0
+let g:c_gnu=1
 
 set listchars=tab:-->,trail:+,nbsp:+
 set list
