@@ -77,6 +77,10 @@ let g:c_gnu=1
 set listchars=tab:-->,trail:+,nbsp:+
 set list
 
+set spelllang=en_us
+set spelloptions=camel
+set spell
+
 if executable('wsl-clip')
   let g:clipboard = {
         \ 'name': 'wsl-clip',
