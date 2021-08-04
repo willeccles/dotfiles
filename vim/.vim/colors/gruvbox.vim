@@ -574,8 +574,8 @@ else
 endif
 
 call s:HL('Comment', s:gray, s:none, s:italicize_comments)
-call s:HL('Todo', s:vim_fg, s:vim_bg, s:bold . s:italic)
-call s:HL('Error', s:red, s:vim_bg, s:bold . s:inverse)
+call s:HL('Todo', s:vim_fg, s:none, s:bold . s:italic)
+call s:HL('Error', s:red, s:none, s:bold . s:inverse)
 
 " Generic statement
 hi! link Statement GruvboxRed
