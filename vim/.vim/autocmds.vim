@@ -23,7 +23,7 @@ augroup END
 
 autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cc let b:man_default_sects='2,3'
 
-autocmd BufNewFile,BufRead *.dot,*.dts,*.dtsi,*.make,*.cmake,*.mk setl tw=0 colorcolumn=
+autocmd BufNewFile,BufRead *.dot,*.dts,*.dtsi,*.make,*.cmake,*.mk setl tw=0
 
 autocmd BufNewFile,BufRead Kbuild setlocal ft=make
 
