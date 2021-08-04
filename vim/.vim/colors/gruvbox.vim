@@ -1027,6 +1027,11 @@ hi! link cOperator GruvboxPurple
 hi! link cStructure GruvboxOrange
 
 " }}}
+" C++: {{{
+
+hi! link cppOperator GruvboxPurple
+
+" }}}
 " Python: {{{
 
 hi! link pythonBuiltin GruvboxOrange
