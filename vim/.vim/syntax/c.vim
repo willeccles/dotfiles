@@ -245,7 +245,7 @@ syn match	cCommentError	display "\*/"
 syn match	cCommentStartError display "/\*"me=e-1 contained
 syn match	cWrongComTail	display "\*/"
 
-syn keyword	cOperator	sizeof
+syn keyword	cOperator	sizeof offsetof
 if exists("c_gnu")
   syn keyword	cStatement	__asm__
   syn keyword	cOperator	typeof __real__ __imag__
