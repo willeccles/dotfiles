@@ -25,7 +25,7 @@ fi
 UNKNOWN=$(svn status 2> /dev/null | grep "^\?" 2> /dev/null \
     | perl -pe 's/^\?\s+//' 2> /dev/null)
 
-UCOUNT=$(echo -n "${UNKNOWN}" 2> /dev/null | wc -l 2> /dev/null)
+UCOUNT=$(echo "${UNKNOWN}" 2> /dev/null | wc -l 2> /dev/null)
 
 if [ "${UNKNOWN}" != "" ]; then
     echo "Adding ${UCOUNT} unknown file(s)..."
@@ -38,7 +38,7 @@ fi
 MISSING=$(svn status 2> /dev/null | grep "^!" 2> /dev/null \
     | perl -pe 's/^!\s+//' 2> /dev/null)
 
-MCOUNT=$(echo -n "${MISSING}" 2> /dev/null | wc -l 2> /dev/null)
+MCOUNT=$(echo "${MISSING}" 2> /dev/null | wc -l 2> /dev/null)
 
 if [ "${MISSING}" != "" ]; then
     echo "Removing ${COUNT} missing file(s)..."
