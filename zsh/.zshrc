@@ -30,7 +30,7 @@ function _fzf_history() {
     unset _query
   fi
   LBUFFER="$(fc -lnr 0 | awk '{sub(/ *$/, "", $0);} !_[$0]++' | \
-    fzf --reverse --height='20%' --min-height=10 --no-sort --border=rounded \
+    fzf -e --reverse --height='20%' --min-height=10 --no-sort --border=rounded \
     --prompt="reverse history search: " --tiebreak=index ${_query})" || true
   zle redisplay
 }
