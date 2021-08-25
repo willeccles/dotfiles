@@ -1,0 +1,11 @@
+[pull]
+	rebase = false
+[credential]
+	helper = store
+[user]
+	email = will@eccles.dev
+	name = Will Eccles
+[init]
+	defaultBranch = master
+[advice]
+	detachedHead = false
