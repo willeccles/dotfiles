@@ -138,6 +138,10 @@ if [ "$TERM" = "linux" ]; then
     clear # fix some weird artifacting
 fi
 
+if hascommand gpg-agent && [ ! "$(uname)" = "Darwin" ]; then
+  eval $(gpg-agent --daemon 2>/dev/null)
+fi
+
 if [ -f ~/.localprofile ]; then
     . ~/.localprofile
 fi
