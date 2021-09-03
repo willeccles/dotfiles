@@ -12,3 +12,5 @@
 	detachedHead = false
 [commit]
 	gpgsign = true
+[tag]
+	gpgsign = true
