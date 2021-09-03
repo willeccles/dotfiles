@@ -33,8 +33,6 @@ endfu
 " function
 command! -nargs=* -complete=file S call SplitNatural(<f-args>)
 
-" set splitright
-" set splitbelow
 " end splitting }}}
 
 " end general config }}}
