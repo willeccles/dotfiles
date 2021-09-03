@@ -5,7 +5,10 @@
 [user]
 	email = will@eccles.dev
 	name = Will Eccles
+	signingkey = CAEBC3A8A8B8E9E8
 [init]
 	defaultBranch = master
 [advice]
 	detachedHead = false
+[commit]
+	gpgsign = true
