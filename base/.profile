@@ -17,8 +17,6 @@ export PATH="$PATH:$HOME/bin"
 
 export CLICOLOR=1
 
-export GPG_TTY=$(tty)
-
 hascommand() {
     command -v "$1" &>/dev/null
 }
@@ -139,7 +137,14 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 if hascommand gpg-agent && [ ! "$(uname)" = "Darwin" ]; then
-  eval $(gpg-agent --daemon 2>/dev/null)
+  eval $(gpg-agent --daemon --default-cache-ttl 604800 \
+    --max-cache-ttl 604800 2>/dev/null)
+fi
+
+export GPG_TTY="$(tty)"
+if hascommand gpgconf; then
+  export GPG_AGENT_INFO="$(gpgconf --list-dirs agent-socket | \
+    tr -d '\n' && echo -n ::)"
 fi
 
 if [ -f ~/.localprofile ]; then
