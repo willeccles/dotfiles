@@ -18,11 +18,12 @@ fi
 # TODO make fzf look nicer here
 # TODO previews for renames, new files, deleted files
 choices="$(printf "%s" "$git_status" | \
-  fzf --no-sort --with-nth=2.. --multi \
-  --preview='git diff --color --cached -- {2..}')"
+  fzf --no-sort --with-nth=2.. --multi --bind ctrl-a:select-all \
+  --preview='git diff --color --cached --find-renames -- {2..}')"
 
 case $? in
   2|130)
+    git reset -q
     exit 1
     ;;
   *)
