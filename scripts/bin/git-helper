@@ -1,0 +1,48 @@
+#!/bin/bash -e
+
+# TODO add more functionality than just committing specific files
+
+if ! git rev-parse 2>/dev/null; then
+  >&2 printf "Error: not in a git repository\n"
+  exit 1
+fi
+
+git add --all
+
+git_status="$(git status --porcelain)"
+if [[ -z "$git_status" ]]; then
+  printf "Nothing to commit\n"
+  exit 0
+fi
+
+# TODO make fzf look nicer here
+# TODO previews for renames, new files, deleted files
+choices="$(printf "%s" "$git_status" | \
+  fzf --no-sort --with-nth=2.. --multi \
+  --preview='git diff --color --cached -- {2..}')"
+
+case $? in
+  2|130)
+    exit 1
+    ;;
+  *)
+    ;;
+esac
+
+# unstage changes
+git reset -q
+
+args=""
+while IFS= read -r choice; do
+  stripped="${choice:3}"
+  if [[ "$choice" == "R"* ]]; then
+    from="${stripped%% -> *}"
+    to="${stripped##* -> }"
+    printf "renamed %s to %s\n" "$to" "$from"
+    git add -- "$to" "$from"
+  else
+    git add -- "$stripped"
+  fi
+done <<<"$choices"
+
+git commit
