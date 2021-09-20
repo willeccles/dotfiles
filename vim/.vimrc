@@ -92,6 +92,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'sickill/vim-pasta'
 Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'whatyouhide/vim-lengthmatters'
