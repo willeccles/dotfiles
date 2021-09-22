@@ -7,43 +7,83 @@ if ! git rev-parse 2>/dev/null; then
   exit 1
 fi
 
-git add --all
+commit_files() {
+  git add --all
 
-git_status="$(git status --porcelain)"
-if [[ -z "$git_status" ]]; then
-  printf "Nothing to commit\n"
-  exit 0
-fi
+  git_status="$(git status --porcelain)"
+  if [[ -z "$git_status" ]]; then
+    printf "Nothing to commit\n"
+    exit 0
+  fi
 
-# TODO make fzf look nicer here
-# TODO previews for renames, new files, deleted files
-choices="$(printf "%s" "$git_status" | \
-  fzf --no-sort --with-nth=2.. --multi --bind ctrl-a:select-all \
-  --preview='git diff --color --cached --find-renames -- {2..}')"
+  # TODO make fzf look nicer here
+  # TODO previews for renames, new files, deleted files
+  choices="$(printf "%s" "$git_status" | \
+    fzf --no-sort --with-nth=2.. --multi --bind ctrl-a:select-all \
+    --preview='git diff --color --cached --find-renames -- {2..}')"
 
-case $? in
-  2|130)
-    git reset -q
-    exit 1
+  case $? in
+    2|130)
+      git reset -q
+      exit 1
+      ;;
+    *)
+      ;;
+  esac
+
+  # unstage changes
+  git reset -q
+
+  args=""
+  while IFS= read -r choice; do
+    stripped="${choice:3}"
+    if [[ "$choice" == "R"* ]]; then
+      from="${stripped%% -> *}"
+      to="${stripped##* -> }"
+      printf "renamed %s to %s\n" "$to" "$from"
+      git add -- "$to" "$from"
+    else
+      git add -- "$stripped"
+    fi
+  done <<<"$choices"
+
+  git commit
+}
+
+browse_commits() {
+ git log --color=always --pretty="format:%C(auto)%h%d %s" \
+   | fzf --ansi --no-sort --with-nth=2.. --layout=reverse \
+   --preview='git show --color=always --decorate {1}' || true
+}
+
+usage() {
+  cat - <<EOM
+usage: ${0##*/} OP
+
+operations:
+  commit-files     select changed files/new files to commit, then open the
+                   editor to change the commit message
+
+  browse-commits   browse commit history for the current repository
+
+  help             show this message
+EOM
+}
+
+case "$1" in
+  commit-files)
+    commit_files
+    ;;
+  browse-commits)
+    browse_commits
+    ;;
+  help)
+    usage
+    exit 0
     ;;
   *)
+    >&2 printf "Unknown operation: %s\n" "$1"
+    help
+    exit 1
     ;;
 esac
-
-# unstage changes
-git reset -q
-
-args=""
-while IFS= read -r choice; do
-  stripped="${choice:3}"
-  if [[ "$choice" == "R"* ]]; then
-    from="${stripped%% -> *}"
-    to="${stripped##* -> }"
-    printf "renamed %s to %s\n" "$to" "$from"
-    git add -- "$to" "$from"
-  else
-    git add -- "$stripped"
-  fi
-done <<<"$choices"
-
-git commit
