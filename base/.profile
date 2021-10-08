@@ -137,8 +137,8 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 if hascommand gpg-agent && [ ! "$(uname)" = "Darwin" ]; then
-  eval $(gpg-agent --daemon --default-cache-ttl 86400 \
-    --max-cache-ttl 86400 2>/dev/null)
+  eval $(gpg-agent --daemon --default-cache-ttl 432000 \
+    --max-cache-ttl 432000 2>/dev/null)
 fi
 
 export GPG_TTY="$(tty)"
