@@ -70,10 +70,11 @@ export PF_INFO="ascii title os kernel shell editor palette"
 export PF_COL1=3
 
 # if we have clang installed
-if hascommand clang; then
-    export CC=clang
-    export CXX=clang++
-    export LD=clang
+export CC=gcc
+export CXX=g++
+export LD=ld
+if hascommand mold; then
+  export LD=mold
 fi
 
 export MAKEFLAGS=-j`nproc`
