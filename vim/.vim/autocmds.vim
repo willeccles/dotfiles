@@ -27,6 +27,8 @@ autocmd BufNewFile,BufRead *.dot,*.dts,*.dtsi,*.make,*.cmake,*.mk setl tw=0
 
 autocmd BufNewFile,BufRead Kbuild setlocal ft=make
 
+autocmd FileType man setl nospell
+
 "autocmd BufNewFile,BufRead * setl fo-=o
 
 "enable hex editing for binary files
@@ -35,7 +37,7 @@ if executable('xxd')
   augroup Binary
     au!
     au BufReadPost * if &bin | %!xxd
-    au BufReadPost * set ft=xxd | endif
+    au BufReadPost * set ft=xxd nospell | endif
     au BufWritePre * if &bin | %!xxd -r
     au BufWritePre * endif
     au BufWritePost * if &bin | %!xxd
