@@ -10,7 +10,7 @@ PROMPT_COMMAND=__prompt_command # sets the PS1 after commands
 
 if command -v promptus >/dev/null; then
     __prompt_command() {
-        PS1="$(promptus "$?")"
+        PS1="$(SHELL=/bin/bash promptus "$?")"
     }
 else
     __prompt_command() {
