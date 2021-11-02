@@ -17,3 +17,4 @@
 [alias]
 	graph = log --graph --oneline --all
 	browse = !git log --color=always --pretty=\"format:%C(auto)%h%d %s\" | fzf --ansi --no-sort --with-nth=2.. --layout=reverse --preview=\"git show --color=always --decorate {1}\"
+	amend = commit --amend
