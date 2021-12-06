@@ -15,6 +15,8 @@ export PATH="$PATH:/opt/local/libexec/gnubin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/bin"
 
+[ -d "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
 export CLICOLOR=1
 
 hascommand() {
