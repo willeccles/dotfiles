@@ -12,3 +12,6 @@ set pb=20
 set winbl=20
 
 set titlestring=%t\ -\ NVIM
+
+" disable copilot by default
+autocmd VimEnter * exe "Copilot disable"
