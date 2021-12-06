@@ -44,9 +44,15 @@ nnoremap <silent> <C-Up> :move--<CR>
 nnoremap <silent> <C-Down> :move+<CR>
 nmap <C-k> <C-Up>
 nmap <C-j> <C-Down>
+nmap <M-Up> <C-Up>
+nmap <M-Down> <C-Down>
+nmap <M-k> <C-Up>
+nmap <M-j> <C-Down>
 
 noremap <silent> <F7> <Esc>:tabp<CR>
 noremap <silent> <F8> <Esc>:tabn<CR>
+noremap <silent> <M-Left> <Esc>:tabp<CR>
+noremap <silent> <M-Right> <Esc>:tabn<CR>
 "use tabe instead of tabf, e works the same as :e
 noremap <F9> <Esc>:tabe<Space>
 noremap <silent> <C-F7> <Esc>:bp<CR>
