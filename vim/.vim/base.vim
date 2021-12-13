@@ -50,8 +50,8 @@ endif
 
 set guifont=Operator\ Mono\ Book:h12
 
-set rnu
-set nu
+set nonu
+set nornu
 
 set cursorline
 
