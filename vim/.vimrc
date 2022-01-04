@@ -148,7 +148,7 @@ let g:ale_lint_on_insert_leave=0
 let g:ale_lint_on_save=1
 
 "ctrlp.vim
-set wildmode=list:longest,list:full
+"set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|tox|ico|git|hg|svn))$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
