@@ -71,17 +71,6 @@ alias s="git status"
 export PF_INFO="ascii title os kernel shell editor palette"
 export PF_COL1=3
 
-# if we have clang installed
-if hascommand clang; then
-  export CC=clang
-  export CXX=clang++
-  export LD=clang
-fi
-
-if hascommand mold; then
-  export LD=mold
-fi
-
 export MAKEFLAGS=-j`nproc`
 
 if hascommand kiss; then
