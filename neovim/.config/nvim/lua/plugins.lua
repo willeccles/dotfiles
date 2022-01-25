@@ -34,6 +34,7 @@ return require("packer").startup(function()
     end
   }
 
+  --[[
   use {
     "nvim-treesitter/nvim-treesitter",
     cond = function()
@@ -59,6 +60,7 @@ return require("packer").startup(function()
       }
     end
   }
+  --]]
 
   use {
     "lewis6991/gitsigns.nvim",
@@ -88,4 +90,28 @@ return require("packer").startup(function()
       'nvim-lua/plenary.nvim',
     },
   }
+
+  use { "adelarsq/vim-matchit" }
+
+  use {
+    "dense-analysis/ale",
+    config = function()
+      vim.g.ale_completion_enabled = 1
+      --vim.g.ale_pattern_options = { '\.h$': {'ale_linters': ['clangd', 'ccls', 'clang', 'clangcheck', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
+      vim.g.ale_c_cc_options = '-Wall -pedantic -std=c11 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
+      vim.g.ale_cpp_cc_options = '-Wall -pedantic -std=c++20 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
+      vim.g.ale_c_parse_compile_commands = 1
+      vim.g.ale_cpp_parse_compile_commands = 1
+      vim.g.ale_hover_cursor = 0
+      vim.g.ale_cursor_detail = 0
+      -- since LSP sucks, these options are useless with completion enabled
+      vim.g.ale_lint_on_text_changed = 0
+      vim.g.ale_lint_on_insert_leave = 0
+      vim.g.ale_lint_on_save = 1
+    end,
+  }
+
+  use { "godlygeek/tabular" }
+
+
 end)
