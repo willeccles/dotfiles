@@ -35,6 +35,41 @@ command! -nargs=* -complete=file S call SplitNatural(<f-args>)
 
 " end splitting }}}
 
+" clang-format command {{{
+
+fu! ClangFormatStyles(A, L, P)
+  return "LLVM\nGNU\nGoogle\nChromium\nMicrosoft\nMozilla\nWebKit"
+endfu
+
+fu! ClangFormatCmd(bang, mods, ...) range
+  let args = '--lines=' . a:firstline . ':' . a:lastline
+        \ . ' --assume-filename=' . shellescape(expand('%:t'))
+  if a:0
+    silent exe '%!clang-format ' . args . ' --style=' . shellescape(a:1) . ' --'
+  else
+    if empty(a:bang)
+      silent exe '%!clang-format ' . args . ' --style=file --fallback-style=Google --'
+    else
+      silent exe '%!clang-format ' . args . ' --style=file --'
+    endif
+  endif
+
+  call cursor(a:firstline, 1)
+  if stridx(a:mods, "silent") == -1
+    echo printf("Formatted %d lines", a:lastline - a:firstline + 1)
+  endif
+endfu
+
+" use :{range}ClangFormat to run clang-format on a range
+" optionally specify a style as the first arg or it will use --style=file to use
+" a .clang-format file with a fallback of Google if no file is found
+" if a bang (!) is given, no fallback style will be used
+" also supports :silent
+command! -nargs=? -range=% -bang -complete=custom,ClangFormatStyles ClangFormat
+      \ <line1>,<line2>call ClangFormatCmd(<q-bang>, <q-mods>, <f-args>)
+
+" end clang-format command }}}
+
 " end general config }}}
 
 " functions and such {{{
