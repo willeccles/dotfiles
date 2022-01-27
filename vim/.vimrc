@@ -56,7 +56,12 @@ fu! ClangFormatCmd(bang, mods, ...) range
 
   call cursor(a:firstline, 1)
   if stridx(a:mods, "silent") == -1
-    echo printf("Formatted %d lines", a:lastline - a:firstline + 1)
+    let count = a:lastline - a:firstline + 1
+    if count > 1
+      echo printf("Formatted %d lines", count)
+    else
+      echo printf("Formatted %d line", count)
+    endif
   endif
 endfu
 
