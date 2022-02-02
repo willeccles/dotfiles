@@ -8,7 +8,7 @@ set siso=3
 set nowrap
 
 set tw=80
-set colorcolumn=81
+set colorcolumn=+1
 
 set fo=tjcrqln1
 
