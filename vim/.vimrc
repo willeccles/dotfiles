@@ -365,18 +365,18 @@ endfu
 " end supporting functions }}}
 
 "statusline
-:set statusline=%1*\ %{toupper(g:currentmode[mode()])}\  "shows mode
-:set statusline+=%< "where to truncate the line, in other words always show mode
-:set statusline+=\ %2*%n: " buffer number
-:set statusline+=%{ReadOnly()} "readonly status
-:set statusline+=\ %f "filename
-:set statusline+=%{Modstatus()} "modified status of buffer
-":set statusline+=\ %#CP_MID# "set color for middle of SL
-:set statusline+=\ %1*%{Ftype()}\ %{LEnds()} "filetype
-:set statusline+=%= "every statusline addition after this line will be right justified
-:set statusline+=%{GitStatus()} "git information
-:set statusline+=\ %p%%\  "percentage through the file in lines
-:set statusline+=%2*\ %l:%c\  "line number and character on that line
+set statusline=%1*\ %{toupper(g:currentmode[mode()])}\  "shows mode
+set statusline+=%< "where to truncate the line, in other words always show mode
+set statusline+=\ %2*%n: " buffer number
+set statusline+=%{ReadOnly()} "readonly status
+set statusline+=\ %f "filename
+set statusline+=%{Modstatus()} "modified status of buffer
+"set statusline+=\ %#CP_MID# "set color for middle of SL
+set statusline+=\ %1*%{Ftype()}\ %{LEnds()} "filetype
+set statusline+=%= "every statusline addition after this line will be right justified
+set statusline+=%{GitStatus()} "git information
+set statusline+=\ %p%%\  "percentage through the file in lines
+set statusline+=%2*\ %l:%c\  "line number and character on that line
 
 " end statusline fields }}}
 
