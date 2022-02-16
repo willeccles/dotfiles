@@ -233,6 +233,19 @@ let g:go_highlight_extra_types = 0
 let g:go_highlight_space_tab_error = 0
 let g:go_highlight_trailing_whitespace_error = 0
 
+let g:rst_syntax_code_list = {
+      \ 'vim': ['vim'],
+      \ 'java': ['java'],
+      \ 'cpp': ['cpp', 'c++', 'c'],
+      \ 'html': ['html'],
+      \ 'lisp': ['lisp'],
+      \ 'php': ['php'],
+      \ 'python': ['python'],
+      \ 'perl': ['perl'],
+      \ 'sh': ['sh'],
+      \ 'dts': ['dts', 'devicetree'],
+      \ }
+
 syntax enable "syntax hilighting
 set background=dark
 set termguicolors
