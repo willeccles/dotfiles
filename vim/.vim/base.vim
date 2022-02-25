@@ -57,8 +57,7 @@ set cursorline
 
 filetype plugin indent on
 
-set tabstop=2
-set softtabstop=2
+set tabstop=8
 set shiftwidth=2
 set smarttab
 set expandtab
