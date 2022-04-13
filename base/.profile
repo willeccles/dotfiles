@@ -1,7 +1,7 @@
 export GOPATH=~/go
 export PATH="$HOME/.cargo/bin:$PATH"
 
-export PATH=/usr/local/bin:/usr/local/sbin:~:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 export PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
 export PATH="${GOPATH}/bin:${PATH}"
