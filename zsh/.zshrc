@@ -52,3 +52,7 @@ export PROMPT2="%F{yellow}${PROMPT_CHAR}%f "
 printf "\033[90mWelcome to %s, %s.\nIt's currently %s.\n\033[92m---,--'-{\033[91m@\033[m\n" "$(hostname)" "$USER" "$(date +'%A, %B %-d, %Y')"
 
 if [ -e /Users/cactus/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/cactus/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+if command -v direnv >/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
