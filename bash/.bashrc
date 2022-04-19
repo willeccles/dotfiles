@@ -96,3 +96,7 @@ function parse_git_dirty {
 	fi
 }
 # }}}
+
+if command -v direnv >/dev/null; then
+  eval "$(direnv hook bash)"
+fi
