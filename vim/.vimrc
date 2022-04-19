@@ -137,6 +137,7 @@ Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'zhimsel/vim-stay'
+Plug 'ziglang/zig.vim', {'for': 'zig'}
 
 if has('nvim-0.5.0')
   if executable('tree-sitter')
