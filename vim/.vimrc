@@ -225,6 +225,9 @@ let g:lengthmatters_on_by_default=0
 "vim-stay
 set viewoptions=cursor,folds,slash,unix
 
+"zig.vim
+let g:zig_fmt_autosave=0
+
 " end plugins }}}
 
 " highlighting/colors {{{
@@ -245,6 +248,7 @@ let g:rst_syntax_code_list = {
       \ 'perl': ['perl'],
       \ 'sh': ['sh'],
       \ 'dts': ['dts', 'devicetree'],
+      \ 'bash': ['bash'],
       \ }
 
 syntax enable "syntax hilighting
