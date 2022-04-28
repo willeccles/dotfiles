@@ -127,7 +127,6 @@ Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', 'LiveEasyAlign']}
 Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-sneak'
 Plug 'machakann/vim-highlightedyank'
-Plug 'mzlogin/vim-markdown-toc', {'for': 'markdown', 'tag': '*'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'sickill/vim-pasta'
@@ -135,7 +134,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
-Plug 'whatyouhide/vim-lengthmatters'
 Plug 'zhimsel/vim-stay'
 Plug 'ziglang/zig.vim', {'for': 'zig'}
 
