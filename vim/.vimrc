@@ -134,6 +134,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
+Plug 'whatyouhide/vim-lengthmatters'
 Plug 'zhimsel/vim-stay'
 Plug 'ziglang/zig.vim', {'for': 'zig'}
 
