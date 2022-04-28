@@ -249,6 +249,7 @@ let g:rst_syntax_code_list = {
       \ 'sh': ['sh'],
       \ 'dts': ['dts', 'devicetree'],
       \ 'bash': ['bash'],
+      \ 'dosini': ['ini'],
       \ }
 
 syntax enable "syntax hilighting
