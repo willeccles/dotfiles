@@ -90,7 +90,7 @@ function _G.statusline()
     '%=', --right justify
     gitstatus(), --git status
     ' %p%% ', --percentage through the file
-    '%2* L%l:C%c ', --line number and column number
+    '%2* %l:%c%V ', --line number and column number
   })
 end
 

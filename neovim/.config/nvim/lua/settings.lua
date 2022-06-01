@@ -54,8 +54,8 @@ if fn.executable("ag") then
   set('grepformat', "%f:%l:%c:%m")
 end
 
-set('rnu', true)
-set('nu', true)
+set('rnu', false)
+set('nu', false)
 
 set('cursorline', true)
 
