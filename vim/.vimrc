@@ -361,6 +361,9 @@ fu! GitStatus()
 
   let [a,m,r] = GitGutterGetHunkSummary()
   let str = ''
+  if exists("*FugitiveStatusline")
+    let str = substitute(FugitiveStatusline(), '^\[Git(\(.\+\))]$', '\1', '')
+  endif
 
   if a > 0
     let str .= printf(' +%d', a)
