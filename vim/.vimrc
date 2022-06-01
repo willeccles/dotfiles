@@ -397,7 +397,7 @@ set statusline+=\ %1*%{Ftype()}\ %{LEnds()} "filetype
 set statusline+=%= "every statusline addition after this line will be right justified
 set statusline+=%{GitStatus()} "git information
 set statusline+=\ %p%%\  "percentage through the file in lines
-set statusline+=%2*\ %l:%c\  "line number and character on that line
+set statusline+=%2*\ %l:%c%V\  "line number and character on that line
 
 " end statusline fields }}}
 
