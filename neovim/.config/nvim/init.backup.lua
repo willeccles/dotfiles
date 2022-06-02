@@ -8,4 +8,6 @@ require('plugins')
 
 require('keybindings')
 
+require('commands')
+
 require('statusline')
