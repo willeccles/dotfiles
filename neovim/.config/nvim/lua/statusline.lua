@@ -1,4 +1,4 @@
-function mode()
+function sl_mode()
   local modestrings = {
     ['n']  = 'N',
     ['no'] = 'N·OP',
@@ -21,32 +21,22 @@ function mode()
     ['t']  = 'T',
   }
 
-  return '%1* '..modestrings[vim.fn.mode()]:upper()..' '
+  return modestrings[vim.fn.mode()]:upper()
 end
 
-function rdonly()
-  return vim.bo.readonly and '[RO] ' or ''
+function sl_modified()
+  return vim.bo.modified and '+' or ''
 end
 
-function modified()
-  return vim.bo.modified and '+ ' or ' '
+function sl_ftype()
+  return vim.bo.filetype:gsub('[[]]', '')
 end
 
-function ftype()
-  local str = vim.bo.filetype:gsub('[[]]', '')
-  if str:len() > 0 then
-    return ' '..str..' '
-  else
-    return str
-  end
+function sl_lends()
+  return vim.bo.fileformat:gsub('[[]]', '')
 end
 
-function lends()
-  local format = vim.bo.fileformat:gsub('[[]]', '')
-  return ' '..format..' '
-end
-
-function gitstatus()
+function sl_gitstatus()
   local gstat = vim.b['gitsigns_status_dict']
   if gstat ~= nil then
     local added = gstat['added']
@@ -65,28 +55,21 @@ function gitstatus()
       result = result..string.format(' -%d', removed)
     end
 
-    if result:len() > 0 then
-      result = string.format(' [%s] ', vim.trim(result))
-    end
-
-    return result
+    return vim.trim(result)
   end
   return ''
 end
 
 function _G.statusline()
   return table.concat({
-    mode(), --mode
-    '%< %2*%n: ', -- buffer number
-    rdonly(), --read-only status
-    '%f', --filename
-    modified(), --modified status
-    '%1*'..ftype(), --file type
-    lends(), --line endings
-    '%=', --right justify
-    gitstatus(), --git status
-    ' %p%% ', --percentage through the file
-    '%2* %l:%c%V ', --line number and column number
+    '%1*%( %{v:lua.sl_mode()} %)', --mode
+    '%2*%-( %n: %([%R] %)%f%{v:lua.sl_modified()} %)', --file name
+    '%<', -- truncate after file name
+    '%1*%( %{v:lua.sl_ftype()} %)%( %{v:lua.sl_lends()} %)', --file type
+    '%=',
+    '%( [%{v:lua.sl_gitstatus()}] %)', --git
+    '%( %p%% %)', --percentage through the file
+    '%2*%( %l:%c%V %)', --line/column/virtual column
   })
 end
 
