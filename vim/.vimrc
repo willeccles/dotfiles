@@ -332,19 +332,9 @@ fu! Modstatus()
   return &modified ? '+' : ''
 endfunction
 
-"readonly status
-fu! ReadOnly()
-  return &readonly ? '[RO]' : ''
-endfunction
-
 "filetype
 fu! Ftype()
-  let str = substitute(&filetype, "[[]]", "", "")
-  if len(str) > 0
-    return printf('%s', str)
-  else
-    return str
-  endif
+  return substitute(&filetype, "[[]]", "", "")
 endfunction
 
 "line endings
@@ -377,11 +367,7 @@ fu! GitStatus()
     let str .= printf(' -%d', r)
   endif
 
-  if len(str) > 0
-    return printf('[%s]', StripSpaces(str))
-  else
-    return str
-  endif
+  return StripSpaces(str)
 endfu
 " end supporting functions }}}
 
@@ -391,7 +377,7 @@ set statusline+=%2*%-(\ %n:\ %([%R]\ %)%f%{Modstatus()}\ %) "filename
 set statusline+=%< "where to truncate the line (always want filename)
 set statusline+=%1*%(\ %{Ftype()}\ %)%(\ %{LEnds()}\ %) "filetype
 set statusline+=%=
-set statusline+=%(\ %{GitStatus()}\ %) "git information
+set statusline+=%(\ [%{GitStatus()}]\ %) "git information
 set statusline+=%(\ %p%%\ %) "percentage through the file in lines
 set statusline+=%2*%(\ %l:%c%V\ %) "line number and character on that line
 
