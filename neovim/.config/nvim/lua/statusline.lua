@@ -53,7 +53,7 @@ function gitstatus()
     local changed = gstat['changed']
     local removed = gstat['removed']
     local branch = gstat['head']
-    local result = ''
+    local result = branch
 
     if added ~= nil and added > 0 then
       result = result..string.format(' +%d', added)
@@ -65,15 +65,11 @@ function gitstatus()
       result = result..string.format(' -%d', removed)
     end
 
-    if branch == nil then
-      branch = ''
-    end
-
     if result:len() > 0 then
-      result = string.format('[%s] ', vim.trim(result))
+      result = string.format(' [%s] ', vim.trim(result))
     end
 
-    return string.format(' %s %s', branch, result)
+    return result
   end
   return ''
 end
@@ -81,7 +77,7 @@ end
 function _G.statusline()
   return table.concat({
     mode(), --mode
-    '%2* %n: ', -- buffer number
+    '%< %2*%n: ', -- buffer number
     rdonly(), --read-only status
     '%f', --filename
     modified(), --modified status
@@ -94,4 +90,4 @@ function _G.statusline()
   })
 end
 
-vim.opt.statusline = '%!v:lua.statusline()'
+vim.opt.statusline = '%{%v:lua.statusline()%}'
