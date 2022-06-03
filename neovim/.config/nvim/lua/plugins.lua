@@ -20,6 +20,9 @@ return require("packer").startup({function(use)
       vim.g.gruvbox_invert_selection = false
       vim.cmd('colorscheme gruvbox')
 
+      --used by better-whitespace
+      vim.cmd [[highlight ExtraWhitespace guibg=#fb4934]]
+
       --default status line colors which have to be specified because this is
       --compared with StatusLineNC when falling back to that
       vim.cmd [[highlight StatusLine guibg=#3c3836 guifg=#ebdbb2]]
@@ -48,7 +51,6 @@ return require("packer").startup({function(use)
   }
   ]]
 
-  --[[
   use {
     "nvim-treesitter/nvim-treesitter",
     cond = function()
@@ -57,7 +59,7 @@ return require("packer").startup({function(use)
     run = ":TSUpdate",
     config = function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = "maintained",
+        ensure_installed = "all",
         ignore_install = { "json" },
         highlight = {
           enable = true,
@@ -74,7 +76,27 @@ return require("packer").startup({function(use)
       }
     end
   }
-  --]]
+
+  use {
+    "lewis6991/spellsitter.nvim",
+    cond = function()
+      return vim.fn.executable("tree-sitter")
+    end,
+    config = function()
+      require('spellsitter').setup {
+        enable = true,
+      }
+    end,
+  }
+
+  --[[
+  use {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require'lspconfig'.clangd.setup{}
+    end,
+  }
+  ]]
 
   use {
     "lewis6991/gitsigns.nvim",
@@ -97,7 +119,6 @@ return require("packer").startup({function(use)
     end
   }
 
-  --[[
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
@@ -105,31 +126,51 @@ return require("packer").startup({function(use)
       'nvim-lua/plenary.nvim',
     },
   }
-  ]]
 
   use { "adelarsq/vim-matchit" }
 
-  --[[
+  use { "godlygeek/tabular" }
+
   use {
-    "dense-analysis/ale",
+    'LnL7/vim-nix',
+    ft = 'nix',
+  }
+
+  use {
+    "ziglang/zig.vim",
+    ft = 'zig',
     config = function()
-      vim.g.ale_completion_enabled = 1
-      --vim.g.ale_pattern_options = { '\.h$': {'ale_linters': ['clangd', 'ccls', 'clang', 'clangcheck', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc'] } }
-      vim.g.ale_c_cc_options = '-Wall -pedantic -std=c11 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
-      vim.g.ale_cpp_cc_options = '-Wall -pedantic -std=c++20 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700'
-      vim.g.ale_c_parse_compile_commands = 1
-      vim.g.ale_cpp_parse_compile_commands = 1
-      vim.g.ale_hover_cursor = 0
-      vim.g.ale_cursor_detail = 0
-      -- since LSP sucks, these options are useless with completion enabled
-      vim.g.ale_lint_on_text_changed = 0
-      vim.g.ale_lint_on_insert_leave = 0
-      vim.g.ale_lint_on_save = 1
+      vim.g.zig_fmt_autosave = 0
     end,
   }
-  ]]
 
-  use { "godlygeek/tabular" }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    tag = 'nightly',
+    config = function()
+     require'nvim-tree'.setup { }
+
+      vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', {
+        silent = true,
+        noremap = true,
+      })
+    end
+  }
+
+  use { 'junegunn/vim-slash' }
+  use { 'justinmk/vim-sneak' }
+  use { 'machakann/vim-highlightedyank' }
+  use { 'tomtom/tcomment_vim' }
+  use { 'tpope/vim-fugitive' }
+  use { 'tpope/vim-surround' }
+  use {
+    'zhimsel/vim-stay',
+    config = function()
+      vim.opt.viewoptions = 'cursor,folds,slash,unix'
+    end,
+  }
+  use { 'sickill/vim-pasta' }
+  use { 'ntpeters/vim-better-whitespace' }
 
   if packer_bootstrap then
     require('packer').sync()

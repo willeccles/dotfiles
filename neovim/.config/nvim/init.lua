@@ -11,3 +11,5 @@ require('keybindings')
 require('commands')
 
 require('statusline')
+
+require('autocmds')
