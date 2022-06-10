@@ -68,7 +68,7 @@ return require("packer").startup({function(use)
             ["punctuation.delimiter"] = "",
             ["operator"] = "",
           },
-          disable = { "c", "cpp", "bash", "cmake" },
+          disable = { "c", "cpp", "bash", "cmake", "help" },
         },
         indent = {
           enable = false,
