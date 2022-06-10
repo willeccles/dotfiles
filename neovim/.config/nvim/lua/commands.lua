@@ -1,6 +1,7 @@
 local fn = vim.fn
 local cmd = vim.cmd
 local command = vim.api.nvim_create_user_command
+local err = vim.api.nvim_err_writeln
 
 function SplitHelper(f)
   if fn.winwidth('%') >= (fn.winheight('%') * 2) then
@@ -27,24 +28,23 @@ command('S', SplitNatural, {
 })
 
 function ClangFormatCmd(args)
-  local args = '--lines=' .. args['line1'] .. ':' .. args['line2']
+  local cfargs = '--lines=' .. args['line1'] .. ':' .. args['line2']
       .. ' --assume-filename=' .. fn.shellescape(fn.expand('%:t'))
 
-  -- TODO: why is this borked??
-  if #args["fargs"] > 0 then
-    cmd('%!clang-format ' .. args
-        .. ' --style=' .. fn.shellescape(args['fargs'][1]) .. ' --')
+  if #args["args"] > 0 then
+    cmd('silent %!clang-format ' .. cfargs
+        .. ' --style=' .. fn.shellescape(args['args']) .. ' --')
   else
     if args['bang'] then
-      cmd('%!clang-format ' .. args .. ' --style=file --')
+      cmd('silent %!clang-format ' .. cfargs .. ' --style=file --')
     else
-      cmd('%!clang-format ' .. args
+      cmd('silent %!clang-format ' .. cfargs
           .. ' --style=file --fallback-style=Google --')
     end
   end
 
   fn.cursor(args['line1'], 1)
-  if args['smods']['silent'] then
+  if not args['smods']['silent'] then
     local count = args['line2'] - args['line1'] + 1
     if count > 1 then
       print("Formatted " .. count .. " lines")
