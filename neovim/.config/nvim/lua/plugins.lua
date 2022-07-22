@@ -68,7 +68,7 @@ return require("packer").startup({function(use)
             ["punctuation.delimiter"] = "",
             ["operator"] = "",
           },
-          disable = { "c", "cpp", "bash", "cmake", "help" },
+          disable = { "c", "cpp", "bash", "cmake", "help", "make" },
         },
         indent = {
           enable = false,
@@ -89,14 +89,13 @@ return require("packer").startup({function(use)
     end,
   }
 
-  --[[
   use {
     "neovim/nvim-lspconfig",
     config = function()
-      require'lspconfig'.clangd.setup{}
+      --require'lspconfig'.clangd.setup{}
+      require'lspconfig'.pyright.setup{}
     end,
   }
-  ]]
 
   use {
     "lewis6991/gitsigns.nvim",
