@@ -1,0 +1,11 @@
+#!/bin/sh
+
+path="${1:-.}"
+
+if ! command -v explorer.exe >/dev/null; then
+  >&2 printf "explorer.exe: command not found\n"
+  exit 1
+fi
+
+explorer.exe "$path"
+exit 0
