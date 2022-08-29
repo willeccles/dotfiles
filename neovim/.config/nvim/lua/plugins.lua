@@ -89,14 +89,13 @@ return require("packer").startup({function(use)
     end,
   }
 
-  --[[
   use {
     "neovim/nvim-lspconfig",
     config = function()
-      require'lspconfig'.clangd.setup{}
+      require'lspconfig'.clangd.setup{autostart = false}
+      require'lspconfig'.pyright.setup{}
     end,
   }
-  ]]
 
   use {
     "lewis6991/gitsigns.nvim",
