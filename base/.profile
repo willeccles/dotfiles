@@ -5,13 +5,13 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 export PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
 export PATH="${GOPATH}/bin:${PATH}"
-#export PATH="/opt/local/bin:${PATH}"
-#export PATH="/opt/local/sbin:${PATH}"
+export PATH="/opt/local/bin:${PATH}"
+export PATH="/opt/local/sbin:${PATH}"
 
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export PATH="/usr/local/opt/bison/bin:$PATH"
 
-#export PATH="$PATH:/opt/local/libexec/gnubin"
+export PATH="$PATH:/opt/local/libexec/gnubin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/bin"
 
