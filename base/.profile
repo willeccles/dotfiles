@@ -41,6 +41,8 @@ fi
 
 alias please='sudo $(history -p !-1)'
 
+export LYNX_CFG="$HOME/.config/lynx/lynx.cfg"
+
 # aliases vim
 if hascommand nvim; then
   alias vim="nvim"
