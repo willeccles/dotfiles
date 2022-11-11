@@ -171,6 +171,8 @@ return require("packer").startup({function(use)
   use { 'sickill/vim-pasta' }
   use { 'ntpeters/vim-better-whitespace' }
 
+  use { 'mbbill/undotree' }
+
   if packer_bootstrap then
     require('packer').sync()
   end
