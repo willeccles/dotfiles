@@ -8,7 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 cmd 'packadd packer.nvim'
-cmd 'autocmd BufWritePost plugins.lua PackerCompile'
+--cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
 return require("packer").startup({function(use)
   use { "wbthomason/packer.nvim", opt = true }
