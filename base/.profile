@@ -21,6 +21,12 @@ export CLICOLOR=1
 
 export DIRENV_LOG_FORMAT=
 
+export MANWIDTH=80
+if [ -e '/etc/manpath.config' ]; then
+  # man-db default formatting sucks
+  export MANOPT='--nh --nj'
+fi
+
 hascommand() {
   command -v "$1" &>/dev/null
 }
