@@ -126,12 +126,15 @@ return require("packer").startup({function(use)
     },
     config = function()
       require'telescope'.setup{
+        defaults = {
+          layout_strategy = 'flex',
+        },
         pickers = {
           buffers = {
             theme = 'ivy',
           },
           man_pages = {
-            theme = 'dropdown',
+            theme = 'vertical',
           },
           spell_suggest = {
             theme = 'cursor',
