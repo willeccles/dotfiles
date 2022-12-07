@@ -134,7 +134,7 @@ return require("packer").startup({function(use)
             theme = 'ivy',
           },
           man_pages = {
-            theme = 'vertical',
+            theme = 'dropdown',
           },
           spell_suggest = {
             theme = 'cursor',
