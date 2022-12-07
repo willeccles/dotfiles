@@ -124,6 +124,37 @@ return require("packer").startup({function(use)
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
     },
+    config = function()
+      require'telescope'.setup{
+        pickers = {
+          buffers = {
+            theme = 'ivy',
+          },
+          man_pages = {
+            theme = 'dropdown',
+          },
+          spell_suggest = {
+            theme = 'cursor',
+          },
+          oldfiles = {
+            theme = 'ivy',
+          },
+          git_files = {
+            theme = 'ivy',
+          },
+          find_files = {
+            theme = 'ivy',
+          },
+          fd = {
+            theme = 'ivy',
+          },
+        },
+      }
+
+      local builtin = require'telescope.builtin'
+      vim.keymap.set('n', '<C-p>', builtin.buffers, {})
+      vim.keymap.set('n', 'z=', builtin.spell_suggest, {})
+    end,
   }
 
   use { "adelarsq/vim-matchit" }
