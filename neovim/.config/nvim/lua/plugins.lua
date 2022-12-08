@@ -151,12 +151,16 @@ return require("packer").startup({function(use)
           fd = {
             theme = 'ivy',
           },
+          grep_string = {
+            theme = 'dropdown',
+          },
         },
       }
 
       local builtin = require'telescope.builtin'
       vim.keymap.set('n', '<C-p>', builtin.buffers, {})
       vim.keymap.set('n', 'z=', builtin.spell_suggest, {})
+      vim.keymap.set('n', '<Leader>g', builtin.grep_string, {})
     end,
   }
 
