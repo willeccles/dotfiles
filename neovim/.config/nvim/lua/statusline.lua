@@ -63,8 +63,7 @@ end
 function _G.statusline()
   return table.concat({
     '%1*%( %{v:lua.sl_mode()} %)', --mode
-    '%2*%-( %n: %([%R] %)%f%{v:lua.sl_modified()} %)', --file name
-    '%<', -- truncate after file name
+    '%2*%-( %n: %<%([%R] %)%f%{v:lua.sl_modified()} %)', --file name
     '%1*%( %{v:lua.sl_ftype()} %)%( %{v:lua.sl_lends()} %)', --file type
     '%=',
     '%( [%{v:lua.sl_gitstatus()}] %)', --git
