@@ -128,6 +128,7 @@ return require("packer").startup({function(use)
       require'telescope'.setup{
         defaults = {
           layout_strategy = 'flex',
+          dynamic_preview_title = true,
         },
         pickers = {
           buffers = {
@@ -154,13 +155,24 @@ return require("packer").startup({function(use)
           grep_string = {
             theme = 'dropdown',
           },
+          current_buffer_fuzzy_find = {
+            theme = 'dropdown',
+          },
         },
       }
 
       local builtin = require'telescope.builtin'
-      vim.keymap.set('n', '<C-p>', builtin.buffers, {})
+      vim.keymap.set('n', '<C-p>', function()
+        builtin.find_files({
+          no_ignore=true,
+          no_ignore_parent=true,
+          hidden=true,
+        })
+      end, {})
       vim.keymap.set('n', 'z=', builtin.spell_suggest, {})
       vim.keymap.set('n', '<Leader>g', builtin.grep_string, {})
+      vim.keymap.set('n', '<Leader>/', builtin.current_buffer_fuzzy_find, {})
+      vim.keymap.set('n', '<Leader>b', builtin.buffers, {})
     end,
   }
 

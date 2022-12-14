@@ -21,7 +21,7 @@ function tnoremap(lhs, rhs, opts) mode_noremap('t', lhs, rhs, opts) end
 function nnoremap(lhs, rhs, opts) mode_noremap('n', lhs, rhs, opts) end
 function vnoremap(lhs, rhs, opts) mode_noremap('v', lhs, rhs, opts) end
 
-vim.g.mapleader = ' '
+vim.g.mapleader = ';'
 
 -- press escape to exit insert mode in terminal to be able to switch windows
 tnoremap('<Esc>', '<C-\\><C-n>')

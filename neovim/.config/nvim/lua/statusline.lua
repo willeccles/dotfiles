@@ -60,13 +60,49 @@ function sl_gitstatus()
   return ''
 end
 
+function sl_click_buf(w, n, b, m)
+  if b == 'l' then
+    local builtin = require'telescope.builtin'
+    local themes = require'telescope.themes'
+    builtin.buffers(themes.get_ivy{})
+  end
+end
+
+function sl_click_fname(w, n, b, m)
+  if b == 'l' then
+    local builtin = require'telescope.builtin'
+    local themes = require'telescope.themes'
+    builtin.find_files(themes.get_ivy{
+      no_ignore=true,
+      no_ignore_parent=true,
+      hidden=true,
+    })
+  end
+end
+
+function sl_click_ft(w, n, b, m)
+  if b == 'l' then
+    local builtin = require'telescope.builtin'
+    local themes = require'telescope.themes'
+    builtin.filetypes(themes.get_dropdown{})
+  end
+end
+
+function sl_click_git(w, n, b, m)
+  if b == 'l' then
+    local builtin = require'telescope.builtin'
+    builtin.git_status()
+  end
+end
+
 function _G.statusline()
   return table.concat({
     '%1*%( %{v:lua.sl_mode()} %)', --mode
-    '%2*%-( %n: %<%([%R] %)%f%{v:lua.sl_modified()} %)', --file name
-    '%1*%( %{v:lua.sl_ftype()} %)%( %{v:lua.sl_lends()} %)', --file type
+    '%2*%-( %@v:lua.sl_click_buf@%n:%X %<%@v:lua.sl_click_fname@%([%R] %)%f%{v:lua.sl_modified()}%X %)', --file name
+    '%1*%( %@v:lua.sl_click_ft@%{v:lua.sl_ftype()}%X %)', --file type
+    '%( %{v:lua.sl_lends()} %)', --line endings
     '%=',
-    '%( [%{v:lua.sl_gitstatus()}] %)', --git
+    '%( %@v:lua.sl_click_git@[%{v:lua.sl_gitstatus()}]%X %)', --git
     '%( %p%% %)', --percentage through the file
     '%2*%( %l:%c%V %)', --line/column/virtual column
   })
