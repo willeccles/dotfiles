@@ -1,4 +1,3 @@
-local cmd = vim.cmd
 local fn = vim.fn
 local o = vim.o
 local w = vim.wo
@@ -59,8 +58,8 @@ set('nu', false)
 
 set('cursorline', true)
 
-cmd 'filetype plugin indent on'
-cmd 'syntax enable'
+vim.cmd 'filetype plugin indent on'
+vim.cmd 'syntax enable'
 
 set('background', "dark")
 set('termguicolors', true)
@@ -87,7 +86,9 @@ set('winbl', 20)
 
 set('inccommand', 'nosplit')
 
-cmd 'au TermOpen * setlocal nonumber nornu so=0 | startinsert'
+vim.cmd 'au TermOpen * setlocal nonumber nornu so=0 | startinsert'
+vim.cmd 'aunmenu PopUp.How-to\\ disable\\ mouse'
+vim.cmd 'aunmenu PopUp.-1-'
 
 vim.g.vim_json_warnings = 0
 vim.g.c_gnu = 1
