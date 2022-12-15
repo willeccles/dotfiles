@@ -223,6 +223,16 @@ return require("packer").startup({function(use)
 
   use { 'mbbill/undotree' }
 
+  use {
+    'ggandor/leap.nvim',
+    requires = {
+      'tpope/vim-repeat',
+    },
+    config = function()
+      require'leap'.add_default_mappings()
+    end,
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
