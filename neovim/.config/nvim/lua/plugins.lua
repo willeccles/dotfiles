@@ -158,6 +158,9 @@ return require("packer").startup({function(use)
           current_buffer_fuzzy_find = {
             theme = 'dropdown',
           },
+          help_tags = {
+            theme = 'dropdown',
+          },
         },
       }
 
@@ -173,6 +176,9 @@ return require("packer").startup({function(use)
       vim.keymap.set('n', '<Leader>g', builtin.grep_string, {})
       vim.keymap.set('n', '<Leader>/', builtin.current_buffer_fuzzy_find, {})
       vim.keymap.set('n', '<Leader>b', builtin.buffers, {})
+      vim.api.nvim_create_user_command('HelpBrowse', builtin.help_tags, {
+        desc = 'browse help tags with Telescope',
+      })
     end,
   }
 

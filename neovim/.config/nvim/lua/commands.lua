@@ -55,6 +55,7 @@ function ClangFormatCmd(args)
 end
 
 command('ClangFormat', ClangFormatCmd, {
+  desc='clang-format the current buffer',
   nargs='?',
   range='%',
   bang=true,
