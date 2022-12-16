@@ -182,9 +182,9 @@ return require("packer").startup({function(use)
     end,
   }
 
-  use { "adelarsq/vim-matchit" }
+  use "adelarsq/vim-matchit"
 
-  use { "godlygeek/tabular" }
+  use "godlygeek/tabular"
 
   use {
     'LnL7/vim-nix',
@@ -212,22 +212,22 @@ return require("packer").startup({function(use)
     end
   }
 
-  use { 'junegunn/vim-slash' }
-  use { 'justinmk/vim-sneak' }
-  use { 'machakann/vim-highlightedyank' }
-  use { 'tomtom/tcomment_vim' }
-  use { 'tpope/vim-fugitive' }
-  use { 'tpope/vim-surround' }
+  use 'junegunn/vim-slash'
+  use 'justinmk/vim-sneak'
+  use 'machakann/vim-highlightedyank'
+  use 'tomtom/tcomment_vim'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-surround'
   use {
     'zhimsel/vim-stay',
     config = function()
       vim.opt.viewoptions = 'cursor,folds,slash,unix'
     end,
   }
-  use { 'sickill/vim-pasta' }
-  use { 'ntpeters/vim-better-whitespace' }
+  use 'sickill/vim-pasta'
+  use 'ntpeters/vim-better-whitespace'
 
-  use { 'mbbill/undotree' }
+  use 'mbbill/undotree'
 
   use {
     'ggandor/leap.nvim',
@@ -239,12 +239,25 @@ return require("packer").startup({function(use)
     end,
   }
 
+  use 'sindrets/winshift.nvim'
+
   use {
-    'sindrets/winshift.nvim',
-    --[[config = function()
-      require'winshift'.setup{
+    'folke/zen-mode.nvim',
+    config = function()
+      require'zen-mode'.setup {
+        window = {
+          backdrop = 0.8,
+          width = 82,
+          options = {
+            signcolumn = "no",
+            number = false,
+            relativenumber = false,
+            foldcolumn = "0",
+            colorcolumn = "",
+          },
+        },
       }
-    end,]]
+    end,
   }
 
   if packer_bootstrap then
