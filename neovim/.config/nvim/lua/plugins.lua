@@ -266,6 +266,8 @@ return require("packer").startup({function(use)
 
   use 'folke/twilight.nvim'
 
+  use 'uga-rosa/ccc.nvim'
+
   if packer_bootstrap then
     require('packer').sync()
   end
