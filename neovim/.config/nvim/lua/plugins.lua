@@ -239,6 +239,14 @@ return require("packer").startup({function(use)
     end,
   }
 
+  use {
+    'sindrets/winshift.nvim',
+    --[[config = function()
+      require'winshift'.setup{
+      }
+    end,]]
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
