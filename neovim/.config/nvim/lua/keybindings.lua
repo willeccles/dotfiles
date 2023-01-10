@@ -1,13 +1,13 @@
 local fn = vim.fn
 
 function mode_map(mode, lhs, rhs, opts)
-  local options = {noremap = false}
+  local options = {remap = true}
   if opts then options = vim.tbl_extend('force', options, opts) end
   vim.keymap.set(mode, lhs, rhs, options)
 end
 
 function mode_noremap(mode, lhs, rhs, opts)
-  local options = {noremap = true}
+  local options = {remap = false}
   if opts then options = vim.tbl_extend('force', options, opts) end
   vim.keymap.set(mode, lhs, rhs, options)
 end
@@ -28,7 +28,7 @@ tnoremap('<Esc>', '<C-\\><C-n>')
 tmap('<C-w>', '<Esc><C-w>')
 
 -- switch windows with tab or leader
-nnoremap('<Tab>', '<C-w>')
+nmap('<Tab>', '<C-w>')
 nnoremap('<Leader><Up>', '<C-w><Up>')
 nnoremap('<Leader><Down>', '<C-w><Down>')
 nnoremap('<Leader><Left>', '<C-w><Left>')
