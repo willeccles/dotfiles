@@ -209,7 +209,7 @@ return require("packer").startup({function(use)
     config = function()
      require'nvim-tree'.setup { }
 
-      vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', {
+      vim.keymap.set('n', '<C-n>', '<Cmd>NvimTreeToggle<CR>', {
         silent = true,
         noremap = true,
       })
@@ -243,7 +243,14 @@ return require("packer").startup({function(use)
     end,
   }
 
-  use 'sindrets/winshift.nvim'
+  use {
+    'sindrets/winshift.nvim',
+    config = function()
+      vim.keymap.set('n', '<C-W><C-M>', '<Cmd>WinShift<CR>')
+      vim.keymap.set('n', '<C-W>m', '<Cmd>WinShift<CR>')
+      vim.keymap.set('n', '<C-W>x', '<Cmd>WinShift swap<CR>')
+    end,
+  }
 
   use {
     'folke/zen-mode.nvim',
