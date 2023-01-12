@@ -175,11 +175,27 @@ return require("packer").startup({function(use)
           no_ignore_parent=true,
           hidden=true,
         })
-      end, {})
+      end, {
+        desc = '[telescope] find files in working directory',
+      })
       vim.keymap.set('n', 'z=', builtin.spell_suggest, {})
-      vim.keymap.set('n', '<Leader>g', builtin.grep_string, {})
-      vim.keymap.set('n', '<Leader>/', builtin.current_buffer_fuzzy_find, {})
-      vim.keymap.set('n', '<Leader>b', builtin.buffers, {})
+      vim.keymap.set('n', '<Leader>g', builtin.grep_string, {
+        desc = '[telescope] grep string under cursor in current working directory',
+      })
+      vim.keymap.set('n', '<Leader>/', builtin.current_buffer_fuzzy_find, {
+        desc = '[telescope] current buffer fuzzy find',
+      })
+      vim.keymap.set('n', '<Leader>b', builtin.buffers, {
+        desc = '[telescope] preview/search open buffers',
+      })
+      vim.keymap.set('n', '<Leader>o', function()
+        builtin.oldfiles({
+          -- XXX: if this is not performant, consider swapping to truncate
+          path_display = {'smart'},
+        })
+      end, {
+        desc = '[telescope] browse old files',
+      })
       vim.api.nvim_create_user_command('HelpBrowse', builtin.help_tags, {
         desc = 'browse help tags with Telescope',
       })
