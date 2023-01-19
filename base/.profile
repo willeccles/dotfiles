@@ -11,7 +11,6 @@ export PATH="/opt/local/sbin:${PATH}"
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export PATH="/usr/local/opt/bison/bin:$PATH"
 
-export PATH="$PATH:/opt/local/libexec/gnubin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/bin"
 
@@ -43,6 +42,12 @@ fi
 
 if [ "$(uname -s)" = "Darwin" ]; then
   alias nproc="sysctl -n hw.ncpu"
+fi
+
+if hascommand brew; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  export HOMEBREW_NO_EMOJI=1
+  export HOMEBREW_NO_ENV_HINTS=1
 fi
 
 alias please='sudo $(history -p !-1)'
