@@ -48,6 +48,9 @@ if [ -d /opt/homebrew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
   export HOMEBREW_NO_EMOJI=1
   export HOMEBREW_NO_ENV_HINTS=1
+  export HOMEBREW_DISPLAY_INSTALL_TIMES=1
+  export HOMEBREW_NO_ANALYTICS=1
+  export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
 alias please='sudo $(history -p !-1)'
