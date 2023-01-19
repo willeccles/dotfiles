@@ -44,7 +44,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
   alias nproc="sysctl -n hw.ncpu"
 fi
 
-if hascommand brew; then
+if [ -d /opt/homebrew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
   export HOMEBREW_NO_EMOJI=1
   export HOMEBREW_NO_ENV_HINTS=1
