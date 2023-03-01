@@ -1,46 +1,61 @@
-#! /bin/bash
+#!/usr/bin/env python3
 
-if [[ $# == 0 ]]; then
-    >&2 echo "Please supply at least one header name"
-    exit 1
-fi
+from os import getcwd
+from os.path import exists, relpath
+import argparse
+import pathlib
+import re
+import sys
 
-shopt -s extglob nocasematch
+parser = argparse.ArgumentParser(
+        prog='mkh',
+        description='Generate C/C++ header files with include guards'
+        )
 
-# TODO: support creation in a directory which isn't PWD
-for header in "$@"; do
-    if [[ ! "$header" =~ .*\.h(h|pp)? ]]; then
-        header="${header/%+(.)}.h"
-    fi
+parser.add_argument('files', metavar='file', type=str, nargs='+',
+    help='file(s) to create (relative to working directory)')
+parser.add_argument('--pragma', action='store_true',
+    help='use `#pragma once` instead of macro guards')
 
-    base="${header%.*}"
-    base="${base//[^A-Z0-9_]/_}"
-    base="${base##+(_)}"
-    if [[ "$base" =~ [0-9].* ]]; then
-        base="_$base"
-    fi
+args = parser.parse_args()
 
-    ext="${header##*.}"
+cwd_parent = pathlib.PurePath(getcwd()).parent
 
-    if [[ -e "$header" ]]; then
-        >&2 echo "$header already exists; skipping"
+warned_non_standard = False
+
+def gen_include_guard(p: str) -> str:
+    global args
+    global warned_non_standard
+
+    fullpath = relpath(p, cwd_parent).upper()
+
+    guard = re.sub(r'[^A-Z0-9]', '_', fullpath)
+    guard = guard.strip('_')
+
+    if re.match(r'[0-9]', guard):
+        if not warned_non_standard:
+            print(f"warning: non-standard include guard(s) generated",
+                  file=sys.stderr)
+            warned_non_standard = True
+
+        guard = '_' + guard
+
+    guard = re.sub(r'_+', '_', guard)
+
+    return guard
+
+
+for p in args.files:
+    if exists(p):
+        print(f"{p} already exists, skipping", file=sys.stderr)
         continue
-    fi
 
-    dir="${PWD##*/}"
-    dir="${dir//[^A-Z0-9_]/_}"
-    dir="${dir##+(_)}"
-    if [[ "$dir" =~ [0-9].* ]]; then
-        dir="_$dir"
-    fi
+    with open(p, mode='w') as outfile:
+        if args.pragma:
+            print('#pragma once', file=outfile)
+        else:
+            guard = gen_include_guard(p)
+            print(f'#ifndef {guard}\n#define {guard}\n#endif  /* {guard} */',
+                  file=outfile)
 
-    guard="${dir^^}_${base^^}_${ext^^}_"
-    guard="${guard//+(_)/_}"
-
-    if touch "$header"; then
-        echo "#ifndef $guard" > "$header"
-        echo "#define $guard" >> "$header"
-        echo "#endif /* $guard */" >> "$header"
-        echo "Created $header"
-    fi
-done
+    print(f'successfully created {p}')
