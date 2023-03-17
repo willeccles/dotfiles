@@ -81,8 +81,8 @@ set('spelllang', 'en_us')
 set('spelloptions', 'camel')
 set('spell', true)
 
-set('pb', 20)
-set('winbl', 20)
+set('pb', 10)
+set('winbl', 10)
 
 set('inccommand', 'nosplit')
 
