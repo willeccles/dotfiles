@@ -6,6 +6,7 @@ import argparse
 import pathlib
 import re
 import sys
+import uuid
 
 parser = argparse.ArgumentParser(
         prog='mkh',
@@ -16,6 +17,8 @@ parser.add_argument('files', metavar='file', type=str, nargs='+',
     help='file(s) to create (relative to working directory)')
 parser.add_argument('--pragma', action='store_true',
     help='use `#pragma once` instead of macro guards')
+parser.add_argument('-u', '--uuid', action='store_true',
+    help='generate a UUID for the include guards instead of using the path')
 
 args = parser.parse_args()
 
@@ -27,10 +30,19 @@ def gen_include_guard(p: str) -> str:
     global args
     global warned_non_standard
 
-    fullpath = relpath(p, cwd_parent).upper()
+
+    fullpath = ""
+
+    if args.uuid:
+        fullpath = pathlib.PurePath(p).name.upper()
+    else:
+        fullpath = relpath(p, cwd_parent).upper()
 
     guard = re.sub(r'[^A-Z0-9]', '_', fullpath)
     guard = guard.strip('_')
+
+    if args.uuid:
+        guard = guard + '_' + str(uuid.uuid4()).upper().replace('-', '_')
 
     if re.match(r'[0-9]', guard):
         if not warned_non_standard:
