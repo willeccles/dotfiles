@@ -124,10 +124,6 @@ if [ "$TERM" = "st-256color" ] || [ "$TERM" = "linux" ]; then
   export PROMPT_CHAR=">"
 fi
 
-if hascommand xclip; then
-  alias clipboard="xclip -selection clipboard"
-fi
-
 if [ "$TERM" = "linux" ]; then
   # gruvbox in TTY ;)
   echo -en "\e]P0282828"
