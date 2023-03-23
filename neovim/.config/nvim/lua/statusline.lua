@@ -42,6 +42,10 @@ function sl_lends()
   return vim.bo.fileformat:gsub('[[]]', '')
 end
 
+function sl_fenc()
+  return vim.bo.fileencoding
+end
+
 function sl_gitstatus()
   local gstat = vim.b['gitsigns_status_dict']
   if gstat ~= nil then
@@ -107,6 +111,7 @@ function _G.statusline()
     '%2*%-( %@v:lua.sl_click_buf@%n:%X %<%@v:lua.sl_click_fname@%([%R] %)%f%{v:lua.sl_modified()}%X %)', --file name
     '%1*%( %@v:lua.sl_click_ft@%{v:lua.sl_ftype()}%X %)', --file type
     '%( %{v:lua.sl_lends()} %)', --line endings
+    '%( %{v:lua.sl_fenc()} %)', --file encoding
     '%=',
     '%( %@v:lua.sl_click_git@[%{v:lua.sl_gitstatus()}]%X %)', --git
     '%( %p%% %)', --percentage through the file
