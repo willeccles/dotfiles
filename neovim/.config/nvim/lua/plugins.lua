@@ -96,7 +96,7 @@ return require("packer").startup({function(use)
   use {
     "neovim/nvim-lspconfig",
     config = function()
-      require'lspconfig'.clangd.setup{autostart = false}
+      require'lspconfig'.clangd.setup{}
       require'lspconfig'.pyright.setup{}
     end,
   }
