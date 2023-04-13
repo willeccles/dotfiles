@@ -1,7 +1,6 @@
 --[[
 TODO:
 * only show basic information for non-focused windows
-* show file encoding
 ]]
 
 function sl_mode()
