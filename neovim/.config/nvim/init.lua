@@ -4,9 +4,9 @@ local cmd = vim.cmd
 
 require('settings')
 
-require('plugins')
-
 require('keybindings')
+
+require('plugins')
 
 require('commands')
 
