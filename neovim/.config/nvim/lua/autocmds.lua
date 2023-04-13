@@ -28,6 +28,11 @@ au BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cc let b:man_default_sects='2,3'
 
 au BufNewFile,BufRead *.dot,*.dts,*.dtsi,*.make,*.cmake,*.mk setl tw=0
 
+aug clang_ft
+  au!
+  au BufNewFile,BufRead .clangd,.clang-format,.clang-tidy setl ft=yaml tw=0
+aug END
+
 au BufNewFile,BufRead Kbuild setlocal ft=make
 
 au FileType man setl nospell
