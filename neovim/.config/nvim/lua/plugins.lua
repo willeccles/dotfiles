@@ -113,6 +113,7 @@ local plugins = {
 
   {
     "nvim-telescope/telescope.nvim",
+    cmd = 'Telescope',
     dependencies = {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
