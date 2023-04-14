@@ -56,10 +56,27 @@ local plugins = {
   ]]
 
   {
+    'stevearc/dressing.nvim',
+    lazy = false,
+    priority = 60,
+    opts = {},
+  },
+
+  {
+    'rcarriga/nvim-notify',
+    lazy = false,
+    priority = 60,
+    opts = {},
+    init = function()
+      vim.notify = require'notify'
+    end,
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     enabled = vim.fn.executable("tree-sitter"),
     build = ":TSUpdate",
-    opts = function()
+    config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = "all",
         ignore_install = { "json" },
