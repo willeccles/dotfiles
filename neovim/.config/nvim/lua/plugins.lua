@@ -198,7 +198,10 @@ local plugins = {
 
   "adelarsq/vim-matchit",
 
-  "godlygeek/tabular",
+  {
+    "godlygeek/tabular",
+    cmd = { 'Tab', 'Tabularize' },
+  },
 
   {
     'LnL7/vim-nix',
@@ -225,7 +228,7 @@ local plugins = {
   'junegunn/vim-slash',
   'justinmk/vim-sneak',
   'machakann/vim-highlightedyank',
-  'tomtom/tcomment_vim',
+  'tomtom/tcomment_vim', -- TODO: check out numToStr/Comment.nvim instead
   'tpope/vim-fugitive',
   'tpope/vim-surround',
   {
@@ -237,7 +240,10 @@ local plugins = {
   'sickill/vim-pasta',
   'ntpeters/vim-better-whitespace',
 
-  'mbbill/undotree',
+  {
+    'mbbill/undotree',
+    cmd = 'UndotreeToggle',
+  },
 
   {
     'ggandor/leap.nvim',
@@ -251,6 +257,7 @@ local plugins = {
 
   {
     'sindrets/winshift.nvim',
+    cmd = 'WinShift',
     keys = {
       { '<C-W><C-M>', '<Cmd>WinShift<CR>' },
       { '<C-W>m', '<Cmd>WinShift<CR>' },
@@ -276,9 +283,17 @@ local plugins = {
     },
   },
 
-  'folke/twilight.nvim',
+  {
+    'folke/twilight.nvim',
+    cmd = { 'Twilight', 'TwilightEnable', 'TwilightDisable' },
+    opts = {},
+  },
 
-  'uga-rosa/ccc.nvim',
+  {
+    'uga-rosa/ccc.nvim',
+    cmd = 'CccPick',
+    opts = {},
+  },
 }
 
 require("lazy").setup(plugins)
