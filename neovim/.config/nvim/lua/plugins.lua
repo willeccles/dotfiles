@@ -185,20 +185,20 @@ local plugins = {
         end,
         desc = '[telescope] find files in working directory',
       },
-      { 'z=', require'telescope.builtin'.spell_suggest },
+      { 'z=', function() require'telescope.builtin'.spell_suggest() end },
       {
         '<Leader>g',
-        require'telescope.builtin'.grep_string,
+        function() require'telescope.builtin'.grep_string() end,
         desc = '[telescope] grep string under cursor in current directory',
       },
       {
         '<Leader>/',
-        require'telescope.builtin'.current_buffer_fuzzy_find,
+        function() require'telescope.builtin'.current_buffer_fuzzy_find() end,
         desc = '[telescope] current buffer fuzzy find',
       },
       {
         '<Leader>b',
-        require'telescope.builtin'.buffers,
+        function() require'telescope.builtin'.buffers() end,
         desc = '[telescope] preview/search open buffers',
       },
       {
