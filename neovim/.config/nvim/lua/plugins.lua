@@ -106,10 +106,18 @@ local plugins = {
 
   {
     "neovim/nvim-lspconfig",
+    ft = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto', 'python' },
     config = function()
       require'lspconfig'.clangd.setup{}
       require'lspconfig'.pyright.setup{}
     end,
+    keys = {
+      {
+        '<Leader>r',
+        vim.lsp.buf.rename,
+        desc = '[lsp] rename symbol under cursor',
+      },
+    },
   },
 
   {
