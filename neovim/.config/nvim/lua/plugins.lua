@@ -319,6 +319,15 @@ local plugins = {
     cmd = 'CccPick',
     opts = {},
   },
+
+  {
+    'willeccles/glow.nvim',
+    branch = 'err-notify',
+    cond = vim.fn.executable('glow'),
+    config = true,
+    cmd = 'Glow',
+  },
+
 }
 
 require("lazy").setup(plugins)
