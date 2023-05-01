@@ -121,6 +121,12 @@ local plugins = {
   },
 
   {
+    "ms-jpq/coq_nvim",
+    cond = vim.fn.executable('python3') and vim.fn.executable('sqlite'),
+    cmd = { 'COQnow', 'COQhelp', 'COQdeps' },
+  },
+
+  {
     "lewis6991/gitsigns.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
