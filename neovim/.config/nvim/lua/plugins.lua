@@ -66,7 +66,9 @@ local plugins = {
     'rcarriga/nvim-notify',
     lazy = false,
     priority = 60,
-    opts = {},
+    opts = {
+      top_down = false,
+    },
     init = function()
       vim.notify = require'notify'
     end,
