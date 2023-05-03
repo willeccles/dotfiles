@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   {
-    "willeccles/gruvbox",
+    "willeccles/gruvbox",  -- TODO: look into ellisonleao/gruvbox.nvim
     lazy = false,
     priority = 1000,
     config = function()
@@ -259,13 +259,12 @@ local plugins = {
   },
 
   'junegunn/vim-slash',
-  'justinmk/vim-sneak',
   {
     'numToStr/Comment.nvim',
     opts = {},
   },
   'tpope/vim-fugitive',
-  'tpope/vim-surround',
+  'tpope/vim-surround',  -- TODO look into kylechui/nvim-surround
   {
     'zhimsel/vim-stay',
     config = function()
