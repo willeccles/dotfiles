@@ -260,8 +260,10 @@ local plugins = {
 
   'junegunn/vim-slash',
   'justinmk/vim-sneak',
-  'machakann/vim-highlightedyank',
-  'tomtom/tcomment_vim', -- TODO: check out numToStr/Comment.nvim instead
+  {
+    'numToStr/Comment.nvim',
+    opts = {},
+  },
   'tpope/vim-fugitive',
   'tpope/vim-surround',
   {

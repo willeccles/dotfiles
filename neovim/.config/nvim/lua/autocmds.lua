@@ -36,6 +36,9 @@ aug END
 au BufNewFile,BufRead Kbuild setlocal ft=make
 
 au FileType man setl nospell
+
+" replace vim highlighted yank plugin for nvim
+au TextYankPost * silent! lua vim.highlight.on_yank{timeout=1000}
 ]], true)
 
 if fn.executable('xxd') then
