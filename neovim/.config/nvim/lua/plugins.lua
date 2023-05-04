@@ -16,26 +16,59 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   {
-    "willeccles/gruvbox",  -- TODO: look into ellisonleao/gruvbox.nvim
+    "ellisonleao/gruvbox.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.g.gruvbox_italic = false
-      vim.g.gruvbox_invert_selection = false
-      vim.cmd('colorscheme gruvbox')
+      vim.o.background = "dark"
 
-      --used by better-whitespace
-      vim.cmd [[highlight ExtraWhitespace guibg=#fb4934]]
+      local palette = require('gruvbox.palette')
+      local colors = palette.get_base_colors(vim.o.background, "")
+      local soft_colors = palette.get_base_colors(vim.o.background, "soft")
+      require'gruvbox'.setup{
+        undercurl = true,
+        underline = true,
+        bold = false,
+        italic = {
+          strings = false,
+          comments = false,
+          operators = false,
+          folds = false,
+        },
+        -- NOTE: this is probably best, but the issue is twofold:
+        -- 1. nvim-notify complains on the first notification (easy enough to
+        --    fix)
+        -- 2. Lazy has some issues
+        -- So for now, transparent mode is off.
+        transparent_mode = false,
+        overrides = {
+          -- TODO: find a replacement for better-whitespace that's less buggy
+          -- when I do, replace this color code with one of the colors.XXX
+          -- options
+          -- ExtraWhitespace = { bg = '#fb4934' },
 
-      --default status line colors which have to be specified because this is
-      --compared with StatusLineNC when falling back to that
-      vim.cmd [[highlight StatusLine guibg=#3c3836 guifg=#ebdbb2]]
-      --non-focused status line colors to fall back to when User1..2 aren't used
-      vim.cmd [[highlight StatusLineNC guibg=#32302f guifg=#bdae93]]
+          -- fix TODOs after #247
+          Todo = { fg = colors.fg0, bg = 'NONE' },
 
-      --use these with %1* and %2*
-      vim.cmd [[highlight User1 guibg=#3c3836 guifg=#928374]]
-      vim.cmd [[highlight User2 guibg=#3c3836 guifg=#ebdbb2]]
+          -- ugly :/
+          SignColumn = { bg = 'NONE' },
+          GruvboxRedSign = { bg = 'NONE' },
+          GruvboxGreenSign = { bg = 'NONE' },
+          GruvboxYellowSign = { bg = 'NONE' },
+          GruvboxBlueSign = { bg = 'NONE' },
+          GruvboxPurpleSign = { bg = 'NONE' },
+          GruvboxAquaSign = { bg = 'NONE' },
+          GruvboxOrangeSign = { bg = 'NONE' },
+
+          StatusLine = { bg = colors.bg1, fg = colors.fg1 },
+          StatusLineNC = { bg = soft_colors.bg0, fg = colors.fg3 },
+          -- use these with %1* and %2*
+          User1 = { bg = colors.bg1, fg = colors.gray },
+          User2 = { bg = colors.bg1, fg = colors.fg1 },
+        },
+      }
+
+      vim.cmd[[colorscheme gruvbox]]
     end,
   },
 
