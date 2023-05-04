@@ -94,7 +94,7 @@ local plugins = {
 
   {
     'stevearc/dressing.nvim',
-    lazy = false,
+    event = 'VeryLazy',
     priority = 60,
     opts = {},
   },
@@ -115,6 +115,7 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter",
     enabled = vim.fn.executable("tree-sitter"),
     build = ":TSUpdate",
+    event = 'VeryLazy',
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = "all",
@@ -138,6 +139,7 @@ local plugins = {
   {
     "lewis6991/spellsitter.nvim",
     cond = vim.fn.executable("tree-sitter"),
+    event = 'VeryLazy',
     opts = {
       enable = true,
     },
@@ -145,6 +147,7 @@ local plugins = {
 
   {
     "neovim/nvim-lspconfig",
+    event = 'VeryLazy',
     ft = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto', 'python' },
     config = function()
       require'lspconfig'.clangd.setup{}
@@ -266,7 +269,10 @@ local plugins = {
     },
   },
 
-  "adelarsq/vim-matchit",
+  {
+    "adelarsq/vim-matchit",
+    event = 'VeryLazy',
+  },
 
   {
     "godlygeek/tabular",
@@ -295,25 +301,44 @@ local plugins = {
     opts = {},
   },
 
-  'junegunn/vim-slash',
+  {
+    'junegunn/vim-slash',
+    event = 'VeryLazy',
+  },
+
   {
     'numToStr/Comment.nvim',
+    event = 'VeryLazy',
     opts = {},
   },
-  'tpope/vim-fugitive',
-  'tpope/vim-surround',  -- TODO look into kylechui/nvim-surround
+
+  {
+    'tpope/vim-fugitive',
+    cmd = { 'G', 'Git' },
+  },
+
+  {
+    'kylechui/nvim-surround',
+    event = 'VeryLazy',
+    opts = {},
+  },
+
   {
     'zhimsel/vim-stay',
     config = function()
       vim.opt.viewoptions = 'cursor,folds,slash,unix'
     end,
   },
-  'sickill/vim-pasta',
+
+  {
+    'sickill/vim-pasta',
+    event = 'VeryLazy',
+  },
 
   {
     'echasnovski/mini.trailspace',
     main = 'mini.trailspace',
-    lazy = false,
+    event = 'VeryLazy',
     opts = {},
     keys = {
       {
@@ -334,6 +359,7 @@ local plugins = {
 
   {
     'ggandor/leap.nvim',
+    event = 'VeryLazy',
     dependencies = {
       'tpope/vim-repeat',
     },
