@@ -272,7 +272,6 @@ local plugins = {
     end,
   },
   'sickill/vim-pasta',
-  'ntpeters/vim-better-whitespace',
 
   {
     'mbbill/undotree',
