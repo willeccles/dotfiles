@@ -65,6 +65,10 @@ local plugins = {
           -- use these with %1* and %2*
           User1 = { bg = colors.bg1, fg = colors.gray },
           User2 = { bg = colors.bg1, fg = colors.fg1 },
+
+          -- fix highlighting with LSP
+          ["@variable"] = { link = "Identifier" },
+          ["@namespace"] = { link = "Identifier" },
         },
       }
 
