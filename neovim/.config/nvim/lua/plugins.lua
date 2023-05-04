@@ -311,6 +311,23 @@ local plugins = {
   'sickill/vim-pasta',
 
   {
+    'echasnovski/mini.trailspace',
+    main = 'mini.trailspace',
+    lazy = false,
+    opts = {},
+    keys = {
+      {
+        '<Leader>t',
+        function()
+          require'mini.trailspace'.trim()
+          require'mini.trailspace'.trim_last_lines()
+        end,
+        desc = '[mini.trailspace] trim trailing whitespace and lines',
+      },
+    },
+  },
+
+  {
     'mbbill/undotree',
     cmd = 'UndotreeToggle',
   },
