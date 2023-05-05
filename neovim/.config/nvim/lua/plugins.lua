@@ -409,8 +409,7 @@ local plugins = {
   },
 
   {
-    'willeccles/glow.nvim',
-    branch = 'err-notify',
+    'ellisonleao/glow.nvim',
     cond = vim.fn.executable('glow'),
     config = true,
     cmd = 'Glow',
