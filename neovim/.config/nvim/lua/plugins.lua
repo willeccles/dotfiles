@@ -391,6 +391,7 @@ local plugins = {
           relativenumber = false,
           foldcolumn = "0",
           colorcolumn = "",
+          sidescrolloff = 0,
         },
       },
     },
