@@ -48,8 +48,8 @@ set('hlsearch', true)
 
 set('updatetime', 500)
 
-if fn.executable("ag") then
-  set('grepprg', "ag --vimgrep $*")
+if fn.executable("rg") then
+  set('grepprg', "rg --vimgrep $*")
   set('grepformat', "%f:%l:%c:%m")
 end
 
