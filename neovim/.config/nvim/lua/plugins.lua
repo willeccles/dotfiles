@@ -137,15 +137,6 @@ local plugins = {
   },
 
   {
-    "lewis6991/spellsitter.nvim",
-    cond = vim.fn.executable("tree-sitter"),
-    event = 'VeryLazy',
-    opts = {
-      enable = true,
-    },
-  },
-
-  {
     "neovim/nvim-lspconfig",
     event = 'VeryLazy',
     ft = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto', 'python' },
