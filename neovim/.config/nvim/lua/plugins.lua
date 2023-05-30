@@ -70,6 +70,8 @@ local plugins = {
           -- fix highlighting with LSP
           ["@variable"] = { link = "Identifier" },
           ["@namespace"] = { link = "Identifier" },
+          -- still not sure if I'm happy with this one :/
+          ["@constructor"] = { link = "Structure" },
         },
       }
 
