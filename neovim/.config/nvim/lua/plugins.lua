@@ -410,6 +410,15 @@ local plugins = {
     cmd = 'Glow',
   },
 
+  {
+    'dhruvasagar/vim-table-mode',
+    event = 'VeryLazy',
+    config = function()
+      -- make table formatting like ReST
+      vim.g.table_mode_corner_corner = '+'
+      vim.g.table_mode_header_fillchar = '='
+    end,
+  },
 }
 
 require("lazy").setup(plugins)
