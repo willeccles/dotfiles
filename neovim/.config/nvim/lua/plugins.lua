@@ -14,6 +14,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- TODO fork venn, add config to change box characters
+-- TODO maybe add hydra for neogit and venn?
+
 local plugins = {
   {
     "ellisonleao/gruvbox.nvim",
@@ -307,8 +310,14 @@ local plugins = {
   },
 
   {
-    'tpope/vim-fugitive',
-    cmd = { 'G', 'Git' },
+    'TimUntersberger/neogit',
+    cmd = { 'Neogit' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    opts = {
+      disable_signs = true,  -- use gitsigns.nvim for this
+    },
   },
 
   {
