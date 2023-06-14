@@ -156,6 +156,11 @@ local plugins = {
         vim.lsp.buf.rename,
         desc = '[lsp] rename symbol under cursor',
       },
+      {
+        '<Leader>v',
+        vim.lsp.buf.hover,
+        desc = '[lsp] hover popup for symbol under cursor',
+      },
     },
   },
 
