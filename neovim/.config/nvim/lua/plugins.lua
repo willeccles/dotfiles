@@ -428,6 +428,19 @@ local plugins = {
       vim.g.table_mode_header_fillchar = '='
     end,
   },
+
+  {
+    'pwntester/octo.nvim',
+    cmd = 'Octo',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    opts = {
+      left_bubble_delimiter = "",
+      right_bubble_delimiter = "",
+    }
+  },
 }
 
 require("lazy").setup(plugins)
