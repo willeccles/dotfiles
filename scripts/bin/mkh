@@ -19,12 +19,30 @@ parser.add_argument('--pragma', action='store_true',
     help='use `#pragma once` instead of macro guards')
 parser.add_argument('-u', '--uuid', action='store_true',
     help='generate a UUID for the include guards instead of using the path')
+parser.add_argument('-c', '--extern-c', dest='extern_c', action='store_true',
+    help='add `extern "C"\' for C++')
+parser.add_argument('-n', '--namespace', metavar='ns[.ns2...]', type=str,
+    help='generate one or more namespace blocks in the header')
 
 args = parser.parse_args()
+
+if args.namespace is not None and args.extern_c:
+    print("error: --extern-c cannot be used with --namespace", file=sys.stderr)
+    exit(1)
 
 cwd_parent = pathlib.PurePath(getcwd()).parent
 
 warned_non_standard = False
+
+EXTERN_C='''
+#ifdef __cplusplus
+extern "C" {
+#endif  /* __cplusplus */
+
+#ifdef __cplusplus
+}  /* extern "C" */
+#endif /* __cplusplus */
+'''
 
 def gen_include_guard(p: str) -> str:
     global args
@@ -56,6 +74,26 @@ def gen_include_guard(p: str) -> str:
 
     return guard
 
+def gen_namespaces(namespaces_str: str) -> str:
+    namespaces = namespaces_str.split('.')
+
+    if len(namespaces) == 0:
+        print("error: invalid namespace declaration", file=sys.stderr)
+        exit(1)
+
+    outstr = ''
+    for n in reversed(namespaces):
+        if not n.isidentifier():
+            print(f"error: invalid namespace name: {n}", file=sys.stderr)
+            exit(1)
+
+        outstr = f'namespace {n} {{\n{outstr}}}  // namespace {n}\n'
+
+    return '\n' + outstr
+
+ns_string = ''
+if args.namespace is not None:
+    ns_string = gen_namespaces(args.namespace)
 
 for p in args.files:
     if exists(p):
@@ -63,11 +101,19 @@ for p in args.files:
         continue
 
     with open(p, mode='w') as outfile:
+        guard = ''
         if args.pragma:
             print('#pragma once', file=outfile)
         else:
             guard = gen_include_guard(p)
-            print(f'#ifndef {guard}\n#define {guard}\n#endif  /* {guard} */',
-                  file=outfile)
+            print(f'#ifndef {guard}\n#define {guard}', file=outfile)
+
+        if args.extern_c:
+            print(EXTERN_C, file=outfile)
+        elif args.namespace is not None:
+            print(ns_string, file=outfile)
+
+        if not args.pragma:
+            print(f'#endif  /* {guard} */', file=outfile)
 
     print(f'successfully created {p}')
