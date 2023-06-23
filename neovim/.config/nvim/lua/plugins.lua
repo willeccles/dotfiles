@@ -170,7 +170,10 @@ local plugins = {
     cmd = { 'COQnow', 'COQhelp', 'COQdeps' },
     config = function()
       vim.g.coq_settings = {
+        -- ['auto_start'] = 'shut-up',
         ['display.icons.mode'] = 'none',
+        ['completion.always'] = false,
+        ['clients.snippets.warn'] = {},
       }
     end,
   },
