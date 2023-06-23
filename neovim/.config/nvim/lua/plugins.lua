@@ -168,6 +168,11 @@ local plugins = {
     "ms-jpq/coq_nvim",
     cond = vim.fn.executable('python3') and vim.fn.executable('sqlite'),
     cmd = { 'COQnow', 'COQhelp', 'COQdeps' },
+    config = function()
+      vim.g.coq_settings = {
+        ['display.icons.mode'] = 'none',
+      }
+    end,
   },
 
   {
