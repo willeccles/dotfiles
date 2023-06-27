@@ -27,41 +27,35 @@ vim.g.mapleader = ';'
 tnoremap('<Esc>', '<C-\\><C-n>')
 tmap('<C-w>', '<Esc><C-w>')
 
--- switch windows with tab or leader
-nmap('<Tab>', '<C-w>')
-nnoremap('<Leader><Up>', '<C-w><Up>')
-nnoremap('<Leader><Down>', '<C-w><Down>')
-nnoremap('<Leader><Left>', '<C-w><Left>')
-nnoremap('<Leader><Right>', '<C-w><Right>')
-nnoremap('<Leader>k', '<C-w><Up>')
-nnoremap('<Leader>j', '<C-w><Down>')
-nnoremap('<Leader>h', '<C-w><Left>')
-nnoremap('<Leader>l', '<C-w><Right>')
+-- switch windows with tab
+nmap('<Tab>', '<C-w>', {desc = 'same as <c-w>'})
 
 -- Z to toggle folds
-nnoremap('Z', 'za')
-nnoremap('<Leader>z', 'za')
+nnoremap('Z', 'za', {desc = 'toggle folds'})
+nnoremap('<Leader>z', 'za', {desc = 'toggle folds'})
 
 -- sort paragraphs with C-s, reverse sort with alt-s
-nnoremap('<C-s>', 'vip:sort<CR>', {silent = true})
-nnoremap('<M-s>', 'vip:sort!<CR>', {silent = true})
+nnoremap('<C-s>', 'vip:sort<CR>', {silent = true, desc = 'sort paragraph'})
+nnoremap('<M-s>', 'vip:sort!<CR>',
+    {silent = true, desc = 'sort paragraph (reverse)'})
 
 -- yank to clipboard in visual with c-y
-vnoremap('<C-y>', '"+y<CR>')
+vnoremap('<C-y>', '"+y<CR>', {desc = 'yank to clipboard'})
 
 -- indent file
-nnoremap('g=', ':retab<CR>mvgg=G`v', {silent = true})
+nnoremap('g=', ':retab<CR>mvgg=G`v',
+    {silent = true, desc = 'reindent/format file'})
 
-nnoremap('<C-Up>', ':move--<CR>', {silent = true})
-nnoremap('<C-Down>', ':move+<CR>', {silent = true})
-nmap('<C-k>', '<C-Up>', {silent = true})
-nmap('<C-j>', '<C-Down>', {silent = true})
+nnoremap('<C-Up>', ':move--<CR>', {silent = true, desc = 'move line up'})
+nnoremap('<C-Down>', ':move+<CR>', {silent = true, desc = 'move line down'})
+nmap('<C-k>', '<C-Up>', {silent = true, desc = 'move line up'})
+nmap('<C-j>', '<C-Down>', {silent = true, desc = 'move line down'})
 
-noremap('<F7>', '<Esc>:tabp<CR>', {silent = true})
-noremap('<F8>', '<Esc>:tabn<CR>', {silent = true})
-noremap('<F9>', '<Esc>:tabe<Space>')
-noremap('<C-F7>', '<Esc>:bp<CR>', {silent = true})
-noremap('<C-F8>', '<Esc>:bn<CR>', {silent = true})
+noremap('<F7>', '<Esc>:tabp<CR>', {silent = true, desc = 'previous tab'})
+noremap('<F8>', '<Esc>:tabn<CR>', {silent = true, desc = 'next tab'})
+noremap('<F9>', '<Esc>:tabe<Space>', {desc = 'new tab...'})
+noremap('<C-F7>', '<Esc>:bp<CR>', {silent = true, desc = 'previous buffer'})
+noremap('<C-F8>', '<Esc>:bn<CR>', {silent = true, desc = 'next buffer'})
 
 vnoremap('<', '<gv')
 vnoremap('>', '>gv')

@@ -383,9 +383,21 @@ local plugins = {
     'sindrets/winshift.nvim',
     cmd = 'WinShift',
     keys = {
-      { '<C-W><C-M>', '<Cmd>WinShift<CR>' },
-      { '<C-W>m', '<Cmd>WinShift<CR>' },
-      { '<C-W>x', '<Cmd>WinShift swap<CR>' },
+      {
+        '<C-W><C-M>',
+        '<Cmd>WinShift<CR>',
+        desc = '[WinShift] interactively move window',
+      },
+      {
+        '<C-W>m',
+        '<Cmd>WinShift<CR>',
+        desc = '[WinShift] interactively move window',
+      },
+      {
+        '<C-W>x',
+        '<Cmd>WinShift swap<CR>',
+        desc = '[WinShift] swap windows',
+      },
     },
   },
 
