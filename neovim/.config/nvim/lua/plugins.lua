@@ -82,21 +82,16 @@ local plugins = {
     end,
   },
 
-  --[[
-  use {
+  {
     "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup {
-        plugins = {
-          spelling = {
-            enabled = true,
-            suggestions = 20,
-          },
+    config = {
+      plugins = {
+        spelling = {
+          enabled = false,
         },
-      }
-    end
-  }
-  ]]
+      },
+    },
+  },
 
   {
     'stevearc/dressing.nvim',
