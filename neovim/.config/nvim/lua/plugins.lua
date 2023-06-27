@@ -84,7 +84,8 @@ local plugins = {
 
   {
     "folke/which-key.nvim",
-    config = {
+    event = 'VeryLazy',
+    opts = {
       plugins = {
         spelling = {
           enabled = false,
