@@ -90,6 +90,7 @@ export PF_INFO="ascii title os kernel shell editor palette"
 export PF_COL1=3
 
 export MAKEFLAGS=-j`nproc`
+export CMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 if hascommand kiss; then
   # kiss config
