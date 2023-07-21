@@ -462,6 +462,11 @@ local plugins = {
       right_bubble_delimiter = "",
     }
   },
+
+  {
+    'tommcdo/vim-lion',
+    event = 'VeryLazy'
+  },
 }
 
 require("lazy").setup(plugins)
