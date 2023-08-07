@@ -354,7 +354,7 @@ local plugins = {
     opts = {},
     keys = {
       {
-        '<Leader>t',
+        '<Leader>T',
         function()
           require'mini.trailspace'.trim()
           require'mini.trailspace'.trim_last_lines()
