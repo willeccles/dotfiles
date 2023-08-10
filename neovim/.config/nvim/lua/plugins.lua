@@ -75,6 +75,9 @@ local plugins = {
           ["@namespace"] = { link = "Identifier" },
           -- still not sure if I'm happy with this one :/
           ["@constructor"] = { link = "Structure" },
+
+          manItalic = { link = "GruvboxGreen" },
+          manBold = { link = "GruvboxRedBold" },
         },
       }
 
