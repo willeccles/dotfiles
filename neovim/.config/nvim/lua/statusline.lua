@@ -97,6 +97,18 @@ function sl_click_ft(w, n, b, m)
   end
 end
 
+function sl_click_ff(w, n, b, m)
+  if b == 'l' then
+    -- TODO: I would love to figure out how to replace this with a nvim popup
+    -- menu...
+    vim.ui.select({ 'Unix (LF)', 'DOS (CRLF)', 'Mac (CR)' }, {
+      prompt = 'Select file format:',
+    }, function(choice)
+      vim.bo.fileformat = string.match(choice:lower(), '%S+')
+    end)
+  end
+end
+
 function sl_click_git(w, n, b, m)
   if b == 'l' then
     local builtin = require'telescope.builtin'
@@ -109,7 +121,7 @@ function _G.statusline()
     '%1*%( %{v:lua.sl_mode()} %)', --mode
     '%2*%-( %@v:lua.sl_click_buf@%n:%X %<%@v:lua.sl_click_fname@%([%R] %)%f%{v:lua.sl_modified()}%X %)', --file name
     '%1*%( %@v:lua.sl_click_ft@%{v:lua.sl_ftype()}%X %)', --file type
-    '%( %{v:lua.sl_lends()} %)', --line endings
+    '%( %@v:lua.sl_click_ff@%{v:lua.sl_lends()}%X %)', --line endings
     '%( %{v:lua.sl_fenc()} %)', --file encoding
     '%=',
     '%( %@v:lua.sl_click_git@[%{v:lua.sl_gitstatus()}]%X %)', --git
