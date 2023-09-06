@@ -46,6 +46,8 @@ fi
 
 if [ -d /opt/homebrew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
+  export CPATH="$CPATH:/opt/homebrew/include"
+  export LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/lib"
   export HOMEBREW_NO_EMOJI=1
   export HOMEBREW_NO_ENV_HINTS=1
   export HOMEBREW_DISPLAY_INSTALL_TIMES=1
