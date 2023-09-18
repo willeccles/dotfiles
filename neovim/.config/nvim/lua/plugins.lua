@@ -144,10 +144,11 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
     event = 'VeryLazy',
-    ft = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto', 'python' },
+    ft = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto', 'python', 'rust' },
     config = function()
       require'lspconfig'.clangd.setup{}
       require'lspconfig'.pyright.setup{}
+      -- require'lspconfig'.rust_analyzer.setup{}
     end,
     keys = {
       {
