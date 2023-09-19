@@ -63,3 +63,23 @@ command('ClangFormat', ClangFormatCmd, {
     return {"LLVM","GNU","Google","Chromium","Microsoft","Mozilla","WebKit"}
   end
 })
+
+function LightModeCmd(args)
+  if vim.o.background ~= "light" then
+    require'gruvbox_config'.configure("light")
+  end
+end
+
+command('LightMode', LightModeCmd, {
+  desc = 'switch theme to light mode',
+})
+
+function DarkModeCmd(args)
+  if vim.o.background ~= "dark" then
+    require'gruvbox_config'.configure("dark")
+  end
+end
+
+command('DarkMode', DarkModeCmd, {
+  desc = 'switch theme to dark mode',
+})
