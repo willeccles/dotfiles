@@ -8,11 +8,16 @@ local M = {}
 function M.configure(mode)
   vim.o.background = mode
 
+  contrast = ""
+  if mode == "light" then
+    contrast = "hard"
+  end
+
   local palette = require('gruvbox.palette')
-  local colors = palette.get_base_colors(vim.o.background, "")
+  local colors = palette.get_base_colors(vim.o.background, contrast)
   local soft_colors = palette.get_base_colors(vim.o.background, "soft")
-  config = {
-    contrast = "",
+  require'gruvbox'.setup{
+    contrast = contrast,
     undercurl = true,
     underline = true,
     bold = false,
@@ -63,12 +68,6 @@ function M.configure(mode)
       manBold = { link = "GruvboxRedBold" },
     },
   }
-
-  if mode == "light" then
-    config.contrast = "hard"
-  end
-
-  require'gruvbox'.setup(config)
 
   vim.cmd[[colorscheme gruvbox]]
 end

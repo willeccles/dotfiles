@@ -24,7 +24,7 @@ local plugins = {
     lazy = false,
     priority = 1000,
     config = function()
-      require'gruvbox_config'.configure('dark')
+      require'gruvbox_config'.configure(vim.o.background)
     end,
   },
 
