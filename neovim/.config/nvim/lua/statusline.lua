@@ -104,7 +104,9 @@ function sl_click_ff(w, n, b, m)
     vim.ui.select({ 'Unix (LF)', 'DOS (CRLF)', 'Mac (CR)' }, {
       prompt = 'Select file format:',
     }, function(choice)
-      vim.bo.fileformat = string.match(choice:lower(), '%S+')
+      if choice ~= nil then
+        vim.bo.fileformat = string.match(choice:lower(), '%S+')
+      end
     end)
   end
 end
