@@ -6,6 +6,10 @@
 	email = will@eccles.dev
 	name = Will Eccles
 	signingkey = CAEBC3A8A8B8E9E8
+
+[include]
+	path = .local.gitconfig
+
 [init]
 	defaultBranch = master
 [advice]
