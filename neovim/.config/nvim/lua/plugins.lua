@@ -104,6 +104,16 @@ local plugins = {
         vim.lsp.buf.hover,
         desc = '[lsp] hover popup for symbol under cursor',
       },
+      {
+        '<Leader>d',
+        vim.lsp.buf.definition,
+        desc = '[lsp] go to definition of symbol under cursor',
+      },
+      {
+        '<Leader>D',
+        vim.lsp.buf.declaration,
+        desc = '[lsp] go to definition of symbol under cursor',
+      },
     },
   },
 
