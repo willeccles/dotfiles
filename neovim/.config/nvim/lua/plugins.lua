@@ -106,12 +106,16 @@ local plugins = {
       },
       {
         '<Leader>d',
-        vim.lsp.buf.definition,
+        function()
+          vim.lsp.buf.definition({ reuse_win = true })
+        end,
         desc = '[lsp] go to definition of symbol under cursor',
       },
       {
         '<Leader>D',
-        vim.lsp.buf.declaration,
+        function()
+          vim.lsp.buf.declaration({ reuse_win = true })
+        end,
         desc = '[lsp] go to definition of symbol under cursor',
       },
     },
