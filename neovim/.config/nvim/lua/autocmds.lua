@@ -26,7 +26,7 @@ aug END
 
 au BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp,*.cc let b:man_default_sects='2,3'
 
-au BufNewFile,BufRead *.dot,*.dts,*.dtsi,*.make,*.cmake,*.mk setl tw=0
+au BufNewFile,BufRead *.dot,*.dts,*.dtsi,*.make,*.cmake,*.mk,*.j2 setl tw=0
 
 aug clang_ft
   au!
