@@ -76,6 +76,10 @@ local plugins = {
             ["operator"] = "",
           },
           disable = { "c", "cpp", "bash", "cmake", "help", "make" },
+          -- This fixes indentation at the cost of editor performance, but since
+          -- I'm using tree-sitter already, clearly performance is not
+          -- a priority anyway.
+          additional_vim_regex_highlighting = { "python" },
         },
         indent = {
           enable = false,

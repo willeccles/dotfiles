@@ -69,7 +69,7 @@ set('shiftwidth', 2)
 set('smarttab', true)
 set('expandtab', true)
 
-set('cino', "h1,l1,g1,t0,i4,+4,(0,w1,W4,E-s,N-s")
+set('cino', "h1,l1,g1,t0,i4,+4,(0,w1,W4,E-s,N-s,m1")
 
 set('completeopt', 'menu,preview,menuone,noinsert,longest')
 vim.opt.shortmess:append('c')
