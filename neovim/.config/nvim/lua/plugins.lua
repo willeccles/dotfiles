@@ -122,6 +122,26 @@ local plugins = {
         end,
         desc = '[lsp] go to definition of symbol under cursor',
       },
+      {
+        '<Leader>n',
+        vim.diagnostic.goto_next,
+        desc = '[lsp] go to next diagnostic',
+      },
+      {
+        '<Leader>N',
+        vim.diagnostic.goto_prev,
+        desc = '[lsp] go to previous diagnostic',
+      },
+      {
+        '<Leader>e',
+        vim.diagnostic.open_float,
+        desc = '[lsp] display diagnostics under cursor',
+      },
+      {
+        '<Leader>a',
+        vim.lsp.buf.code_action,
+        desc = '[lsp] code actions',
+      },
     },
   },
 
