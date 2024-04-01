@@ -23,6 +23,9 @@ parser.add_argument('-c', '--extern-c', dest='extern_c', action='store_true',
     help='add `extern "C"\' for C++')
 parser.add_argument('-n', '--namespace', metavar='ns[.ns2...]', type=str,
     help='generate one or more namespace blocks in the header')
+parser.add_argument('-N', '--nested-namespaces', dest='nested_namespace_decls',
+    action='store_true',
+    help='generate C++17-style one-line namespace declarations')
 
 args = parser.parse_args()
 
@@ -81,13 +84,19 @@ def gen_namespaces(namespaces_str: str) -> str:
         print("error: invalid namespace declaration", file=sys.stderr)
         exit(1)
 
-    outstr = ''
-    for n in reversed(namespaces):
+    for n in namespaces:
         if not n.isidentifier():
             print(f"error: invalid namespace name: {n}", file=sys.stderr)
             exit(1)
 
-        outstr = f'namespace {n} {{\n{outstr}}}  // namespace {n}\n'
+    outstr = ''
+
+    if args.nested_namespace_decls:
+        ns_decl = '::'.join(namespaces)
+        outstr = f'namespace {ns_decl} {{\n}}  // namespace {ns_decl}\n'
+    else:
+        for n in reversed(namespaces):
+            outstr = f'namespace {n} {{\n{outstr}}}  // namespace {n}\n'
 
     return '\n' + outstr
 
