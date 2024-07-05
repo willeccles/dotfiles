@@ -28,7 +28,7 @@ command('S', SplitNatural, {
 })
 
 function ClangFormatCmd(args)
-  if not vim.fn.executable('clang-format') then
+  if vim.fn.executable('clang-format') == 0 then
     vim.notify("clang-format not found!", vim.log.levels.ERROR, {
       title='ClangFormat',
     })
