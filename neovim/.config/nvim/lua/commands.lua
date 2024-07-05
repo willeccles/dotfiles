@@ -28,6 +28,13 @@ command('S', SplitNatural, {
 })
 
 function ClangFormatCmd(args)
+  if not vim.fn.executable('clang-format') then
+    vim.notify("clang-format not found!", vim.log.levels.ERROR, {
+      title='ClangFormat',
+    })
+    return
+  end
+
   local cfargs = '--lines=' .. args['line1'] .. ':' .. args['line2']
       .. ' --assume-filename=' .. fn.shellescape(fn.expand('%:t'))
 
