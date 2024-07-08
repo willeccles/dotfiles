@@ -120,7 +120,7 @@ local plugins = {
         function()
           vim.lsp.buf.declaration({ reuse_win = true })
         end,
-        desc = '[lsp] go to definition of symbol under cursor',
+        desc = '[lsp] go to declaration of symbol under cursor',
       },
       {
         '<Leader>n',
