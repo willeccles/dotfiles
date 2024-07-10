@@ -61,7 +61,7 @@ local plugins = {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    enabled = vim.fn.executable("tree-sitter"),
+    enabled = vim.fn.executable("tree-sitter") == 1,
     build = ":TSUpdate",
     event = 'VeryLazy',
     config = function()
@@ -147,7 +147,8 @@ local plugins = {
 
   {
     "ms-jpq/coq_nvim",
-    cond = vim.fn.executable('python3') and vim.fn.executable('sqlite'),
+    cond = vim.fn.executable('python3') == 1 and
+        vim.fn.executable('sqlite') == 1,
     cmd = { 'COQnow', 'COQhelp', 'COQdeps' },
     config = function()
       vim.g.coq_settings = {
@@ -420,7 +421,7 @@ local plugins = {
 
   {
     'ellisonleao/glow.nvim',
-    cond = vim.fn.executable('glow'),
+    cond = vim.fn.executable('glow') == 1,
     config = true,
     cmd = 'Glow',
   },

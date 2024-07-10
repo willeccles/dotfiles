@@ -41,7 +41,7 @@ au FileType man setl nospell
 au TextYankPost * silent! lua vim.highlight.on_yank{timeout=1000}
 ]], true)
 
-if fn.executable('xxd') then
+if fn.executable('xxd') == 1 then
   vim.api.nvim_exec([[
   augroup Binary
     au!
