@@ -93,6 +93,13 @@ vim.cmd 'au TermOpen * setlocal nonumber nornu so=0 | startinsert'
 vim.cmd 'aunmenu PopUp.How-to\\ disable\\ mouse'
 vim.cmd 'aunmenu PopUp.-1-'
 
+-- TODO: would be cool to make a new menu that comes up with a keybind to list
+-- these options
+vim.cmd 'nnoremenu PopUp.-2- :'
+vim.cmd 'nnoremenu <silent> PopUp.Go\\ To\\ Definition <Cmd>lua vim.lsp.buf.definition({reuse_win=true})<CR>'
+vim.cmd 'nnoremenu <silent> PopUp.Find\\ References <Cmd>lua require"telescope.builtin".lsp_references()<CR>'
+vim.cmd 'nnoremenu <silent> PopUp.Rename <Cmd>lua vim.lsp.buf.rename()<CR>'
+
 vim.g.vim_json_warnings = 0
 vim.g.c_gnu = 1
 
