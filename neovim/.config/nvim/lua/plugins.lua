@@ -30,6 +30,7 @@ local plugins = {
 
   {
     "folke/which-key.nvim",
+    version = '2.1.0',
     event = 'VeryLazy',
     opts = {
       plugins = {
@@ -42,6 +43,7 @@ local plugins = {
 
   {
     'stevearc/dressing.nvim',
+    version = '2.2.2',
     event = 'VeryLazy',
     priority = 60,
     opts = {},
@@ -49,6 +51,7 @@ local plugins = {
 
   {
     'rcarriga/nvim-notify',
+    version = '3.13.5',
     lazy = false,
     priority = 60,
     opts = {
@@ -61,13 +64,14 @@ local plugins = {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    version = '0.9.x',
     enabled = vim.fn.executable("tree-sitter") == 1,
     build = ":TSUpdate",
     event = 'VeryLazy',
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = "all",
-        ignore_install = { "json" },
+        ignore_install = { "json", "wing" },
         highlight = {
           enable = true,
           custom_captures = {
@@ -90,6 +94,7 @@ local plugins = {
 
   {
     "neovim/nvim-lspconfig",
+    version = '0.1.x',
     event = 'VeryLazy',
     ft = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto', 'python', 'rust' },
     config = function()
@@ -147,6 +152,7 @@ local plugins = {
 
   {
     "ms-jpq/coq_nvim",
+    commit = '6b35465',
     cond = vim.fn.executable('python3') == 1 and
         vim.fn.executable('sqlite') == 1,
     cmd = { 'COQnow', 'COQhelp', 'COQdeps' },
@@ -162,6 +168,7 @@ local plugins = {
 
   {
     "lewis6991/gitsigns.nvim",
+    version = '0.8.x',
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       signs = {
@@ -178,6 +185,7 @@ local plugins = {
 
   {
     "nvim-telescope/telescope.nvim",
+    version = '0.1.x',
     cmd = 'Telescope',
     dependencies = {
       'nvim-lua/popup.nvim',
@@ -261,13 +269,14 @@ local plugins = {
     },
   },
 
-  {
-    "adelarsq/vim-matchit",
-    event = 'VeryLazy',
-  },
+  -- {
+  --   "adelarsq/vim-matchit",
+  --   event = 'VeryLazy',
+  -- },
 
   {
     "godlygeek/tabular",
+    commit = '12437cd',
     cmd = { 'Tab', 'Tabularize' },
   },
 
@@ -286,7 +295,7 @@ local plugins = {
 
   {
     'kyazdani42/nvim-tree.lua',
-    tag = 'nightly',
+    tag = 'nvim-tree-v1.4.0',
     keys = {
       { '<C-n>', '<Cmd>NvimTreeToggle<CR>' },
     },
@@ -335,6 +344,7 @@ local plugins = {
 
   {
     'echasnovski/mini.trailspace',
+    version = '0.13.x',
     main = 'mini.trailspace',
     event = 'VeryLazy',
     opts = {},
