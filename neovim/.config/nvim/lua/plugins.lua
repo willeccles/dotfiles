@@ -66,11 +66,15 @@ local plugins = {
     version = '0.9.x',
     enabled = vim.fn.executable("tree-sitter") == 1,
     build = ":TSUpdate",
-    event = 'VeryLazy',
     config = function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = "all",
-        ignore_install = { "json", "wing" },
+        ensure_installed = {
+          "c", "lua", "vim", "vimdoc", "query", "regex", "luadoc", "comment",
+        },
+        ignore_install = {
+          "cpp", "bash", "cmake", "help", "make", "json", "wing",
+        },
+        auto_install = true,
         highlight = {
           enable = true,
           custom_captures = {
