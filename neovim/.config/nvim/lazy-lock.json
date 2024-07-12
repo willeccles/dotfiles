@@ -4,7 +4,7 @@
   "dressing.nvim": { "branch": "master", "commit": "71349f24c6e07b39f33600985843c289ca735308" },
   "gitsigns.nvim": { "branch": "main", "commit": "76927d14d3fbd4ba06ccb5246e79d93b5442c188" },
   "glow.nvim": { "branch": "main", "commit": "238070a686c1da3bccccf1079700eb4b5e19aea4" },
-  "gruvbox.nvim": { "branch": "main", "commit": "353be593e52e2008ce17d61208668747dd557248" },
+  "gruvbox.nvim": { "branch": "main", "commit": "865615686948d1daf0882ededba49d5a9fecd9f4" },
   "lazy.nvim": { "branch": "main", "commit": "d1de92dffab5a862332fdd1892889d362369c12f" },
   "leap.nvim": { "branch": "main", "commit": "c099aecaf858574909bd38cbadb8543c4dd16611" },
   "mini.trailspace": { "branch": "main", "commit": "f43e2dff55a07e0a84c01ba4b25ed976a12eea44" },

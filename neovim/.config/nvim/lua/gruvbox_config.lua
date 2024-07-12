@@ -13,9 +13,12 @@ function M.configure(mode)
     contrast = "hard"
   end
 
-  local palette = require('gruvbox.palette')
-  local colors = palette.get_base_colors(vim.o.background, contrast)
-  local soft_colors = palette.get_base_colors(vim.o.background, "soft")
+  local palette = require'gruvbox'.palette
+  local colors = require'gruvbox'.get_colors(mode, contrast)
+  local soft_colors = require'gruvbox'.get_colors(mode, "soft")
+  -- NOTE: palette_overrides will NOT work because of the modifications I have
+  -- made to the plugin, but the plugin is designed annoyingly, so I had to fix
+  -- it.
   require'gruvbox'.setup{
     contrast = contrast,
     undercurl = true,
@@ -23,6 +26,7 @@ function M.configure(mode)
     bold = false,
     italic = {
       strings = false,
+      emphasis = false,
       comments = false,
       operators = false,
       folds = false,
@@ -57,6 +61,9 @@ function M.configure(mode)
       -- use these with %1* and %2*
       User1 = { bg = colors.bg1, fg = colors.gray },
       User2 = { bg = colors.bg1, fg = colors.fg1 },
+
+      -- reeeee
+      Operator = { fg = colors.fg1 },
 
       -- fix highlighting with LSP
       ["@variable"] = { link = "Identifier" },

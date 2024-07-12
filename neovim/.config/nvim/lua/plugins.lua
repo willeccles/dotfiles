@@ -19,8 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   {
-    "ellisonleao/gruvbox.nvim",
-    commit = '353be59',
+    "willeccles/gruvbox.nvim",
     lazy = false,
     priority = 1000,
     config = function()
