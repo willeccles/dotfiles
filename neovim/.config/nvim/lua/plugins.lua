@@ -468,4 +468,11 @@ local plugins = {
   },
 }
 
-require("lazy").setup(plugins)
+require("lazy").setup({
+  performance = {
+    rtp = {
+      reset = false,
+    },
+  },
+  spec = plugins,
+})
