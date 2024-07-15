@@ -63,7 +63,7 @@ local plugins = {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    version = '0.9.x',
+    commit = 'a6b2f4e',
     enabled = vim.fn.executable("tree-sitter") == 1,
     build = ":TSUpdate",
     config = function()
@@ -72,7 +72,7 @@ local plugins = {
           "c", "lua", "vim", "vimdoc", "query", "regex", "luadoc", "comment",
         },
         ignore_install = {
-          "cpp", "bash", "cmake", "help", "make", "json", "wing",
+          "cpp", "bash", "cmake", "make", "json", "wing",
         },
         auto_install = true,
         highlight = {
@@ -82,7 +82,7 @@ local plugins = {
             ["punctuation.delimiter"] = "",
             ["operator"] = "",
           },
-          disable = { "c", "cpp", "bash", "cmake", "help", "make" },
+          disable = { "c", "cpp", "bash", "cmake", "make" },
           -- This fixes indentation at the cost of editor performance, but since
           -- I'm using tree-sitter already, clearly performance is not
           -- a priority anyway.

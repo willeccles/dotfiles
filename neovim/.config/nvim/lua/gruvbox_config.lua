@@ -71,6 +71,11 @@ function M.configure(mode)
       -- still not sure if I'm happy with this one :/
       ["@constructor"] = { link = "Structure" },
 
+      -- for vimdoc, I want orange parameters!!!!
+      -- I also want yellow optionlink, but I am not sure how to do that without
+      -- messing with queries and I've been unsuccessful in my attempts...
+      ["@variable.parameter.vimdoc"] = { link = "Special" },
+
       manItalic = { link = "GruvboxGreen" },
       manBold = { link = "GruvboxRedBold" },
     },
