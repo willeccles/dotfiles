@@ -72,7 +72,7 @@ local plugins = {
           "c", "lua", "vim", "vimdoc", "query", "regex", "luadoc", "comment",
         },
         ignore_install = {
-          "cpp", "bash", "cmake", "make", "json", "wing",
+          "cpp", "bash", "cmake", "make", "json", "wing", "gitcommit",
         },
         auto_install = true,
         highlight = {
