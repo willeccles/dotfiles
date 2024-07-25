@@ -62,9 +62,6 @@ function M.configure(mode)
       User1 = { bg = colors.bg1, fg = colors.gray },
       User2 = { bg = colors.bg1, fg = colors.fg1 },
 
-      -- reeeee
-      Operator = { fg = colors.fg1 },
-
       -- fix highlighting with LSP
       ["@variable"] = { link = "Identifier" },
       ["@namespace"] = { link = "Identifier" },
@@ -82,6 +79,9 @@ function M.configure(mode)
   }
 
   vim.cmd[[colorscheme gruvbox]]
+
+  vim.api.nvim_set_hl(0, '@lsp.type.operator.cpp', {})
+  vim.api.nvim_set_hl(0, '@lsp.type.operator.c', {})
 end
 
 return M
