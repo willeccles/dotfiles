@@ -230,6 +230,9 @@ local plugins = {
         help_tags = {
           theme = 'dropdown',
         },
+        diagnostics = {
+          layout_strategy = 'vertical',
+        },
       },
     },
     keys = {
@@ -273,6 +276,11 @@ local plugins = {
         '<Leader>Ts',
         function() require'telescope.builtin'.lsp_document_symbols() end,
         desc = '[telescope][lsp] list document symbols',
+      },
+      {
+        '<Leader>E',
+        function() require'telescope.builtin'.diagnostics() end,
+        desc = '[telescope][lsp] display LSP diagnostics',
       },
     },
   },
