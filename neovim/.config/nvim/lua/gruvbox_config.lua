@@ -73,6 +73,10 @@ function M.configure(mode)
       -- messing with queries and I've been unsuccessful in my attempts...
       ["@variable.parameter.vimdoc"] = { link = "Special" },
 
+      ["@lsp.type.concept.cpp"] = { link = "@lsp.type.class.cpp" },
+
+      cppAttrSpec = { link = "GruvboxOrange" },
+
       manItalic = { link = "GruvboxGreen" },
       manBold = { link = "GruvboxRedBold" },
     },
