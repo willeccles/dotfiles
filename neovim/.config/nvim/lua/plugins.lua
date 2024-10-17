@@ -67,6 +67,15 @@ local plugins = {
     enabled = vim.fn.executable("tree-sitter") == 1,
     build = ":TSUpdate",
     config = function()
+      local parsers = require('nvim-treesitter.parsers').get_parser_configs()
+      parsers.dbc = {
+        install_info = {
+          url = "https://github.com/willeccles/tree-sitter-dbc",
+          files = { "src/parser.c" },
+        },
+        filetype = "dbc",
+      }
+
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
           "c", "lua", "vim", "vimdoc", "query", "regex", "luadoc", "comment",

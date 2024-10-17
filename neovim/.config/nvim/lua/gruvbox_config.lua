@@ -61,6 +61,9 @@ function M.configure(mode)
       -- use these with %1* and %2*
       User1 = { bg = colors.bg1, fg = colors.gray },
       User2 = { bg = colors.bg1, fg = colors.fg1 },
+      -- yellow and red for use with diagnostics
+      User3 = { bg = colors.bg1, fg = colors.yellow },
+      User4 = { bg = colors.bg1, fg = colors.red },
 
       -- fix highlighting with LSP
       ["@variable"] = { link = "Identifier" },

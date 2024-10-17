@@ -69,6 +69,36 @@ function sl_gitstatus()
   return ''
 end
 
+function sl_diagnostics()
+  local diags = vim.diagnostic.count(0)
+  result = ''
+  local errors = diags[vim.diagnostic.severity.ERROR]
+  local warnings = diags[vim.diagnostic.severity.WARN]
+
+  local get_sign = function(severity)
+    local status, sign = pcall(function()
+      return vim.trim(vim.fn.sign_getdefined('DiagnosticSign'..severity)[1].text)
+    end)
+    if not status then
+      sign = severity:sub(1, 1)
+    end
+    return sign
+  end
+
+  if errors ~= nil then
+    local sign = get_sign('Error')
+    -- highlight group 4 is red
+    result = result..string.format(' %%4*%d%s', errors, sign)
+  end
+  if warnings ~= nil then
+    local sign = get_sign('Warn')
+    -- highlight group 3 is yellow
+    result = result..string.format(' %%3*%d%s', warnings, sign)
+  end
+
+  return vim.trim(result)
+end
+
 function sl_click_buf(w, n, b, m)
   if b == 'l' then
     local builtin = require'telescope.builtin'
@@ -118,6 +148,14 @@ function sl_click_git(w, n, b, m)
   end
 end
 
+function sl_click_diagnostics(w, n, b, m)
+  if b == 'l' then
+    local win = vim.fn.getmousepos()['winid']
+    local buf = vim.api.nvim_win_get_buf(win)
+    require'telescope.builtin'.diagnostics({ bufnr = buf })
+  end
+end
+
 function _G.statusline()
   return table.concat({
     '%1*%( %{v:lua.sl_mode()} %)', --mode
@@ -126,7 +164,8 @@ function _G.statusline()
     '%( %@v:lua.sl_click_ff@%{v:lua.sl_lends()}%X %)', --line endings
     '%( %{v:lua.sl_fenc()} %)', --file encoding
     '%=',
-    '%( %@v:lua.sl_click_git@[%{v:lua.sl_gitstatus()}]%X %)', --git
+    '%( %@v:lua.sl_click_diagnostics@%{%v:lua.sl_diagnostics()%}%X %)', --diagnostics (note: this changes highlight color)
+    '%1*%( %@v:lua.sl_click_git@[%{v:lua.sl_gitstatus()}]%X %)', --git
     '%( %p%% %)', --percentage through the file
     '%2*%( %l:%c%V %)', --line/column/virtual column
   })
