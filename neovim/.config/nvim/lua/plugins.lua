@@ -246,7 +246,7 @@ local plugins = {
       },
       { 'z=', function() require'telescope.builtin'.spell_suggest() end },
       {
-        '<Leader>g',
+        '<Leader>Tg',
         function() require'telescope.builtin'.grep_string() end,
         desc = '[telescope] grep string under cursor in current directory',
       },
@@ -261,13 +261,18 @@ local plugins = {
         desc = '[telescope] preview/search open buffers',
       },
       {
-        '<Leader>o',
+        '<Leader>To',
         function()
           require'telescope.builtin'.oldfiles({
             path_display = {'smart'},
           })
         end,
         desc = '[telescope] browse old files',
+      },
+      {
+        '<Leader>Ts',
+        function() require'telescope.builtin'.lsp_document_symbols() end,
+        desc = '[telescope][lsp] list document symbols',
       },
     },
   },
