@@ -488,6 +488,24 @@ local plugins = {
     'tommcdo/vim-lion',
     event = 'VeryLazy'
   },
+
+  {
+    'dcampos/nvim-snippy',
+    version = '1.0.x',
+    main = 'snippy',
+    event = 'VeryLazy',
+    opts = {
+      mappings = {
+        is = {
+            ['<Tab>'] = 'expand_or_advance',
+            ['<S-Tab>'] = 'previous',
+        },
+        nx = {
+            ['<leader>x'] = 'cut_text',
+        },
+      },
+    },
+  },
 }
 
 require("lazy").setup(plugins)

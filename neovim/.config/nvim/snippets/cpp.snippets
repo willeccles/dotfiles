@@ -1,0 +1,28 @@
+snippet bsd3
+	/*
+	 * Copyright (c) `strftime("%Y")`, ${1:name}. All rights reserved.
+	 * Use of this source code is governed by a BSD-3-clause license that can be
+	 * found in the LICENSE file or at https://opensource.org/license/BSD-3-Clause
+	 */
+
+snippet scast
+	static_cast<${1:T}>(${0:${VISUAL:expr}})
+
+snippet cfoff
+	// clang-format off
+	${0:${VISUAL}}
+	// clang-format on
+
+snippet externc
+	#ifdef __cplusplus
+	extern "C" {
+	#endif /* __cplusplus */
+
+	${0:${VISUAL}}
+
+	#ifdef __cplusplus
+	} /* extern "C" */
+	#endif /* __cplusplus */
+
+# vim: set noet ts=2:
+
