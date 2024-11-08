@@ -52,7 +52,7 @@ export PROMPT2="%F{yellow}${PROMPT_CHAR}%f "
 # :)
 welcomename="$USER"
 welcomepunct="."
-if [[ $((1 + $RANDOM % 10)) == 8 ]]; then
+if [[ ${RANDOM: -1:1} == 8 ]]; then
   welcomename="cutie"
   welcomepunct="! <3"
 fi
