@@ -13,6 +13,14 @@ snippet cfoff
 	${0:${VISUAL}}
 	// clang-format on
 
+snippet incguard
+	#ifndef ${1:macro}
+	#define $1
+
+	${0:${VISUAL}}
+
+	#endif /* $1 */
+
 snippet externc
 	#ifdef __cplusplus
 	extern "C" {
@@ -23,6 +31,40 @@ snippet externc
 	#ifdef __cplusplus
 	} /* extern "C" */
 	#endif /* __cplusplus */
+
+snippet copydecls
+	${1:ClassName}(const $1& other);
+	$1& operator=(const $1& rhs);
+
+snippet nocopy
+	${1:ClassName}(const $1&) = delete;
+	$1& operator=(const $1&) = delete;
+
+snippet movedecls
+	${1:ClassName}($1&& other) noexcept;
+	$1& operator=($1&& rhs) noexcept;
+
+snippet nomove
+	${1:ClassName}($1&&) = delete;
+	$1& operator=($1&&) = delete;
+
+snippet classdecl
+	class ${1:ClassName} {
+	 public:
+		$1();
+
+		$1(const $1& other);
+		$1& operator=(const $1 rhs);
+
+		$1($1&& other) noexcept;
+		$1& operator=($1&& other) noexcept;
+
+		~$1();
+	};
+
+snippet accessors
+	${1:T} Get${2:Title}() const { return ${3:var}; }
+	void Set$2($1 ${4:val}) { $3 = $4; }
 
 # vim: set noet ts=2:
 
