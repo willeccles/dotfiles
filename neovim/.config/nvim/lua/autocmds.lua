@@ -1,6 +1,6 @@
 local fn = vim.fn
 
-vim.api.nvim_exec([[
+vim.api.nvim_exec2([[
 aug folds
   au!
   au BufNewFile,BufRead Makefile,*.mk,*.sh,*.vimrc,*.vim,*rc,*.conf setl foldlevel=0 foldmethod=marker
@@ -33,16 +33,20 @@ aug clang_ft
   au BufNewFile,BufRead .clangd,.clang-format,.clang-tidy setl ft=yaml tw=0
 aug END
 
+au BufNewFile,BufRead *.pio setl ft=pioasm
+
+au BufNewFile,BufRead *.dbc setl ft=dbc
+
 au BufNewFile,BufRead Kbuild setlocal ft=make
 
 au FileType man setl nospell
 
 " replace vim highlighted yank plugin for nvim
 au TextYankPost * silent! lua vim.highlight.on_yank{timeout=1000}
-]], true)
+]], {})
 
 if fn.executable('xxd') == 1 then
-  vim.api.nvim_exec([[
+  vim.api.nvim_exec2([[
   augroup Binary
     au!
     au BufReadPost * if &bin | %!xxd
@@ -52,5 +56,5 @@ if fn.executable('xxd') == 1 then
     au BufWritePost * if &bin | %!xxd
     au BufWritePost * set nomod | endif
   augroup END
-  ]], true)
+  ]], {})
 end
