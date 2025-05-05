@@ -13,7 +13,7 @@
   "nvim-notify": { "branch": "master", "commit": "d333b6f167900f6d9d42a59005d82919830626bf" },
   "nvim-snippy": { "branch": "master", "commit": "93c329f7dad98565ad5db9634ced253d665c1760" },
   "nvim-surround": { "branch": "main", "commit": "0e62500b98f4513feaaf7425c135472457ea5b7d" },
-  "nvim-tree.lua": { "branch": "master", "commit": "2086e564c4d23fea714e8a6d63b881e551af2f41" },
+  "nvim-tree.lua": { "branch": "master", "commit": "be5b788f2dc1522c73fb7afad9092331c8aebe80" },
   "nvim-treesitter": { "branch": "master", "commit": "a6b2f4ecc8a47011868632142a9b687d7e0f9aaf" },
   "octo.nvim": { "branch": "master", "commit": "974d2247b64535bedbbdbb7bec29dfa4e2395037" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },

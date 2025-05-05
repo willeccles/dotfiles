@@ -320,9 +320,13 @@ local plugins = {
 
   {
     'kyazdani42/nvim-tree.lua',
-    tag = 'nvim-tree-v1.4.0',
+    tag = 'nvim-tree-v1.12.0',
     keys = {
-      { '<C-n>', '<Cmd>NvimTreeToggle<CR>' },
+      {
+        '<C-n>',
+        function() require'nvim-tree.api'.tree.open() end,
+        desc = '[nvim-tree] open or focus tree',
+      },
     },
     opts = {},
   },
