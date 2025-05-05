@@ -82,6 +82,9 @@ function M.configure(mode)
 
       manItalic = { link = "GruvboxGreen" },
       manBold = { link = "GruvboxRedBold" },
+
+      -- snippy
+      SnippyMarker = { link = "Comment" },
     },
   }
 

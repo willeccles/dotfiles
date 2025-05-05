@@ -491,10 +491,11 @@ local plugins = {
 
   {
     'dcampos/nvim-snippy',
-    version = '1.0.x',
+    version = '1.1.x',
     main = 'snippy',
     event = 'VeryLazy',
     opts = {
+      hl_group = 'SnippetTabstop',
       mappings = {
         is = {
             ['<Tab>'] = 'expand_or_advance',
@@ -503,6 +504,10 @@ local plugins = {
         nx = {
             ['<leader>x'] = 'cut_text',
         },
+      },
+      virtual_markers = {
+        enabled = true,
+        default = '%n: ',
       },
     },
   },
