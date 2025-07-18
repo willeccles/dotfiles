@@ -3,12 +3,12 @@
 [credential]
 	helper = store
 [user]
-	email = will@eccles.dev
-	name = Will Eccles
-	signingkey = CAEBC3A8A8B8E9E8
+	email = sae@eccles.dev
+	name = Sophie Eccles
+	signingkey = BE26B33008E7B09D
 
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [advice]
 	detachedHead = false
 [commit]
