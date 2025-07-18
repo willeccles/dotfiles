@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   {
-    "willeccles/gruvbox.nvim",
+    "sophec/gruvbox.nvim",
     lazy = false,
     priority = 1000,
     config = function()
@@ -70,7 +70,7 @@ local plugins = {
       local parsers = require('nvim-treesitter.parsers').get_parser_configs()
       parsers.dbc = {
         install_info = {
-          url = "https://github.com/willeccles/tree-sitter-dbc",
+          url = "https://github.com/sophec/tree-sitter-dbc",
           files = { "src/parser.c" },
         },
         filetype = "dbc",
